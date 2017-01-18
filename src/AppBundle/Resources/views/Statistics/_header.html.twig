@@ -1,0 +1,23 @@
+<ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" {% if activeMenu == 'age' %}class="active"{% endif %}>
+        <a href="#" aria-controls="class">Độ tuổi</a>
+    </li>
+    <li role="presentation" {% if activeMenu == 'class' %}class="active"{% endif %}>
+        <a href="{{ path('application_statistic_index') }}" aria-controls="class">Lớp</a>
+    </li>
+    <li role="presentation" {% if activeMenu == 'school-unit' %}class="active"{% endif %}>
+        <a href="{{ path('application_statistic_by_schoolUnit') }}" aria-controls="school">Khối lớp</a>
+    </li>
+    <li role="presentation" {% if activeMenu == 'school' %}class="active"{% endif %}>
+        <a href="{{ path('application_statistic_by_school') }}" aria-controls="school">Trường</a>
+    </li>
+    <li role="presentation" {% if activeMenu == 'district' %}class="active"{% endif %}>
+        <a href="{{ path('application_statistic_by_district') }}" aria-controls="district">Quận huyện</a>
+    </li>
+    <li role="presentation" {% if activeMenu == 'city' %}class="active"{% endif %}>
+        <a href="{{ path('application_statistic_by_city') }}" aria-controls="city">Tỉnh thành</a>
+    </li>
+    <li role="presentation" {% if activeMenu == 'all' %}class="active"{% endif %}>
+        <a href="{{ path('application_statistic_by_all') }}" aria-controls="country">Toàn quốc</a>
+    </li>
+</ul>

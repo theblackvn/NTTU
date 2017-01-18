@@ -1,0 +1,24 @@
+imports:
+    - { resource: parameters.yml }
+
+services:
+  amz.service.bmi:
+    class: AMZ\ProfileBundle\Service\BMIService
+    arguments: ['@doctrine.orm.entity_manager', '@amz_db.service.query']
+  amz_profile.form.school:
+    class: AMZ\ProfileBundle\Form\SchoolType
+    arguments: ["%city%"]
+    tags:
+      - { name: form.type }
+  amz_profile.form.profile:
+    class: AMZ\ProfileBundle\Form\ProfileType
+    arguments: ["%city%"]
+    tags:
+      - { name: form.type }
+
+  amz_profile.twig_extension:
+      class: AMZ\ProfileBundle\Twig\SchoolExtension
+      public: false
+      arguments: ["@amz_db.service.query"]
+      tags:
+          - { name: twig.extension }

@@ -1,0 +1,71 @@
+{% extends '::admin.html.twig' %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="row bg-title">
+            <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+                <h4 class="page-title">Dành cho y tế</h4>
+            </div>
+            <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
+                <a href="{{ path('amz_doctor_user_create') }}"
+                   class="btn btn-danger pull-right m-l-20 btn-rounded btn-outline hidden-xs hidden-sm waves-effect waves-light">Tạo mới</a>
+                <ol class="breadcrumb">
+                    <li><a href="{{ path('amz_dashboard') }}">Dashboard</a></li>
+                    <li class="active">Dành cho y tế</li>
+                </ol>
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+        <div class="row">
+            <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+                <div class="white-box">
+                    {% for flash_message in app.session.flashbag.get('notice') %}
+                        <div class="alert alert-success">
+                            {{ flash_message }}
+                        </div>
+                    {% endfor %}
+                    {% for flash_message in app.session.flashbag.get('error') %}
+                        <div class="alert alert-danger">
+                            {{ flash_message }}
+                        </div>
+                    {% endfor %}
+                    <div class="table-responsive">
+                        <table class="table product-overview">
+                            <thead>
+                            <tr>
+                                <th width="250">Tên đăng nhập</th>
+                                <th>Họ tên</th>
+                                <th>Email</th>
+                                <th width="100">Actions</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for entity in pagination %}
+                                <tr>
+                                    <td>{{ entity.username }}</td>
+                                    <td>{{ entity.fullName }}</td>
+                                    <td>{{ entity.email }}</td>
+                                    <td>
+                                        <a href="{{ path('amz_doctor_user_edit', {'id': entity.id}) }}"
+                                           class="text-inverse p-r-10"
+                                           data-toggle="tooltip" title="Edit"><i class="ti-marker-alt"></i></a> <a
+                                                href="{{ path('amz_doctor_user_delete', {'id': entity.id}) }}"
+                                                class="text-inverse p-r-10" title="Delete"
+                                                onclick="return confirm('Are you sure ?');"
+                                                data-toggle="tooltip"><i class="ti-trash"></i></a>
+                                    </td>
+
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="amz_pagination_wrapper">
+            {{ knp_pagination_render(pagination) }}
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,7 @@
+amz_dashboard:
+    path:     /dashboard
+    defaults: { _controller: AMZPostBundle:Tag:index }
+
+amz_option:
+    resource: "@AMZBackendBundle/Resources/config/route/option.yml"
+    prefix:   /config

@@ -1,0 +1,299 @@
+<div class="print-chart">
+    <div class="chartbmi-5to19">
+        <div class="col-left-chart">
+            <div class="num3sd">+3SD</div>
+            <div class="num2sd">+2SD</div>
+            <div class="num1sd">+1SD</div>
+            <div class="median">Median</div>
+            <div class="nenum1sd1">-1SD</div>
+            <div class="nenum2sd">-2SD</div>
+            <div class="nenum1sd">-3SD</div>
+            <canvas id="canvas" height="600" width="600" style="width: 300px; height: 300px;"></canvas>
+            <p style="position:absolute; top:30%; left:2px; -ms-transform: rotate(-90deg);-webkit-transform: rotate(-90deg);transform: rotate(-90deg);font-size:10px;font-family: " times="" new="" roman",="" times,="" serif;"="">BMI</p>
+            <p style="position: absolute;bottom: -28px;padding-top: 0px;width: 100%;line-height: 0px;padding-right: 0px;text-align: center;font-size: 16px;font-family: " times="" new="" roman",="" times,="" serif;"=""><br><b style="font-size: 12px;">Biểu đồ Chỉ số khối cơ thể</b></p>
+            <div class="number-chart">
+            </div>
+            <div class="number-chart-old" style="display: block;">
+                <p id="num-202">5</p>
+                <p id="num-186">7</p>
+                <p id="num-170">9</p>
+                <p id="num-154">11</p>
+                <p id="num-138">13</p>
+                <p id="num-122">15</p>
+                <p id="num-106">17</p>
+                <p id="num-90">19</p>
+                <p id="num-tioi" style="position: absolute;top: 1px; right: -18px;">Tuổi</p>
+            </div>
+        </div>
+        <div class="col-right-chart">
+            <div class="right-num3sd right-num">+3SD</div>
+            <div class="right-num2sd right-num">+2SD</div>
+            <div class="right-num1sd right-num">+1SD</div>
+            <div class="right-median right-num">Median</div>
+            <div class="right-nenum1sd right-num">-1SD</div>
+            <div class="right-nenum2sd right-num">-2SD</div>
+            <div class="right-nenum3sd right-num">-3SD</div>
+            <canvas id="chartheight" height="600" width="600" style="width: 300px; height: 300px;"></canvas>
+            <p style="position:absolute; top:30%; left:-8px; -ms-transform: rotate(-90deg);-webkit-transform: rotate(-90deg);transform: rotate(-90deg);font-size:10px;font-family: Arial;font-weight:bold;letter-spacing: 2px;">Chiều cao(cm)</p>
+            <p style="    position: absolute;bottom: -28px;width: 100%;line-height: 0px;padding-right:0px;text-align:center;font-size:16px;font-family: " times="" new="" roman",="" times,="" serif;"=""><br><b style="margin-top:5px;font-size: 12px;">Biểu đồ Chiều cao theo tuổi</b></p>
+            <div class="number-chart" style="display: block;">
+
+            </div>
+            <div class="number-chart-old">
+                <p id="num-tioi" style="position: absolute;top: 1px; right: -18px;">Tuổi</p>
+            </div>
+        </div>
+    </div>
+</div>
+<style type="text/css">
+
+    .col-right-chart{
+        position: relative;
+    }
+    .col-left-chart{
+        position: relative;
+    }
+    .col-right-chart .number-chart{
+        position: absolute;
+        top: 1px;
+        left: 74px;
+        background: white;
+        border-right: 1px solid #1F1D1D;
+        height: 282px;
+    }
+    .col-right-chart .number-chart p{
+        margin-bottom: 21px !important;
+        font-size: 11px;
+        margin:0;
+    }
+    .col-right-chart .number-chart:after {
+        content: '';
+        display: block;
+        position: absolute;
+        left: -2px;
+        bottom: 100%;
+        width: 0;
+        height: 0;
+        border-bottom: 5px solid black;
+        border-top: 5px solid transparent;
+        border-left: 3px solid transparent;
+        border-right: 3px solid transparent;
+    }
+
+    .col-right-chart .number-chart-old p{
+        display: inline-block;
+        min-width: 34px;
+        font-size: 11px;
+    }
+    .col-right-chart .number-chart-old{
+        position: absolute;
+        bottom: 16px;
+        left: 75px;
+        background: white;
+        min-width: 87%;
+        border-top: 1px solid black;
+    }
+
+    .col-right-chart .number-chart-old:after {
+        content: '';
+        display: block;
+        position: absolute;
+        right: -3px;
+        bottom: -5px;
+        width: 0;
+        height: 0;
+        border-bottom: 5px solid black;
+        border-top: 5px solid transparent;
+        border-left: 3px solid transparent;
+        border-right: 3px solid transparent;
+        -ms-transform: rotate(90deg); /* IE 9 */
+        -webkit-transform: rotate(90deg); /* Safari */
+        transform: rotate(90deg);
+    }
+    .col-left-chart .number-chart{
+        position: absolute;
+        top: 4px;
+        left: 43px;
+        background: white;
+        border-right: 1px solid #1F1D1D;
+        height: 281px;
+        /* width: 17px; */
+    }
+    .col-left-chart .number-chart p{
+        margin-bottom: 4px !important;
+        font-size: 10px;
+        margin: 0;
+        vertical-align: top;
+        /* display: table; */
+        height: 19px;
+    }
+    .col-left-chart .number-chart:after {
+        content: '';
+        display: block;
+        position: absolute;
+        left: -2px;
+        bottom: 100%;
+        width: 0;
+        height: 0;
+        border-bottom: 5px solid black;
+        border-top: 5px solid transparent;
+        border-left: 3px solid transparent;
+        border-right: 3px solid transparent;
+    }
+    .col-left-chart .number-chart-old p{
+        display: inline-block;
+        min-width: 34px;
+        font-size: 11px;
+    }
+    .col-left-chart .number-chart-old{
+        position: absolute;
+        bottom: -14px;
+        left: 43px;
+        background: white;
+        min-width: 94%;
+        border-top: 1px solid black;
+    }
+    .col-right-chart .number-chart-old p:last-child{
+
+    }
+    .col-left-chart .number-chart-old:after {
+        content: '';
+        display: block;
+        position: absolute;
+        right: -8px;
+        bottom: 23px;
+        width: 0;
+        height: 0;
+        border-bottom: 5px solid black;
+        border-top: 5px solid transparent;
+        border-left: 3px solid transparent;
+        border-right: 3px solid transparent;
+        -ms-transform: rotate(90deg); /* IE 9 */
+        -webkit-transform: rotate(90deg); /* Safari */
+        transform: rotate(90deg);
+    }
+</style>
+<script>
+    {% if result.get('gender') == 1 %}
+    var styleEl = document.createElement('style');
+    styleEl.innerHTML = '.num1sd,.num2sd,.right-num{font-size:9px;font-weight:700;position:absolute}.num2sd{right:-23px;top:73px;color:#93372E}.right-num{right:-24px}.right-num3sd.right-num{right:-24px;top:6px}.right-num2sd.right-num{right:-24px;top:23px;color:#C81F1F}.right-num1sd.right-num{top:39px;right:-24px;color:#FF8D1B}.right-median.right-num{top:55px;right:-34px;color:#239123}.right-nenum1sd.right-num{top:76px;color:#FF8D1B}.right-nenum2sd.right-num{top:94px;color:#C81F1F}.right-nenum3sd.right-num{top:113px;color:#000}.num1sd{right:-23px;top:123px;color:#F67A26}.median{position:absolute;right:-30px;top:160px;font-size:9px;color:#46AF4E;font-weight:700}.nenum1sd,.nenum2sd{position:absolute;right:-22px;font-size:9px;font-weight:700}.nenum2sd{bottom:70px;;color:#A12727}.nenum1sd{bottom:50px;color:#564747}.num3sd{position:absolute;top:7px;right:-22px;font-size:9px;font-weight:bold;}.nenum1sd1{position:absolute;bottom: 94px;right: -22px;font-size:9px;color:#F67A26}';
+    document.head.appendChild(styleEl);
+
+    var styleEl2 = document.createElement('style');
+    styleEl2.innerHTML = 'canvas#canvas{background-image: url({{ asset('frontend/images/5-19-chart-boy.png') }}) !important; background-size: 275px 282px !important;background-repeat: no-repeat !important;background-position: 18px 9px !important;}canvas#chartheight{background-image: url({{ asset('frontend/images/5-19-chart-height-boy.png') }}) !important; background-size: 268px 275px !important;background-repeat: no-repeat !important;background-position: 25px 9px !important;}@media print {canvas#chartheight{background-image: url({{ asset('frontend/images/5-19-chart-height-boy.png') }}) !important; background-size: 268px 275px !important;background-repeat: no-repeat !important;background-position: 26px 11px !important;}}';
+    document.head.appendChild(styleEl2);
+    {% else %}
+    var styleEl = document.createElement('style');
+    styleEl.innerHTML = '.num1sd,.num2sd,.right-num{font-size:9px;font-weight:700;position:absolute}.num2sd{right:-23px;top:80px;color:#93372E}.right-num{right:-24px}.right-num3sd.right-num{right:-24px;top:42px}.right-num2sd.right-num{right:-24px;top:58px;color:#C81F1F}.right-num1sd.right-num{top:75px;right:-24px;color:#FF8D1B}.right-median.right-num{top:91px;right:-34px;color:#239123}.right-nenum1sd.right-num{top:108px;color:#FF8D1B}.right-nenum2sd.right-num{top:125px;color:#C81F1F}.right-nenum3sd.right-num{top:142px;color:#000}.num1sd{right:-23px;top:130px;color:#F67A26}.median{position:absolute;right:-30px;top:168px;font-size:9px;color:#46AF4E;font-weight:700}.nenum1sd,.nenum2sd{position:absolute;right:-22px;font-size:9px;font-weight:700}.nenum2sd{top:221px;color:#A12727}.nenum1sd{top:241px;color:#564747}.num3sd{position:absolute;top:10px;right:-22px;font-size:9px;color:black; font-weight:bold;}.nenum1sd1{position:absolute;top:198px;right:-22px;font-size:9px;color:#F67A26; font-weight:bold;}';
+    document.head.appendChild(styleEl);
+
+    var styleEl2 = document.createElement('style');
+    styleEl2.innerHTML = '.right-bieudo img#note-right-img {position: absolute !important;top: 31px !important;right: -50px !important;height: 81px !important;}.left-bieudo #note-right-img{top: 2px !important;right: -67px !important;min-height: 187px !important;}canvas#canvas{background-image: url({{ asset('frontend/images/5-19-chart-girl.png') }}) !important;background-size:275px 282px !important;background-repeat: no-repeat !important;background-position: 18px 9px !important;}canvas#chartheight{background-image: url({{ asset('frontend/images/5-19-chart-height-girl.png') }}) !important;background-size:268px 240px !important;background-repeat: no-repeat !important;background-position: 21px 44px !important;};@media print {canvas#chartheight{background-image: url({{ asset('frontend/images/5-19-chart-height-girl.png') }}) !important;background-size: 92% 73% !important;background-repeat: no-repeat !important;background-position: 21px 35px !important;}}';
+    document.head.appendChild(styleEl2);
+    {% endif %}
+
+    var chart_ = {{ result.get('month') }};
+    var month_line = chart_/12;
+    month_line = Math.round(month_line);
+    var data_arr= [];
+    var data_bmi = [];
+    var dot_chart = month_line-1;
+    dot_chart = parseInt(dot_chart);
+    for (var i = 0; i < dot_chart-4; i++) {
+        data_arr.push(null);
+    };
+    for (var i = 0; i < dot_chart-4; i++) {
+        data_bmi.push(null);
+    };
+    data_bmi.push({{ result.get('calculatedBmi')-12 }});
+    var lineChartData = {
+        labels: ["5", "6", "7", "8", "9", "10", "11","12", "13", "14", "15", "16", "17", "18","19"],
+        datasets: [{
+            scaleLineColor: "rgba(255,248,220,.1)",
+            fillColor: "rgba(255,248,220,0)",
+            strokeColor: "rgba(255,248,220,0)",
+            pointColor: "rgba(255,248,220,0)",
+            data: [12, 40]
+        }, {
+            fillColor: "rgba(255,248,220,0)",
+            strokeColor: "rgba(255,248,220,0)",
+            pointColor: "red",
+            data: data_bmi,
+
+        }]
+
+    }
+
+    Chart.defaults.global.animationSteps = 50;
+    //Chart.defaults.global.scaleBeginAtZero = false;
+    Chart.defaults.global.tooltipYPadding = 5;
+    Chart.defaults.global.tooltipCornerRadius = 0;
+    Chart.defaults.global.tooltipTitleFontStyle = "normal";
+    Chart.defaults.global.tooltipFillColor = "rgba(0,160,0,0.8)";
+    Chart.defaults.global.animationEasing = "easeOutBounce";
+    Chart.defaults.global.responsive = true;
+    Chart.defaults.global.scaleLineColor = "rgba(255,248,220,.1)";
+    Chart.defaults.global.scaleFontSize = 9;
+
+    var ctx = document.getElementById("canvas").getContext("2d");
+    var LineChartDemo = new Chart(ctx).Line(lineChartData, {
+        pointDotRadius: 3,
+        scaleBeginAtZero:false,
+        datasetStrokeWidth : 1,
+        showTooltips: false,
+        scaleGridLineColor: "#CFCFCF",
+        scaleFontColor:"black",
+        scaleLabel : "<%= (Number(value) + 12)   %>",
+        scaleOverride: true,
+        scaleSteps: 12,
+        scaleStepWidth: Math.ceil(206 / 190),
+        scaleStartValue: 0
+
+    });
+
+    data_arr.push({{ result.get('length') }}-90);
+    var lineChartHeightData = {
+        labels: ["5", "6", "7", "8", "9", "10", "11","12", "13", "14", "15", "16", "17", "18","19"],
+        datasets: [{
+            fillColor: "rgba(220,220,220,0)",
+            strokeColor: "rgba(220,220,220,0)",
+            pointColor: "rgba(220,220,220,0)",
+            scaleFontColor:"#000000",
+            data: [80, 200]
+        }, {
+            fillColor: "rgba(220,220,220,0)",
+            // xoa line
+            //strokeColor: "rgba(220,220,220,0)",
+            //strokeColor: "blue",
+            pointStrokeColor: "rgba(220,220,220,0)",
+
+            pointColor: "rgba(220,220,220,0)",
+            data: [0, 10, 15, 20, 25, 30, 35,40, 45, 50, 55, 60, 65, 70,75, 80, 85, 90, 95, 100, 110,115, 120, 125, 130, 135,140, 145, 150, 155, 160,165, 170,175, 180,185]
+        },{fillColor: "red",
+
+            // xoa line
+            //strokeColor: "rgba(220,220,220,0)",
+            pointDotRadius: 3,
+            strokeColor: "rgba(220,220,220,0)",
+            scaleFontColor:"black",
+            pointColor: "red",
+            data: data_arr}]
+
+    }
+
+    var ctxheight = document.getElementById("chartheight").getContext("2d");
+    var LineChartHeightDemo = new Chart(ctxheight).Line(lineChartHeightData, {
+        pointDotRadius: 3,
+        scaleBeginAtZero:false,
+        bezierCurve: false,
+        datasetStrokeWidth : 1,
+        showTooltips: false,
+        scaleGridLineColor: "#CFCFCF",
+        scaleFontColor:"black",
+        scaleLabel : "<%= (Number(value) + 90)   %>",
+        scaleOverride: true,
+        scaleSteps: 11,
+        scaleStepWidth: Math.ceil(206 / 21),
+        scaleStartValue: 0
+    });
+</script>

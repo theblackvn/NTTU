@@ -1,0 +1,113 @@
+<div class="col-lg-8 col-md-8 col-sm-6 col-xs-12">
+    <div class="white-box">
+        <div class="row">
+            <div class="col-sm-12 col-xs-12">
+                <div class="form-group">
+                    <label for="post_lang1_title1">Tiêu đề <span class="required-field">*</span></label>
+                    {{ form_widget(form.title) }}
+                    <div class="amz-error">
+                        {{ form_errors(form.title) }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="post_lang1_slug">Slug <span class="required-field">*</span></label>
+                    {{ form_widget(form.slug) }}
+                    <div class="amz-error">
+                        {{ form_errors(form.slug) }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="post_lang1_excerpt1">Giới thiệu ngắn</label>
+                    {{ form_widget(form.excerpt) }}
+                    <div class="amz-error">
+                        {{ form_errors(form.excerpt) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+    <div class="white-box">
+        <div class="row">
+            <div class="col-sm-12 col-xs-12">
+                <div class="form-group">
+                    <label for="post_lang1_isFeatured">Nổi bật</label>
+                    {{ form_widget(form.isFeatured) }}
+                    <div class="amz-error">
+                        {{ form_errors(form.isFeatured) }}
+                    </div>
+                </div>
+                {#
+                <div class="form-group">
+                    <label for="post_lang1_categories">Danh mục cha</label>
+                    {{ form_widget(form.parent) }}
+                    <div class="amz-error">
+                        {{ form_errors(form.parent) }}
+                    </div>
+                </div>
+                #}
+                <div class="form-group">
+                    <label for="post_lang1_categories">Chọn danh mục cha</label>
+
+                    <select id="" class="form-control select2" name="amz_post_category[parent]">
+                        <option value="">&nbsp;</option>
+                        {% for item in category %}
+                            <option {%if entity and entity.parent and entity.parent.id == item.id%}selected{% endif %} value="{{ item.id }}">{{ item.title|raw }}</option>
+                            {% set catLevel2 = item.children %}
+                            {% if catLevel2 %}
+                                {% for item2 in catLevel2 %}
+                                    <option {%if entity and entity.parent and entity.parent.id == item2.id%}selected{% endif %} value="{{ item2.id }}">&nbsp;&nbsp;-- {{ item2.title|raw }}</option>
+                                    {% set catLevel3 = item2.children %}
+                                    {% if catLevel3 %}
+                                        {% for item3 in catLevel3 %}
+                                            <option {%if entity and entity.parent and entity.parent.id == item3.id%}selected{% endif %} value="{{ item3.id }}">&nbsp;&nbsp;&nbsp;&nbsp;---- {{ item3.title|raw }}</option>
+                                            {% set catLevel4 = item3.children %}
+                                            {% if catLevel4 %}
+                                                {% for item4 in catLevel4 %}
+                                                    <option {%if entity and entity.parent and entity.parent.id == item4.id%}selected{% endif %} value="{{ item4.id }}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;------ {{ item4.title|raw }}</option>
+                                                {% endfor %}
+                                            {% endif %}
+                                        {% endfor %}
+                                    {% endif %}
+                                {% endfor %}
+                            {% endif %}
+                        {% endfor %}
+                    </select>
+                    <div class="amz-error">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="post_lang1_tags">Thứ tự hiển thị</label>
+                    {{ form_widget(form.sortOrder) }}
+                    <div class="amz-error">
+                        {{ form_errors(form.sortOrder) }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="post_lang1_excerpt1">Hình ảnh</label>
+                    {{ form_widget(form.thumbnail) }}
+                    <div>
+                        <img style="margin-top: 4px;" height="117px" title="Nhấn chọn hình khác"
+                             class="image-browser-btn entity-thumbnail-img"
+                             data-hidden-class=".post-thumbnail"
+                             src="{{ asset('backend/assets/img/browser.png') }}"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-sm-12 col-xs-12">
+    <div class="white-box">
+        <div class="row">
+            <div class="col-sm-12 col-xs-12">
+                <div class="form-group">
+                    <label for="post_lang1_content1">Nội dung</label>
+                    {{ form_widget(form.content) }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{#{ include('AMZBackendBundle:Default:seo.html.twig') }#}

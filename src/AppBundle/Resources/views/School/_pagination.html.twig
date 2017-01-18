@@ -1,0 +1,27 @@
+{% if pageCount > 1 %}
+    <div class="school-pagination">
+        <nav>
+            <ul class="pagination">
+                {% if previous is defined %}
+                    <li>
+                        <a href="{{ path(route, query|merge({(pageParameterName): previous})) }}" aria-label="Previous">
+                            <span aria-hidden="true"><i class="icon prev-icon"></i></span>
+                        </a>
+                    </li>
+                {% endif %}
+                {% for page in pagesInRange %}
+                    <li {% if page == current %}class="active"{% endif %}>
+                        <a href="{{ path(route, query|merge({(pageParameterName): page})) }}">{{ page }}</a>
+                    </li>
+                {% endfor %}
+                {% if next is defined %}
+                    <li>
+                        <a href="{{ path(route, query|merge({(pageParameterName): next})) }}" aria-label="Next">
+                            <span aria-hidden="true"><i class="icon next-icon"></i></span>
+                        </a>
+                    </li>
+                {% endif %}
+            </ul>
+        </nav>
+    </div>
+{% endif %}

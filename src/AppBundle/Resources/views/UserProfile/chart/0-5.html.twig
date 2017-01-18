@@ -1,0 +1,561 @@
+<div class="print-chart">
+    <div class="chartbmi-5to19">
+        <div class="col-left-chart" height="300px !important" width="300px !important"
+             style="position:relative;">
+            <div class="num3sd">+3SD</div>
+            <div class="num2sd">+2SD</div>
+            <div class="num1sd">+1SD</div>
+            <div class="median">Median</div>
+            <div class="nenum1sd1">-1SD</div>
+            <div class="nenum2sd">-2SD</div>
+            <div class="nenum1sd">-3SD</div>
+            <canvas id="canvas" height="600" width="600" style="width: 300px; height: 300px;"></canvas>
+            <p class="title-leftchart"
+               style="position:absolute; top:33%; left:-30px; -ms-transform: rotate(-90deg);-webkit-transform: rotate(-90deg);transform: rotate(-90deg);font-size:12px;font-family: Arial;font-weight:bold;">
+                Chiều cao(cm)</p>
+            <p class="title-leftchart-bottom"
+               style="position: absolute; padding-top: 0px; width: 100%; bottom : -25px ;line-height: 0px;padding-right: 0px;text-align: center;font-size: 16px;font-family: Arial;">
+                <br><b style="font-size: 12px;">Biểu đồ Chiều cao theo tuổi </b></p>
+            <div class="number-chart">
+            </div>
+            <div class="number-chart-old" style="display: block;">
+                <p id="num-tioi" style="position: absolute;top: 0; right: -56px; font-size: 12px;">(tháng tuổi)</p>
+            </div>
+        </div>
+        <div class="col-right-chart" height="300px !important" width="300px !important"
+             style="position:relative;">
+            <div class="right-num3sd right-num">+3SD</div>
+            <div class="right-num2sd right-num">+2SD</div>
+            <div class="right-num1sd right-num">+1SD</div>
+            <div class="right-median right-num">Median</div>
+            <div class="right-nenum1sd right-num">-1SD</div>
+            <div class="right-nenum2sd right-num">-2SD</div>
+            <div class="right-nenum3sd right-num">-3SD</div>
+            <canvas id="chartheight" height="600" width="600" style="width: 300px; height: 300px;"></canvas>
+            <p class="title-rightchart"
+               style="position:absolute; top:33%; left:-22px; -ms-transform: rotate(-90deg);-webkit-transform: rotate(-90deg);transform: rotate(-90deg);font-size:12px;font-family: Arial;font-weight:bold;">
+                Cân nặng(kg)</p>
+            <p class="title-rightchart-bottom"
+               style="    position: absolute; width: 100%; bottom: -25px ;line-height: 0px;padding-right:0px;text-align:center;font-size:16px;font-family: Arial;padding-left:50px;">
+                <br><b style="margin-top:5px;font-size: 12px;">Biểu đồ Cân nặng theo chiều cao</b></p>
+            <div class="number-chart" style="display: block;">
+            </div>
+            <div class="number-chart-old">
+                <p id="num-tioi" style="position: absolute;top: -5px; right: -35px;">(cm)</p>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script type="text/javascript">
+    var month = parseInt({{ result.get('month') }});
+    var gender = parseInt({{ result.get('gender') }});
+    var weight = parseInt({{ result.get('weight') }});
+    var month_line = month / 2;
+
+    month_line = Math.round(month_line);
+    var hei_new = parseInt({{ result.get('length') }});
+
+    if (gender == 1) {
+        if (month >= 24 && month <= 60) {
+            var styleEl = document.createElement('style');
+            styleEl.innerHTML = '.num1sd,.num2sd,.right-num{font-size:9px;font-weight:700;position:absolute}.num2sd{right:-23px;top:23px;color:#93372E}.right-num{right:-24px}.right-num3sd.right-num{right:-24px;top:13px}.right-num2sd.right-num{right:-24px;top:48px;color:#C81F1F}.right-num1sd.right-num{top:69px;right:-24px;color:#FF8D1B}.right-median.right-num{top:94px;right:-34px;color:#239123}.right-nenum1sd.right-num{top:113px;color:#FF8D1B}.right-nenum2sd.right-num{top:133px;color:#C81F1F}.right-nenum3sd.right-num{top:149px;color:#000}.num1sd{right:-23px;top:131px;color:#F67A26; display:none}.median{position:absolute;right:-30px;top:72px;font-size:9px;color:#46AF4E;font-weight:700}.nenum1sd,.nenum2sd{position:absolute;right:-22px;font-size:9px;font-weight:700}.nenum2sd{bottom:157px;;color:#A12727}.nenum1sd{bottom:131px;color:#564747}.num3sd{position:absolute;top:-5px;right:-22px;font-size:9px;font-weight:bold;}.nenum1sd1{position:absolute;bottom: 131px;right: -22px;font-size:9px;color:#F67A26;display:none;}';
+            document.head.appendChild(styleEl);
+        } else {
+            var styleEl = document.createElement('style');
+            styleEl.innerHTML = '.num1sd,.num2sd,.right-num{font-size:9px;font-weight:700;position:absolute}.num2sd{right:-23px;top:2px;color:#93372E}.right-num{right:-24px}.right-num3sd.right-num{right:-50px;top:1px}.right-num2sd.right-num{right:-50px;top:14px;color:#C81F1F}.right-num1sd.right-num{top:28px;right:-50px;color:#FF8D1B}.right-median.right-num{top:39px;right:-61px;color:#239123}.right-nenum1sd.right-num{top:52px;color:#FF8D1B; right:-50px;}.right-nenum2sd.right-num{top:60px;color:#C81F1F; right: -50px;}.right-nenum3sd.right-num{top:70px;color:#000; right:-50px;}.num1sd{right:-23px;top:123px;color:#F67A26;display:none;}.median{position:absolute;right:-33px;top:17px;font-size:9px;color:#46AF4E;font-weight:700}.nenum1sd,.nenum2sd{position:absolute;right:-22px;font-size:9px;font-weight:700}.nenum2sd{top:34px;;color:#A12727}.nenum1sd{top:44px;color:#564747}.num3sd{position:absolute;top:-8px;right:-22px;font-size:9px;font-weight:bold;}.nenum1sd1{position:absolute;top: 86px;right: -22px;font-size:9px;color:#F67A26;display:none;}';
+            document.head.appendChild(styleEl);
+        }
+    } else {
+        if (month >= 24 && month <= 60) {
+            var styleEl = document.createElement('style');
+            styleEl.innerHTML = '.num1sd,.num2sd,.right-num{font-size:9px;font-weight:700;position:absolute}.num2sd{right:-23px;top:31px;color:#93372E}.right-num{right:-24px}.right-num3sd.right-num{right:-24px;top:0px}.right-num2sd.right-num{right:-24px;top:29px;color:#C81F1F}.right-num1sd.right-num{top:59px;right:-24px;color:#FF8D1B}.right-median.right-num{top:82px;right:-34px;color:#239123}.right-nenum1sd.right-num{top:103px;color:#FF8D1B}.right-nenum2sd.right-num{top:122px;color:#C81F1F}.right-nenum3sd.right-num{top:139px;color:#000}.num1sd{right:-23px;top:130px;color:#F67A26; display:none;}.median{position:absolute;right:-30px;top:80px;font-size:9px;color:#46AF4E;font-weight:700}.nenum1sd,.nenum2sd{position:absolute;right:-22px;font-size:9px;font-weight:700}.nenum2sd{top:136px;color:#A12727}.nenum1sd{top:161px;color:#564747}.num3sd{position:absolute;top:5px;right:-22px;font-size:9px;color:black; font-weight:bold;}.nenum1sd1{position:absolute;display:none;top:198px;right:-22px;font-size:9px;color:#F67A26; font-weight:bold;}';
+            document.head.appendChild(styleEl);
+        }
+        if (month >= 0 && month < 24) {
+            var styleEl = document.createElement('style');
+            styleEl.innerHTML = '.num1sd,.num2sd,.right-num{font-size:9px;font-weight:700;position:absolute}.num2sd{right:-23px;top:1px;color:#93372E}.right-num{right:-24px}.right-num3sd.right-num{right:-50px;top:-3px}.right-num2sd.right-num{right:-50px;top:13px;color:#C81F1F}.right-num1sd.right-num{top:27px;right:-50px;color:#FF8D1B}.right-median.right-num{top:40px;right:-61px;color:#239123}.right-nenum1sd.right-num{top:53px;color:#FF8D1B;right:-50px;}.right-nenum2sd.right-num{top:61px;color:#C81F1F;right:-50px;}.right-nenum3sd.right-num{top:71px;color:#000;right:-50px}.num1sd{right:-23px;top:48px;color:#F67A26; display:none}.median{position:absolute;right:-30px;top:20px;font-size:9px;color:#46AF4E;font-weight:700}.nenum1sd,.nenum2sd{position:absolute;right:-22px;font-size:9px;font-weight:700}.nenum2sd{top:38px;color:#A12727}.nenum1sd{top:49px;color:#564747}.num3sd{position:absolute;top:-7px;right:-22px;font-size:9px;color:black; font-weight:bold;}.nenum1sd1{display:none;position:absolute;top:198px;right:-22px;font-size:9px;color:#F67A26; font-weight:bold;}';
+            document.head.appendChild(styleEl);
+        }
+    }
+    if (gender == 1) {
+        if (month >=24 && month <= 60) {
+            $('.col-left-chart').addClass('lfa_boys_2_5');
+            $('.col-right-chart').addClass('lfa_boys_2_5');
+            var styleEl = document.createElement('style');
+            styleEl.innerHTML = '.right-bieudo img#note-right-img {position: absolute !important;top: 31px !important;right: -50px !important;height: 81px !important;}.left-bieudo #note-right-img{top: 2px !important;right: -67px !important;min-height: 187px !important;}canvas#canvas{background-image: url({{ asset('frontend/images/2-5-lfa-boy.png') }}) !important;background-repeat: no-repeat !important;    background-position: 24px -2px !important;}canvas#chartheight{background-image: url({{ asset('frontend/images/2-5-wfl-boy.png') }}) !important;background-repeat: no-repeat !important;background-position: 19px 26px !important;background-size: 271px 240px !important;};@media print {canvas#chartheight{background-image: url(/templates/dinhduong/images/chart-height-girl-0-5.png) !important;background-repeat: no-repeat !important;background-position: 19px 26px !important;background-size: 271px 240px !important;}}';
+            document.head.appendChild(styleEl);
+        } else {
+            $('.col-left-chart').addClass('lfa_boys_0_2');
+            $('.col-right-chart').addClass('lfa_boys_0_2');
+            var styleEl = document.createElement('style');
+            styleEl.innerHTML = 'canvas#canvas{background-image: url({{ asset('frontend/images/0-2-lfa-boy.png') }}) !important; background-size: 322px 162px !important;background-repeat: no-repeat !important;background-position: 19px -10px !important; width:300px !important; height:180px !important;}canvas#chartheight{background-image: url({{ asset('frontend/images/0-2-wfl-boy.png') }}) !important; width:300px !important; height:180px !important; background-repeat: no-repeat !important;padding-left:29px; background-position: 45px 8px !important;background-size: 277px 152px !important; }@media print {canvas#chartheight{background-image: url({{ asset('frontend/images/0-2-wfl-boy.png') }}) !important; width:300px !important; height:180px !important; background-repeat: no-repeat !important;padding-left:29px; background-position: 45px 8px !important;background-size: 277px 152px !important;}}';
+            document.head.appendChild(styleEl);
+        }
+    } else {
+        if (month >= 24 && month <= 60) {
+            jQuery('.col-left-chart').addClass('lfa_girl_2_5');
+            jQuery('.col-right-chart').addClass('lfa_girl_2_5');
+            var styleEl = document.createElement('style');
+            styleEl.innerHTML = 'canvas#canvas{background-image: url({{ asset('frontend/images/2-5-lfa-girl.png') }}) !important; background-repeat: no-repeat !important;background-position: 25px 9px !important;}canvas#chartheight{background-image: url({{ asset('frontend/images/2-5-wfl-girl.png') }}) !important; background-size: 272px 257px !important;background-repeat: no-repeat !important;background-position: 19px 9px !important;}@media print {canvas#chartheight{background-image: url({{ asset('frontend/images/2-5-wfl-girl.png') }}) !important; background-size: 272px 257px !important;background-repeat: no-repeat !important;background-position: 19px 9px !important;}}';
+
+            document.head.appendChild(styleEl);
+        }
+        if (month >= 0 && month < 24) {
+            jQuery('.col-left-chart').addClass('lfa_girl_0_2');
+            jQuery('.col-right-chart').addClass('lfa_girl_0_2');
+            var styleEl = document.createElement('style');
+            styleEl.innerHTML = 'canvas#canvas{background-image: url({{ asset('frontend/images/0-2-lfa-girl.png') }}) !important; background-size: 322px 162px !important;background-repeat: no-repeat !important;background-position: 18px -10px !important; width:300px !important; height:180px !important;}canvas#chartheight{background-image: url({{ asset('frontend/images/0-2-wfl-girl.png') }}) !important; width:300px !important; height:180px !important; background-repeat: no-repeat !important;padding-left:29px; background-position: 44px 5px !important;background-size: 277px 152px !important; }@media print {canvas#chartheight{background-image: url({{ asset('frontend/images/0-2-wfl-girl.png') }}) !important; width:300px !important; height:180px !important; background-repeat: no-repeat !important;padding-left:29px; background-position: 44px 5px !important;background-size: 277px 152px !important;}}';
+            document.head.appendChild(styleEl);
+        }
+    }
+
+    if (month >= 24 && month <= 60) {
+        var data_arr = [];
+        var data_bmi = [];
+        var dot_chart = month_line - 1;
+        var dot_chart2 = (hei_new - 65) / 5;
+
+        dot_chart = parseInt(dot_chart);
+        console.log(dot_chart);
+        for (var i = 0; i < dot_chart2; i++) {
+            data_arr.push(null);
+        }
+        ;
+        for (var i = 0; i < dot_chart - 11; i++) {
+            data_bmi.push(null);
+        }
+        ;
+
+        data_bmi.push(hei_new - 75);
+        console.log(data_arr);
+        console.log(data_bmi);
+        var lineChartData = {
+            labels: ["22", "26", "28", "30", "32", "34", "36", "38", "40", "42", "44", "46", "48", "50", "52", "54", "56", "58", "60"],
+            datasets: [{
+                scaleLineColor: "rgba(255,248,220,.1)",
+                fillColor: "rgba(255,248,220,0)",
+                strokeColor: "rgba(255,248,220,0)",
+                pointColor: "rgba(255,248,220,0)",
+                data: [12, 40]
+            }, {
+                fillColor: "rgba(255,248,220,0)",
+                strokeColor: "rgba(255,248,220,0)",
+                pointColor: "red",
+                data: data_bmi,
+
+            }]
+
+        }
+    }
+    if (month >=0 && month < 24) {
+        var data_arr = [];
+        var data_bmi = [];
+        var dot_chart = parseInt(month);
+        dot_chart = parseInt(dot_chart);
+        var dot_chart2 = (hei_new - 45) / 5;
+        for (var i = 0; i < dot_chart2; i++) {
+            data_arr.push(null);
+        }
+        ;
+        for (var i = 0; i < dot_chart; i++) {
+            data_bmi.push(null);
+        }
+        ;
+
+        data_bmi.push(hei_new - 40);
+        var lineChartData = {
+            labels: ["0", "", "2", "", "4", "", "6", "", "8", "", "10", "", "12", "", "14", "", "16", "", "18", "", "20", "", "22", "", "24"],
+            datasets: [{
+                scaleLineColor: "rgba(255,248,220,.1)",
+                fillColor: "rgba(255,248,220,0)",
+                strokeColor: "rgba(255,248,220,0)",
+                pointColor: "rgba(255,248,220,0)",
+                data: [12, 40]
+            }, {
+                fillColor: "rgba(255,248,220,0)",
+                strokeColor: "rgba(255,248,220,0)",
+                pointColor: "red",
+                data: data_bmi,
+
+            }]
+
+        }
+    }
+
+    Chart.defaults.global.animationSteps = 50;
+    //Chart.defaults.global.scaleBeginAtZero = false;
+    Chart.defaults.global.tooltipYPadding = 5;
+    Chart.defaults.global.tooltipCornerRadius = 0;
+    Chart.defaults.global.tooltipTitleFontStyle = "bold";
+    Chart.defaults.global.tooltipFillColor = "rgba(0,160,0,0.8)";
+    Chart.defaults.global.animationEasing = "easeOutBounce";
+    Chart.defaults.global.responsive = true;
+    Chart.defaults.global.scaleLineColor = "rgba(255,248,220,1)";
+    Chart.defaults.global.scaleFontSize = 9;
+
+    var ctx = document.getElementById("canvas").getContext("2d");
+    if (month >= 24 && month <= 60) {
+        var LineChartDemo = new Chart(ctx).Line(lineChartData, {
+            pointDotRadius: 2,
+            scaleBeginAtZero: false,
+            datasetStrokeWidth: 2,
+            showTooltips: false,
+            scaleGridLineColor: "#CFCFCF",
+            scaleFontColor: "#000000",
+            scaleLabel: "<%= (Number(value) + 75)   %>",
+            scaleOverride: true,
+            scaleSteps: 10,
+            scaleStepWidth: Math.ceil(5),
+            scaleStartValue: 0
+
+        });
+    }
+    if (month >= 0 && month < 24) {
+        var LineChartDemo = new Chart(ctx).Line(lineChartData, {
+            pointDotRadius: 3,
+            scaleBeginAtZero: false,
+            datasetStrokeWidth: 5,
+            showTooltips: false,
+            scaleGridLineColor: "#CFCFCF",
+            scaleFontColor: "#000000",
+            scaleLabel: "<%= (Number(value) + 40)   %>",
+            scaleOverride: true,
+            scaleSteps: 11,
+            scaleStepWidth: Math.ceil(5),
+            scaleStartValue: 0
+
+        });
+    }
+    if (month >= 24 && month <= 60) {
+        data_arr.push(weight - 4);
+        console.log(data_arr);
+        var lineChartHeightData = {
+            labels: ["65", "70", "75", "80", "85", "90", "95", "100", "105", "110", "115", "120"],
+            //  labels: ["Data 1", "Data 2", "Data 3", "Data 4", "Data 5", "Data 6", "Data 7"],
+            datasets: [{
+                fillColor: "rgba(220,220,220,0)",
+                strokeColor: "rgba(220,220,220,0)",
+                pointColor: "rgba(220,220,220,0)",
+                scaleFontColor: "#000000",
+                data: [80, 200]
+            }, {
+
+                pointDotRadius: 2,
+                strokeColor: "rgba(220,220,220,0)",
+                scaleFontColor: "#000000",
+                pointColor: "red",
+                data: data_arr
+            }]
+
+        }
+        var ctxheight = document.getElementById("chartheight").getContext("2d");
+        var LineChartHeightDemo = new Chart(ctxheight).Line(lineChartHeightData, {
+            pointDotRadius: 2,
+            scaleBeginAtZero: false,
+            bezierCurve: false,
+            datasetStrokeWidth: 2,
+            showTooltips: false,
+            scaleGridLineColor: "#CFCFCF",
+            scaleFontColor: "#000000",
+            scaleLabel: "<%= (Number(value)+4)   %>",
+            scaleOverride: true,
+            scaleSteps: 14,
+            scaleStepWidth: Math.ceil(2),
+            scaleStartValue: 0
+        });
+    }
+
+
+    if (month >= 0 && month < 24) {
+        data_arr.push(weight);
+        if (gender == 0) {
+            var lineChartHeightData = {
+                labels: ["45", "50", "55", "60", "65", "70", "75", "80", "85", "90", "95", "100", "105", "110"],
+                //  labels: ["Data 1", "Data 2", "Data 3", "Data 4", "Data 5", "Data 6", "Data 7"],
+                datasets: [{
+                    fillColor: "rgba(220,220,220,0)",
+                    strokeColor: "rgba(220,220,220,0)",
+                    pointColor: "rgba(220,220,220,0)",
+                    scaleFontColor: "#000000",
+                    data: [80, 200]
+                }, {
+                    fillColor: "rgba(220,220,220,0)",
+                    // xoa line
+                    //strokeColor: "rgba(220,220,220,0)",
+                    //strokeColor: "blue",
+                    pointStrokeColor: "rgba(220,220,220,0)",
+
+                    pointColor: "rgba(220,220,220,0)",
+                    data: [0, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100, 110, 115, 120, 125, 130, 135, 140, 145, 150, 155, 160, 165, 170, 175, 180, 185]
+                }, {
+                    fillColor: "red",
+                    // xoa line
+                    //strokeColor: "rgba(220,220,220,0)",
+                    pointDotRadius: 2,
+                    strokeColor: "rgba(220,220,220,0)",
+                    scaleFontColor: "black",
+                    pointColor: "red",
+                    data: data_arr
+                }]
+
+            }
+        }
+        if (gender == 1) {
+            var lineChartHeightData = {
+                labels: ["45", "50", "55", "60", "65", "70", "75", "80", "85", "90", "95", "100", "105", "110"],
+                // labels: ["Data 1", "Data 2", "Data 3", "Data 4", "Data 5", "Data 6", "Data 7"],
+                datasets: [{
+                    fillColor: "rgba(220,220,220,0)",
+                    strokeColor: "rgba(220,220,220,0)",
+                    pointColor: "rgba(220,220,220,0)",
+                    scaleFontColor: "#000000",
+                    data: [80, 200]
+                }, {
+                    fillColor: "rgba(220,220,220,0)",
+                    // xoa line
+                    //strokeColor: "rgba(220,220,220,0)",
+                    //strokeColor: "blue",
+                    pointStrokeColor: "rgba(220,220,220,0)",
+
+                    pointColor: "rgba(220,220,220,0)",
+                    data: [0, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100, 110, 115, 120, 125, 130, 135, 140, 145, 150, 155, 160, 165, 170, 175, 180, 185]
+                }, {
+                    fillColor: "red",
+
+                    // xoa line
+                    //strokeColor: "rgba(220,220,220,0)",
+                    pointDotRadius: 2,
+                    strokeColor: "rgba(220,220,220,0)",
+                    scaleFontColor: "black",
+                    pointColor: "red",
+                    data: data_arr
+                }]
+
+            }
+        }
+        var ctxheight = document.getElementById("chartheight").getContext("2d");
+        if (gender == 0) {
+            var LineChartHeightDemo = new Chart(ctxheight).Line(lineChartHeightData, {
+                pointDotRadius: 2,
+                scaleBeginAtZero: false,
+                bezierCurve: false,
+                datasetStrokeWidth: 2,
+                showTooltips: false,
+                scaleGridLineColor: "#CFCFCF",
+                scaleFontColor: "black",
+                scaleLabel: "<%= (Number(value)+0)   %>",
+                scaleOverride: true,
+                scaleSteps: 12,
+                scaleStepWidth: Math.ceil(2),
+                scaleStartValue: 0
+            });
+        }
+        if (gender == 1) {
+            var LineChartHeightDemo = new Chart(ctxheight).Line(lineChartHeightData, {
+                pointDotRadius: 2,
+                scaleBeginAtZero: false,
+                bezierCurve: false,
+                datasetStrokeWidth: 2,
+                showTooltips: false,
+                scaleGridLineColor: "#CFCFCF",
+                scaleFontColor: "black",
+                scaleLabel: "<%= (Number(value)+0)   %>",
+                scaleOverride: true,
+                scaleSteps: 12,
+                scaleStepWidth: Math.ceil(2),
+                scaleStartValue: 0
+            });
+        }
+    }
+
+</script>
+<style type="text/css">
+    .col-right-chart {
+        position: relative;
+    }
+
+    .col-left-chart {
+        position: relative;
+    }
+
+    .col-right-chart .number-chart {
+        position: absolute;
+        top: -6px;
+        left: 68px;
+        background: white;
+        border-right: 1px solid #1F1D1D;
+        height: 282px;
+    }
+
+    .col-right-chart .number-chart p {
+        margin-bottom: 21px !important;
+        font-size: 11px;
+        margin: 0;
+    }
+
+    .col-right-chart .number-chart:after {
+        content: '';
+        display: block;
+        position: absolute;
+        left: -2px;
+        bottom: 100%;
+        width: 0;
+        height: 0;
+        border-bottom: 5px solid black;
+        border-top: 5px solid transparent;
+        border-left: 3px solid transparent;
+        border-right: 3px solid transparent;
+    }
+
+    .col-right-chart.lfa_boys_2_5 .number-chart-old, .col-right-chart.lfa_girl_2_5 .number-chart-old {
+        bottom: 18px;
+    }
+
+    .col-right-chart.lfa_boys_2_5 .number-chart, .col-right-chart.lfa_girl_2_5 .number-chart {
+        height: 287px;
+    }
+
+    .col-right-chart .number-chart-old p {
+        display: inline-block;
+        min-width: 34px;
+        font-size: 11px;
+    }
+
+    .col-right-chart .number-chart-old {
+        position: absolute;
+        bottom: 24px;
+        left: 68px;
+        background: white;
+        min-width: 87%;
+        border-top: 1px solid black;
+    }
+
+    .col-right-chart .number-chart-old:after {
+        content: '';
+        display: block;
+        position: absolute;
+        right: -3px;
+        bottom: -5px;
+        width: 0;
+        height: 0;
+        border-bottom: 5px solid black;
+        border-top: 5px solid transparent;
+        border-left: 3px solid transparent;
+        border-right: 3px solid transparent;
+        -ms-transform: rotate(90deg); /* IE 9 */
+        -webkit-transform: rotate(90deg); /* Safari */
+        transform: rotate(90deg);
+    }
+
+    .col-left-chart .number-chart {
+        position: absolute;
+        top: -5px;
+        left: 48px;
+        background: white;
+        border-right: 1px solid #1F1D1D;
+        height: 281px;
+        /* width: 17px; */
+    }
+
+    .col-left-chart.lfa_girl_0_2 .number-chart {
+        height: 167px;
+        left: 20px;
+    }
+
+    .col-left-chart.lfa_girl_0_2 .number-chart-old {
+        left: 20px;
+        bottom: 18px;
+    }
+
+    .col-right-chart.lfa_girl_0_2 .number-chart {
+        height: 175px;
+        left: 46px;
+    }
+
+    .col-right-chart.lfa_girl_0_2 .number-chart-old {
+        left: 46px;
+        bottom: 10px;
+        min-width: 95%;
+    }
+
+    .col-left-chart.lfa_boys_0_2 .number-chart {
+        height: 167px;
+        left: 20px;
+    }
+
+    .col-left-chart.lfa_boys_0_2 .number-chart-old {
+        left: 20px;
+        bottom: 18px;
+    }
+
+    .col-right-chart.lfa_boys_0_2 .number-chart {
+        height: 175px;
+        left: 46px;
+    }
+
+    .col-right-chart.lfa_boys_0_2 .number-chart-old {
+        left: 46px;
+        bottom: 10px;
+        min-width: 95%;
+    }
+
+    .col-left-chart .number-chart p {
+        margin-bottom: 4px !important;
+        font-size: 10px;
+        margin: 0;
+        vertical-align: top;
+        /* display: table; */
+        height: 19px;
+    }
+
+    .col-left-chart .number-chart:after {
+        content: '';
+        display: block;
+        position: absolute;
+        left: -2px;
+        bottom: 100%;
+        width: 0;
+        height: 0;
+        border-bottom: 5px solid black;
+        border-top: 5px solid transparent;
+        border-left: 3px solid transparent;
+        border-right: 3px solid transparent;
+    }
+
+    .col-left-chart .number-chart-old p {
+        display: inline-block;
+        min-width: 34px;
+        font-size: 11px;
+    }
+
+    .col-left-chart .number-chart-old {
+        position: absolute;
+        bottom: 24px;
+        left: 48px;
+        background: white;
+        min-width: 94%;
+        border-top: 1px solid black;
+    }
+
+    .col-right-chart .number-chart-old p:last-child {
+
+    }
+
+    .col-left-chart .number-chart-old:after {
+        content: '';
+        display: block;
+        position: absolute;
+        right: -8px;
+        bottom: -4px;
+        width: 0;
+        height: 0;
+        border-bottom: 5px solid black;
+        border-top: 5px solid transparent;
+        border-left: 3px solid transparent;
+        border-right: 3px solid transparent;
+        -ms-transform: rotate(90deg); /* IE 9 */
+        -webkit-transform: rotate(90deg); /* Safari */
+        transform: rotate(90deg);
+    }
+</style>

@@ -1,0 +1,38 @@
+<section id="nuti-handbook">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="page-title">
+                    <h3>Cẩm nang dinh dưỡng</h3>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-12">
+                <ul id="light-slider" class="content-slider list-unstyled clearfix">
+                    {% for item in hotHandbooks %}
+                    <li>
+                        <div class="entry-item">
+                            <div class="entry-img">
+                                <a href="#">
+                                    <div style="background-image: url('{{ asset(item.thumbnail) }}');"></div>
+                                </a>
+                            </div>
+                            <div class="entry-text">
+                                <a href="#"><h4>{{ item.title }}</h4></a>
+                            </div>
+                        </div>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-12 text-center mt-30">
+                <a href="http://www.nutifood.com.vn/vi/cam-nang-dinh-duong-cho-be.html" target="_blank"><button class="nuti-button">Xem thêm</button></a>
+            </div>
+        </div>
+    </div>
+</section>

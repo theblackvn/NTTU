@@ -1,0 +1,22 @@
+<div class="col-lg-12 col-md-21 col-sm-6 col-xs-12">
+    <div class="white-box">
+        <div class="row">
+            <div class="col-sm-12 col-xs-12">
+                <div class="form-group">
+                    <label for="post_lang1_title1">Tiêu đề <span class="required-field">*</span></label>
+                    {{ form_widget(form.title) }}
+                    <div class="amz-error">
+                        {{ form_errors(form.title) }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="post_lang1_excerpt1">Nội dung</label>
+                    {{ form_widget(form.content) }}
+                    <div class="amz-error">
+                        {{ form_errors(form.content) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

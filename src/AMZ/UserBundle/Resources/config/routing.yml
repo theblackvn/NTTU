@@ -1,0 +1,20 @@
+amz_security:
+    resource: "@AMZUserBundle/Resources/config/route/security.yml"
+    prefix:   /
+
+amz_userbundle:
+    resource: "@AMZUserBundle/Resources/config/route/user.yml"
+    prefix:   /user
+
+amz_role_user:
+    resource: "@AMZUserBundle/Resources/config/route/personal_user.yml"
+    prefix:   /personal-user
+
+amz_role_doctor:
+    resource: "@AMZUserBundle/Resources/config/route/doctor_user.yml"
+    prefix:   /doctor-user
+
+amz_role_school:
+    resource: "@AMZUserBundle/Resources/config/route/school_user.yml"
+    prefix:   /school-user
+

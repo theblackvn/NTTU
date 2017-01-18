@@ -1,0 +1,61 @@
+# To get started with security, check out the documentation:
+# http://symfony.com/doc/current/book/security.html
+security:
+    role_hierarchy:
+        ROLE_SUPER_ADMIN: ROLE_ADMIN
+
+    encoders:
+        AMZ\UserBundle\Entity\User: sha512
+
+    providers:
+        admin:
+            id: amz_user.security.webservice_user_provider
+
+    firewalls:
+        admin:
+            pattern:    ^/admin
+            anonymous: ~
+            provider: admin
+            form_login:
+                check_path: /admin/check-login
+                login_path: /admin/login
+                default_target_path: /admin/dashboard
+            logout:
+                path:   /admin/logout
+                target: /admin/login
+        frontend:
+            pattern:    ^/
+            anonymous: ~
+            provider: admin
+            form_login:
+                check_path: /check-login
+                login_path: /dang-nhap
+                default_target_path: /
+                success_handler: security.authentication.handler
+                failure_handler: security.authentication.handler
+                require_previous_session: false
+            logout:
+                path:   /dang-xuat
+                target: /
+        # disables authentication for assets and the profiler, adapt it according to your needs
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+
+        main:
+            anonymous: ~
+            # activate different ways to authenticate
+
+            # http_basic: ~
+            # http://symfony.com/doc/current/book/security.html#a-configuring-how-your-users-will-authenticate
+
+            # form_login: ~
+            # http://symfony.com/doc/current/cookbook/security/form_login_setup.html
+
+    access_control:
+        - { path: ^/admin/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        #- { path: ^/[a-z][a-z]/backend/*, roles: ROLE_CONTENT_MANAGER }
+        - { path: ^/admin/*, roles: ROLE_ADMIN }
+        - { path: ^/ca-nhan/*, roles: ROLE_USER }
+        - { path: ^/cho-truong-hoc/*, roles: ROLE_PRINCIPAL }
+        - { path: ^/thong-ke/*, roles: ROLE_DOCTOR }

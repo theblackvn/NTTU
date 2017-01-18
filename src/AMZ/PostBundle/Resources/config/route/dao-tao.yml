@@ -1,0 +1,19 @@
+amz_education_homepage:
+    path:     /
+    defaults: { _controller: AMZPostBundle:Education:index }
+
+amz_education_create:
+    path:     /create
+    defaults: { _controller: AMZPostBundle:Education:create }
+
+amz_education_edit:
+    path:     /{id}/edit
+    defaults: { _controller: AMZPostBundle:Education:edit }
+
+amz_education_delete:
+    path:     /{id}/delete
+    defaults: { _controller: AMZPostBundle:Education:delete }
+
+amz_education_gallery:
+    resource: "@AMZPostBundle/Resources/config/route/post-gallery.yml"
+    prefix:     /{post_id}/gallery

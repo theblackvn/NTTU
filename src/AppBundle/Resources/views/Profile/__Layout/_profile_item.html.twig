@@ -1,0 +1,15 @@
+<div class="stage-profile {% if class is defined %}{{ class }}{% endif %}">
+    <div>
+        <div class="profile-img">
+            <figure>
+                <div style="background-image: url('{% if profile.avatar is empty %}{{ asset('frontend/images/avatar.png') }}{% else %}{{ asset(profile.avatar) }}{% endif %}')"></div>
+            </figure>
+        </div>
+    </div>
+    <div>
+        <div class="profile-name">
+            <h4>{{ profile.firstName ~ ' ' ~ profile.lastName }}</h4>
+            <a href="{{ url('application_profile_personal_detail', {'id': profile.id}) }}">Xem Hồ Sơ</a>
+        </div>
+    </div>
+</div>

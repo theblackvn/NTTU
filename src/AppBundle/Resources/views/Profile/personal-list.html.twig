@@ -1,0 +1,48 @@
+{% extends '::frontend.html.twig' %}
+
+{% block body %}
+    <section id="nuti-profile">
+        {{ include('AppBundle:Profile/__Layout:__header.html.twig') }}
+
+        <div class="profile-detail mb-40">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-4">
+                        <div class="stage-item item-{{ group }}">
+                            <div class="stage-img">
+                                <div style="background-image: url('{{ asset('frontend/images/stage-' ~ group ~ '.jpg') }}')"></div>
+                                <div class="stage-overlay">
+                                    <div>
+                                        <a href="{{ path('application_profile_create_person') }}">
+                                            <button class="nuti-button transparent">Tạo hồ sơ</button>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-8">
+                        <div class="row">
+                            {% for profile in profiles %}
+                                <div class="col-xs-12 col-sm-6 mb-20">
+                                    <div class="stage-item item-{{ group }}">
+                                        {{ include('AppBundle:Profile/__Layout:_profile_item.html.twig', {'profile': profile}) }}
+                                    </div>
+                                </div>
+                            {% endfor %}
+
+                            <div class="col-xs-12 col-sm-6 mb-20">
+                                <div class="create-profile" style="margin-top: 0;">
+                                    <button onclick="window.location.href = '{{ path('application_profile_create_person') }}'"
+                                            class="create-profile-button">Tạo hồ sơ
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

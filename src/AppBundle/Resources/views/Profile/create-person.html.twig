@@ -1,0 +1,84 @@
+{% extends '::frontend.html.twig' %}
+
+{% block body %}
+    <section id="nuti-profile">
+    {{ include('AppBundle:Profile/__Layout:__header.html.twig') }}
+    <div class="personal-detail-info">
+        <div class="container">
+            <div class="row">
+                {{ include('@App/Profile/__Layout/_group_sidebar.html.twig') }}
+                <div class="col-xs-12 col-sm-6 col-md-7 col-lg-8">
+                    <div class="tab">
+                        <div id="tab-1" class="profile-detail-menu-content">
+                            {% for flash_message in app.session.flashBag.get('error') %}
+                                <div class="alert alert-danger" role="alert">
+                                    <strong>Lỗi!</strong> {{ flash_message }}
+                                </div>
+                            {% endfor %}
+                            {% for flash_message in app.session.flashBag.get('notice') %}
+                                <div class="alert alert-success" role="alert">
+                                    <strong>Thành công!</strong> {{ flash_message }}
+                                </div>
+                            {% endfor %}
+                            <form action="" method="post" class="pro5-form frm-personal-create-profile" enctype="multipart/form-data">
+                                <div class="pro5-avatar">
+                                    <div id="upload-holder" class="orange">
+                                        {{ form_widget(form.file, {'id': 'upload-photo'}) }}
+                                        <a href="#" id="upload-button"><i class="icon camera-icon"></i></a>
+                                        <div class="pro5-ava" style="background-image: url('{{ asset('frontend/images/lg-avatar-1.png') }}')"></div>
+                                        <h4 class="pro5-name">Tạo hồ sơ</h4>
+                                    </div>
+                                </div>
+                                <div class="pro5-info">
+                                    <div class="pro5-input">
+                                        <div class="clearfix">
+                                            <div class="col-1">
+                                                <div class="form-group">
+                                                    {{ form_widget(form.firstName) }}
+                                                    <p class="form-field-error">{{ form_errors(form.firstName) }}</p>
+                                                </div>
+                                            </div>
+                                            <div class="col-2">
+                                                <div class="form-group">
+                                                    {{ form_widget(form.lastName) }}
+                                                    <p class="form-field-error">{{ form_errors(form.lastName) }}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="clearfix">
+                                            <div class="col-1">
+                                                <div class="form-group gender-group">
+                                                    {{ form_widget(form.gender) }}
+                                                    <p class="form-field-error">{{ form_errors(form.gender) }}</p>
+                                                </div>
+                                            </div>
+                                            <div class="col-2">
+                                                <div class="form-group calendar-group">
+                                                    {{ form_widget(form.dateOfBirth, {'id': 'calendar'}) }}
+                                                    <i class="icon calendar-icon"></i>
+                                                    <p class="form-field-error">{{ form_errors(form.dateOfBirth) }}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-3">
+                                            <button class="nuti-button white create-profile-btn">
+                                                Tạo hồ sơ
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                {{ form_rest(form) }}
+                            </form>
+                        </div>
+                        <div id="tab-2" class="profile-detail-menu-content" style="display: none">
+                            <p>content 2</p>
+                        </div>
+                        <div id="tab-3" class="profile-detail-menu-content" style="display: none">
+                            <p>content 3</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

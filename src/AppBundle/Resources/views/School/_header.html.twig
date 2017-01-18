@@ -1,0 +1,47 @@
+{% set school = current_school() %}
+<div class="school-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-1">
+                <div class="school-avatar">
+                    <div>
+                        <a href="{{ path('application_for_school_heightWeightList') }}">
+                            <div class="ava"
+                                 style="background-image: url('{{ asset('frontend/images/avatar-3.png') }}')"></div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-2">
+                <div>
+                    <div class="school-name">
+                        <form class="frm-change-school" action="{{ path('application_for_school_index') }}" method="post">
+                            <select name="school" class="chosen school-name-select" data-placeholder="Trường học" tabindex="1">
+                                {% for item in app.user.workSchools %}
+                                    <option {% if item.id == school.id %}selected{% endif %}
+                                            value="{{ item.id }}">{{ item.name }}</option>
+                                {% endfor %}
+                            </select>
+                        </form>
+                    </div>
+                    <div class="school-action">
+                        <button class="nuti-button white" type="button" data-toggle="modal"
+                                data-target="#addClassModal">Thêm lớp
+                        </button>
+                        {% set value = amz_configuration_value('file-mau-xuat-danh-sach-chuan-lop') %}
+                        <button onclick="window.location.href = '{{ value }}'" class="nuti-button white" type="button">
+                            Xuất danh sách chuẩn lớp
+                        </button>
+                        <button class="nuti-button white" type="button" data-toggle="modal"
+                                data-target="#addStudentModal">Thêm danh sách học sinh
+                        </button>
+                        {% set value = amz_configuration_value('file-mau-xuat-danh-sach-chuan-can-do') %}
+                        <button onclick="window.location.href = '{{ value }}'" class="nuti-button white" type="button">
+                            Xuất danh sách chuẩn cân đo
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

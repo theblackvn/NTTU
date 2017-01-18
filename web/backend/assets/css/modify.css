@@ -1,0 +1,31 @@
+body {
+    font-family: sans-serif, Arial, Verdana, "Trebuchet MS";
+}
+label {
+    font-weight: 300;
+}
+.font-500 {
+    font-weight: 500 !important;
+}
+label span.required-field {
+    color: #ff0000;
+}
+.amz-error ul {
+    list-style: none;
+    padding: 0;
+}
+.amz-error ul li {
+    color: #a94442;
+    display: block;
+    margin-bottom: 10px;
+    margin-top: 5px;
+}
+.m-b-0 {
+    margin-bottom: 0 !important;
+}
+.btn {
+    padding: 8px 12px;
+}
+.amz_pagination_wrapper .pagination {
+    margin-top: 0;
+}

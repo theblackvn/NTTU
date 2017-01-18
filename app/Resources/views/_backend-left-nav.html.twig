@@ -1,0 +1,91 @@
+<div class="navbar-default sidebar" role="navigation">
+    <div class="sidebar-nav navbar-collapse slimscrollsidebar">
+        <div class="user-profile">
+            <div class="dropdown user-pro-body">
+                <div><img src="{{ asset('backend/plugins/images/icon-man.png') }}" alt="user-img"
+                          class="img-circle"></div>
+                <a href="#" class="dropdown-toggle u-dropdown" data-toggle="dropdown" role="button"
+                   aria-haspopup="true" aria-expanded="false">{{ app.user.fullName }} <span class="caret"></span></a>
+                <ul class="dropdown-menu animated flipInY">
+                    <li><a href="{{ path('amz_user_changeProfile') }}"><i class="ti-user"></i> My Profile</a></li>
+                    <li><a href="{{ path('core_application_logout') }}"><i class="fa fa-power-off"></i> Logout</a></li>
+                </ul>
+            </div>
+        </div>
+        <ul class="nav" id="side-menu">
+            <li class="sidebar-search hidden-sm hidden-md hidden-lg">
+                <!-- input-group -->
+                <div class="input-group custom-search-form">
+                    <input type="text" class="form-control" placeholder="Search...">
+                    <span class="input-group-btn">
+            <button class="btn btn-default" type="button"> <i class="fa fa-search"></i> </button>
+            </span></div>
+                <!-- /input-group -->
+            </li>
+            <li>
+                <a href="#" class="waves-effect">
+                    <i class="icon-docs fa-fw"></i>
+                    <span class="hide-menu">Quản lý danh sách<span class="fa arrow"></span></span>
+                </a>
+                <ul class="nav nav-second-level">
+
+                    <li><a href="{{ path('amz_post_category_homepage') }}">Danh mục</a></li>
+                    <li><a href="{{ path('amz_post_homepage') }}">Bài viết</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#" class="waves-effect">
+                    <i class="icon-docs fa-book"></i>
+                    <span class="hide-menu">Quản lý đào tạo<span class="fa arrow"></span></span>
+                </a>
+                <ul class="nav nav-second-level">
+                    <li><a href="{{ path('amz_post_list_by_cat', {'catID':13}) }}">Khối ngành công nghệ kỹ thuật</a></li>
+                    <li><a href="#">Khối ngành kinh tế tài chính</a></li>
+                    <li><a href="#">Khối ngành Khoa học xã hội và Nhân văn</a></li>
+                    <li><a href="#">Niên khóa</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#" class="waves-effect">
+                    <i class="icon-docs fa fa-graduation-cap"></i>
+                    <span class="hide-menu">Quản lý tuyển sinh<span class="fa arrow"></span></span>
+                </a>
+                <ul class="nav nav-second-level">
+                    <li><a href="{{ path('amz_profile_school_homepage') }}">Trường học</a></li>
+                    <li><a href="{{ path('amz_profile_homepage') }}">Học sinh</a></li>
+                    <li><a href="{{ path('amz_profile_class_unit_homepage') }}">Khối lớp</a></li>
+                    <li><a href="{{ path('amz_profile_school_year_homepage') }}">Niên khóa</a></li>
+                </ul>
+            </li>
+
+            <li>
+                <a href="#" class="waves-effect">
+                    <i class="icon-docs fa-fw"></i>
+                    <span class="hide-menu">Quản lý nghiên cứu<span class="fa arrow"></span></span>
+                </a>
+                <ul class="nav nav-second-level">
+
+                </ul>
+            </li>
+
+            <li><a href="{{ path('amz_slider_item_homepage') }}" class="waves-effect"><i class="icon-film fa-fw"></i> <span class="hide-menu">Slider</span></a>
+            <li><a href="{{ path('amz_option_homepage') }}" class="waves-effect"><i class="icon-settings fa-fw"></i> <span class="hide-menu">Cấu hình</span></a>
+
+
+            <li>
+                <a href="#" class="waves-effect">
+                    <i class="icon-note fa-fw"></i>
+                    <span class="hide-menu">Người dùng<span class="fa arrow"></span></span>
+                </a>
+                <ul class="nav nav-second-level">
+                    <li><a href="{{ path('amz_personal_user_index') }}">Người dùng cá nhân</a></li>
+                    <li><a href="{{ path('amz_school_user_index') }}">Dành cho trường học</a></li>
+                    <li><a href="{{ path('amz_doctor_user_index') }}">Dành cho y tế</a></li>
+                </ul>
+            </li>
+            <li><a href="{{ path('amz_user_index') }}" class="waves-effect"><i class="icon-people fa-fw"></i> <span class="hide-menu">Quản trị viên</span></a>
+            <li><a href="{{ path('core_application_logout') }}" class="waves-effect"><i class="icon-logout fa-fw"></i> <span class="hide-menu">Log out</span></a>
+            </li>
+        </ul>
+    </div>
+</div>

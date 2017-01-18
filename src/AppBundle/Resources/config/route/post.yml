@@ -1,0 +1,6 @@
+application_post_category:
+    path:     /{category_slug}/
+    defaults: { _controller: AppBundle:News:posts }
+application_post_detail:
+    path:     /{category_slug}/{slug}
+    defaults: { _controller: AppBundle:News:post }

@@ -1,0 +1,109 @@
+{% extends '::frontend.html.twig' %}
+{% block body %}
+    <section id="nuti-medical">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <h3 class="heading">Thống kê</h3>
+                </div>
+
+                <div class="col-xs-12">
+                    <div class="nuti-statistic">
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li role="presentation" class="active">
+                                <a href="#class" aria-controls="class" role="tab" data-toggle="tab">Lớp</a>
+                            </li>
+                            <li role="presentation">
+                                <a href="#school" aria-controls="school" role="tab" data-toggle="tab">Trường</a>
+                            </li>
+                            <li role="presentation">
+                                <a href="#school-unit" aria-controls="school-unit" role="tab" data-toggle="tab">KHối</a>
+                            </li>
+                            <li role="presentation">
+                                <a href="#district" aria-controls="district" role="tab" data-toggle="tab">Quận huyện</a>
+                            </li>
+                            <li role="presentation">
+                                <a href="#city" aria-controls="city" role="tab" data-toggle="tab">Tỉnh thành</a>
+                            </li>
+                            <li role="presentation">
+                                <a href="#country" aria-controls="country" role="tab" data-toggle="tab">Toàn quốc</a>
+                            </li>
+                        </ul>
+
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <form id="statistics_class_form" action="{{ url('application_statistic_load') }}">
+                            <div role="tabpanel" class="tab-pane active" id="class">
+                                {#<form id="statistics_class_form" action="{{ url('application_statistic_load') }}">#}
+                                    <div class="input-1">
+                                        <select class="chosen" data-placeholder="Tỉnh thành" style="width:100%;" tabindex="1">
+                                            <option value=""></option>
+                                            <option value="HN">Hà Nội</option>
+                                            <option value="SG">Tp. Hồ Chí Minh</option>
+                                        </select>
+                                    </div>
+                                    <div class="input-2">
+                                        <select class="chosen" data-placeholder="Quận" style="width:100%;" tabindex="1">
+                                            <option value=""></option>
+                                            <option value="Q1">Quận 1</option>
+                                            <option value="Q2">Quận 2</option>
+                                        </select>
+                                    </div>
+                                    <div class="input-3">
+                                        <select class="chosen" data-placeholder="Trường" style="width:100%;" tabindex="1">
+                                            <option value=""></option>
+                                            <option value="T1">Trường THPT A</option>
+                                            <option value="T2">TTrường THPT B</option>
+                                        </select>
+                                    </div>
+                                    <div class="input-4">
+                                        <select class="chosen" data-placeholder="Lớp" style="width:100%;" tabindex="1">
+                                            <option value=""></option>
+                                            <option value="L11">Lớp 11</option>
+                                            <option value="L12">Lớp 12</option>
+                                        </select>
+                                    </div>
+                                    <div class="input-5">
+                                        <select class="chosen" data-placeholder="Tháng" style="width:100%;" tabindex="1">
+                                            <option value=""></option>
+                                            <option value="T1">Tháng 1</option>
+                                            <option value="T2">Tháng 2</option>
+                                        </select>
+                                    </div>
+                                    <div class="input-6">
+                                        <select class="chosen" data-placeholder="Năm học" style="width:100%;" tabindex="1">
+                                            <option value=""></option>
+                                            <option value="2016">2016</option>
+                                            <option value="2017">2017</option>
+                                        </select>
+                                    </div>
+                                {#</form>#}
+
+                            </div>
+                                </form>
+                            <div role="tabpanel" class="tab-pane" id="school">
+                                Thống kê theo trường học
+                            </div>
+                            <div role="tabpanel" class="tab-pane" id="district">
+                                Thống kê theo quận huyện
+                            </div>
+                            <div role="tabpanel" class="tab-pane" id="city">
+                                Thống kê theo thành phố
+                            </div>
+                            <div role="tabpanel" class="tab-pane" id="country">
+                                Thống kê toàn quốc
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xs-12">
+                    <a href="#" id="btn_load_statistic"><button class="nuti-button view-statistic-btn white" type="submit">Xem thống kê</button></a>
+                </div>
+            </div>
+
+            <div class="row" id="statistic_result"></div>
+        </div>
+    </section>
+{% endblock %}

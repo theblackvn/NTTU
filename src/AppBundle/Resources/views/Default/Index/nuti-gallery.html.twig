@@ -1,0 +1,37 @@
+<section id="nuti-gallery">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-8">
+                <figure>
+                    {% if bannerFooterLeft.link is not empty %}
+                    <a href="{{ bannerFooterLeft.link }}">
+                        {% endif %}
+                        <img class="img-responsive" src="{{ asset(bannerFooterLeft.fullSizeThumbnail) }}">
+                        {% if bannerFooterLeft.link is not empty %}
+                    </a>
+                    {% endif %}
+                </figure>
+            </div>
+            <div class="col-xs-12 col-sm-4">
+                <figure>
+                    {% if bannerFooterTopRight.link is not empty %}
+                    <a href="{{ bannerFooterTopRight.link }}">
+                        {% endif %}
+                        <img class="img-responsive" src="{{ asset(bannerFooterTopRight.fullSizeThumbnail) }}">
+                        {% if bannerFooterTopRight.link is not empty %}
+                    </a>
+                    {% endif %}
+                </figure>
+                <figure class="mt-30">
+                    {% if bannerFooterBottomRight.link is not empty %}
+                    <a href="{{ bannerFooterBottomRight.link }}">
+                        {% endif %}
+                        <img class="img-responsive" src="{{ asset(bannerFooterBottomRight.fullSizeThumbnail) }}">
+                        {% if bannerFooterBottomRight.link is not empty %}
+                    </a>
+                    {% endif %}
+                </figure>
+            </div>
+        </div>
+    </div>
+</section>

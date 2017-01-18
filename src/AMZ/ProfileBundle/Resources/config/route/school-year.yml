@@ -1,0 +1,15 @@
+amz_profile_school_year_homepage:
+    path:     /
+    defaults: { _controller: AMZProfileBundle:SchoolYear:index }
+
+amz_profile_school_year_create:
+    path:     /create
+    defaults: { _controller: AMZProfileBundle:SchoolYear:create }
+
+amz_profile_school_year_edit:
+    path:     /{id}/edit
+    defaults: { _controller: AMZProfileBundle:SchoolYear:edit }
+
+amz_profile_school_year_delete:
+    path:     /{id}/delete
+    defaults: { _controller: AMZProfileBundle:SchoolYear:delete }

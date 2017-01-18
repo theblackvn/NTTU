@@ -1,0 +1,7 @@
+application_security_change_password:
+    path:     /doi-mat-khau
+    defaults: { _controller: AppBundle:Security:changePassword }
+
+application_security_register:
+    path:     /dang-ky
+    defaults: { _controller: AppBundle:Security:register }

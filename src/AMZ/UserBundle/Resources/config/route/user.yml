@@ -1,0 +1,24 @@
+amz_user_index:
+    path:      /
+    defaults:  { _controller: AMZUserBundle:User:index }
+    methods: [GET]
+
+amz_user_create:
+    path:      /create
+    defaults:  { _controller: AMZUserBundle:User:create }
+
+amz_user_changeProfile:
+    path:      /profile
+    defaults:  { _controller: AMZUserBundle:User:changeProfile }
+
+amz_user_changePassword:
+    path:      /change-password
+    defaults:  { _controller: AMZUserBundle:User:changePassword }
+
+amz_user_edit:
+    path:      /{id}/edit
+    defaults:  { _controller: AMZUserBundle:User:edit }
+
+amz_user_delete:
+    path:      /{id}/delete
+    defaults:  { _controller: AMZUserBundle:User:delete }

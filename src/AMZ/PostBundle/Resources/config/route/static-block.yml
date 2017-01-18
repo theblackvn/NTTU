@@ -1,0 +1,15 @@
+amz_static_block_homepage:
+    path:     /
+    defaults: { _controller: AMZPostBundle:StaticBlock:index }
+
+amz_static_block_create:
+    path:     /create
+    defaults: { _controller: AMZPostBundle:StaticBlock:create }
+
+amz_static_block_edit:
+    path:     /{id}/edit
+    defaults: { _controller: AMZPostBundle:StaticBlock:edit }
+
+amz_static_block_delete:
+    path:     /{id}/delete
+    defaults: { _controller: AMZPostBundle:StaticBlock:delete }

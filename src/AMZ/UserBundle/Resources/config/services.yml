@@ -1,0 +1,7 @@
+services:
+    amz_user.security.webservice_user_provider:
+        class: AMZ\UserBundle\Security\WebserviceUserProvider
+        arguments: ["@doctrine.orm.entity_manager", "@amz_db.service.query"]
+
+
+parameters:

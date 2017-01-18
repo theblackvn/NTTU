@@ -1,0 +1,449 @@
+parameters:
+    city:
+          AN GIANG:
+            - Châu Đốc
+            - Long Xuyên
+            - Phú Tân
+            - Tân Châu
+            - Chợ Mới
+            - Châu Phú
+            - TXã Tân Châu
+            - TP Long Xuyên
+            - Châu Thành
+          BẮC GIANG:
+            - Thị Xã Bắc Giang
+            - Việt Yên
+            - Lục Ngạn
+            - Tân Yên
+            - Lạng Giang
+            - Hiệp Hòa
+            - Tp Bắc Giang
+          BẮC KẠN:
+            - Bắc Kạn
+          BẠC LIÊU:
+            - Thị Xã Bạc Liêu
+            - Gia Rai
+            - Hòa Bình
+            - TP Bạc Liêu
+            - Hồng Dân
+          BẮC NINH:
+            - TXã Bắc Ninh
+            - Thị Cầu
+            - Tiên Du
+            - Từ Sơn
+            - Ninh Xá
+            - Quế Võ
+            - Gia Bình
+            - Thuận Thành
+            - Lương Tài
+          BÀ RỊA VŨNG TÀU:
+            - TXã Bà Rịa
+            - TP. VũngTàu
+            - Châu Đức
+            - Long Điền
+            - Tân Thành
+            - Đất Đỏ
+            - Xuyên Mộc
+          BẾN TRE:
+            - TXã Bến Tre
+            - Tp. BếnTre
+            - Mỏ Cày
+            - Giồng Trôm
+            - Châu Thành
+            - Ba Tri
+            - Thạnh Phú
+            - Mỏ Cày Nam
+            - Mỏ Cày Bắc
+          BÌNH ĐỊNH:
+            - An Nhơn
+            - Hoài Nhơn
+            - Quy Nhơn
+            - Hoài An
+            - Tuy Phước
+          BÌNH DƯƠNG:
+            - Dĩ An
+            - Phú Giao
+            - Thủ Dầu Một
+            - Thuận An
+            - Bến Cát
+            - Tân Uyên
+            - Lái Thiêu
+            - TXã Tân Uyên
+            - Dầu Tiếng
+          BÌNH PHƯỚC:
+            - Bình Long
+            - Đồng Phú
+            - Đồng Xoài
+            - Phước Long
+            - Bù Đăng
+            - Chơn Thành
+          BÌNH THUẬN:
+            - Hàm Tân
+            - Hàm Thuận Bắc
+            - Tp.Phan Thiết
+            - T.Xã La-gi
+          CÀ MAU:
+            - Tp. Cà Mau
+            - Cái Nước
+            - Thới Bình
+          CẦN THƠ:
+            - Bình Thủy
+            - Ninh Kiều
+            - Cái Răng
+            - Thốt Nốt
+            - Ô Môn
+            - Vị Thanh
+            - Tp Cần Thơ
+            - Phong Điền
+            - Vĩnh Thạnh
+          CAO BẰNG:
+            - TXã Cao Bằng
+            - Sông Bằng
+          ĐẮK LẮK:
+            - Tp Buôn Ma Thuộc
+            - Krong Buk
+            - Krong Pắk
+            - Krong ANa
+            - CuM'Gar
+          ĐẮK NÔNG:
+            - Đắk R'Lấp
+            - TX Gia Nghĩa
+          ĐÀ NẴNG:
+            - Cẩm Lệ
+            - Thanh Khê
+            - Hải Châu
+            - Sơn Trà
+            - Liên Chiểu
+            - Ngũ Hành Sơn
+            - Hòa Vang
+          ĐIỆN BIÊN:
+            - Điện Biên Phủ
+          ĐỒNG NAI:
+            - Biên Hòa
+            - Long Khánh
+            - Long Thành
+            - Thống Nhất
+            - Vĩnh Cửu
+            - Trảng Bom
+            - Tp Biên Hòa
+            - Nhơn Trạch
+          ĐỒNG THÁP:
+            - TXã Cao Lãnh
+            - Sa Đéc
+            - Cao Lãnh
+            - Châu Thành
+            - Lấp Vò
+          GIA LAI:
+            - Pleiku
+            - An Khê
+            - Chư Prông
+          HẢI DƯƠNG:
+            - Tp Hải Dương
+            - Thanh Miện
+            - Chí Linh
+            - Gia Lộc
+            - Nam Sách
+            - Kim Thành
+          HẢI PHÒNG:
+            - Hồng Bàng
+            - Kiến An
+            - Lê Chân
+            - Ngô Quyền
+            - An Hải
+            - An Lão
+            - Thủy Nguyên
+            - Tiên Lãng
+            - Kiến Thụy
+            - Vĩnh Bảo
+            - Hải An
+            - An Dương
+            - Đồ Sơn
+          HÀ NAM:
+            - Phủ Lý
+            - Bình Lục
+          HÀ NỘI:
+            - Ba Đình
+            - Từ Liêm
+            - Đống Đa
+            - Tây Hồ
+            - Thanh Xuân
+            - Hoàng Mai
+            - Cầu Giấy
+            - Đông Anh
+            - Hai Bà Trưng
+            - Gia Lâm
+            - Long Biên
+            - Hoàn Kiếm
+            - Thanh Trì
+            - Hà Đông
+            - Sóc Sơn
+            - Thạch Thất
+            - Ứng Hòa
+            - Đan Phượng
+            - Hoài Đức
+            - Thường Tín
+            - Bắc Từ Liêm
+            - Phú Xuyên
+            - Phúc Thọ
+            - Quốc Oai
+            - Nam Từ Liêm
+            - Mỹ Đức
+            - Mê Linh
+            - Chương Mỹ
+            - Ba Vì
+            - Sơn Tây
+          HÀ TÂY:
+            - Hà Đông
+            - Sơn Tây
+            - Chương Mỹ
+          HÀ TĨNH:
+            - TXã HàTĩnh
+            - Cẩm Xuyên
+            - Hồng Lĩnh
+            - Đức Thọ
+            - Nghi Xuân
+            - Kỳ Anh
+            - Tp Hà Tĩnh
+            - Thạch Hà
+          HẬU GIANG:
+            - Long Mỹ
+            - Vị Thủy
+            - TXã Vị Thanh
+            - Phùng Hiệp
+            - Châu Thành A
+          HỒ CHÍ MINH:
+            - Bình Chánh
+            - Bình Tân
+            - Bình Thạnh
+            - Củ Chi
+            - Quận 1
+            - Quận 2
+            - Quận 3
+            - Quận 4
+            - Quận 5
+            - Quận 6
+            - Quận 7
+            - Quận 8
+            - Quận 9
+            - Quận 10
+            - Quận 11
+            - Quận 12
+            - Tân Bình
+            - Tân Phú
+            - Gò Vấp
+            - Hóc Môn
+            - Nhà Bè
+            - Phú Nhuận
+            - Thủ Đức
+          HÒA BÌNH:
+            - TXã Hòa Bình
+          HƯNG YÊN:
+            - TXã Hưng Yên
+            - Mỹ Hào
+            - Văn Lâm
+            - Ân Thi
+            - Khoái Châu
+            - Kim Động
+          KHÁNH HÒA:
+            - Cam Ranh
+            - Diên Khánh
+            - Nha Trang
+            - Vạn Ninh
+            - Ninh Hòa
+            - Cam Lâm
+          KIÊN GIANG:
+            - Châu Thành
+            - Rạch Giá
+            - Tân Hiệp
+            - Rạch Sỏi
+            - Phú Quốc
+            - Hòn Đất
+            - Vĩnh Thuận
+            - Hà Tiên
+            - TP Rạch Giá
+          KON TUM:
+            - Tp.Kon Tum
+          LAI CHÂU:
+            - TXã Lai Châu
+          LÀO CAI:
+            - Kim Tân
+          LÂM ĐỒNG:
+            - Đà Lạt
+            - Bảo Lộc
+            - Đức Trọng
+          LẠNG SƠN:
+            - TXã Lạng Sơn
+            - Chi Lăng
+            - Văn Lãng
+            - Cao Lộc
+          LONG AN:
+            - Tân An
+            - Mộc Hóa
+            - Đức Hòa
+            - Châu Thành
+            - Tân Trụ
+            - Thủ Thừa
+          NAM ĐỊNH:
+            - TP.Nam Định
+            - Trực Ninh
+            - Hải Hậu
+            - Nghĩa Hưng
+          NGHỆ AN:
+            - TP.Vinh
+            - Diễn Châu
+            - Cửa Lò
+            - Nghi Lộc
+            - Hưng Nguyên
+            - Kỳ Sơn
+            - Quỳnh Lưu
+          NINH BÌNH:
+            - T.Xã Ninh Bình
+            - Tam Điệp
+          NINH THUẬN:
+            - Phan Rang
+            - Ninh HẢi
+            - Ninh Sơn
+          PHÚ THỌ:
+            - TP.Việt Trì
+            - Lâm Thao
+            - Phù Ninh
+            - Đoan Hùng
+            - Cẩm Khê
+            - TXã Phú Thọ
+            - Thanh Ba
+          PHÚ YÊN:
+            - T.Xã Tuy Hòa
+            - Tuy Hòa
+            - Tuy An
+          QUẢNG BÌNH:
+            - Đồng Hới
+            - QuảngTrạch
+            - Bố Trạch
+          QUẢNG NAM:
+            - Điện Bàn
+            - Duy Xuyên
+            - Hội An
+            - Tam Kỳ
+            - Tiên Phước
+            - Thăng Bình
+            - Đại Lộc
+            - Hiệp Đức
+            - Quế Sơn
+            - Núi Thành
+            - Tây Giang
+            - Phú Ninh
+            - Hiên
+            - Trà My
+          QUẢNG NGÃI:
+            - TP.Quảng Ngãi
+            - Sơn Tịnh
+            - Đức Phố
+            - Mộ Đức
+            - Tư Nghĩa
+            - Bình Sơn
+          QUẢNG NINH:
+            - Cẩm Phả
+            - Hạ Long
+            - Uông Bí
+            - Đông Triều
+            - Yên Hưng
+            - Hoành Bồ
+            - Hải Hà
+            - Tiên Yên
+            - TP.Hạ Long
+            - Móng Cái
+            - Vân Đồn
+            - Bình Liêu
+          QUẢNG TRỊ:
+            - Đông Hà
+            - TXã. Quảng Trị
+            - Triều Phong
+            - Gio Linh
+            - Vĩnh Linh
+            - Hải Lăng
+          SÓC TRĂNG:
+            - TP. SócTrăng
+            - Thạnh Trị
+            - Long Phú
+            - Trần Đề
+            - Mỹ Xuyên
+          SƠN LA:
+            - TP. Sơn La
+            - Mai Sơn
+            - Yên Châu
+          TÂY NINH:
+            - Tân Biên
+            - Tân Châu
+            - T.Xã Tây Ninh
+            - Trảng Bàng
+            - Châu Thành
+            - Gò Dầu
+            - Hòa Thành
+            - TP. Tây Ninh
+          THÁI BÌNH:
+            - TP. Thái Bình
+            - Tiền Hải
+            - Đông Hưng
+            - Vũ Thư
+            - Hưng Hà
+            - Thái Thụy
+            - Kiến Xương
+          THÁI NGUYÊN:
+            - Phổ  Yên
+            - Tp. Thái Nguyên
+            - Đồng Hỷ
+            - Sông Công
+            - Phú Lương
+            - Định Hóa
+          THANH HÓA:
+            - Tp. Thanh Hóa
+            - Bỉm Sơn
+            - Nga Sơn
+            - Hoằng Hóa
+            - Nông Cống
+            - Tĩnh Gia
+            - Như Thành
+            - Triều Sơn
+            - Thạch Thành
+            - Cẩm Thụy
+            - Ngọc Lặc
+            - Bá Thước
+            - Thiệu Hóa
+            - Yên Định
+            - Hà Trung
+            - Quảng Xương
+            - Vĩnh Lộc
+            - Đông Thọ
+          THỪA THIÊN HUẾ:
+            - Huế
+            - Hương Thủy
+            - Hương Trà
+            - Phú Lộc
+          TIỀN GIANG:
+            - Gò CôngTây
+            - Cai Lậy
+            - Châu Thành
+            - Gò Công
+            - Mỹ Tho
+            - Cái Bè
+            - Chợ Gạo
+          TRÀ VINH:
+            - Cầu Kè
+            - Châu Thành
+            - TP. Trà Vinh
+          TUYÊN QUANG:
+            - TXã.Tuyên Quang
+          VĨNH LONG:
+            - TXã. Vĩnh Long
+            - Bình Minh
+            - Long Hồ
+            - Mang Thít
+            - Tam Bình
+            - Vũng Liêm
+          VĨNH PHÚC:
+            - Vĩnh Yên
+            - Vĩnh Tường
+            - Phúc Yên
+          YÊN BÁI:
+            - Tp. Yên Bái
+            - Yên Bình

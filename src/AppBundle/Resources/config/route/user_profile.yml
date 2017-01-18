@@ -1,0 +1,31 @@
+application_profile_index:
+    path:     /
+    defaults: { _controller: AppBundle:Profile:index }
+
+application_profile_create_person:
+    path:     /tao-ho-so
+    defaults: { _controller: AppBundle:Profile:createPerson }
+
+application_profile_personal_detail:
+    path:     /ho-so-so-{id}
+    defaults: { _controller: AppBundle:Profile:personalDetail }
+
+application_profile_personal_history_detail:
+    path:     /ho-so-so-{id}/lich-su-can-do/{historyId}
+    defaults: { _controller: AppBundle:Profile:personalHistory }
+
+application_profile_personal_history_print:
+    path:     /ho-so-so-{id}/lich-su-can-do/in/{historyId}
+    defaults: { _controller: AppBundle:Profile:personalHistoryPrint }
+
+application_profile_personal_bmi_calculate:
+    path:     /tinh-trang-dinh-duong
+    defaults: { _controller: AppBundle:Profile:bmiCalculate }
+
+application_profile_personal_bmi_calculate_result:
+    path:     /tinh-trang-dinh-duong/ket-qua
+    defaults: { _controller: AppBundle:Profile:bmiCalculateResult }
+
+application_profile_personal_list:
+    path:     /{groupName}
+    defaults: { _controller: AppBundle:Profile:personalList }

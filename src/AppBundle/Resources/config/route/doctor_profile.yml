@@ -1,0 +1,27 @@
+application_user_profile_index:
+    path:     /
+    defaults: { _controller: AppBundle:UserProfile:index }
+
+application_user_profile_5_19:
+    path:     /bmi/5-19-tuoi
+    defaults: { _controller: AppBundle:UserProfile:fiveYO }
+
+application_user_profile_0_5:
+    path:     /bmi/0-5-tuoi
+    defaults: { _controller: AppBundle:UserProfile:zeroYO }
+
+application_user_profile_over_19:
+        path:     /bmi/tren-19-tuoi
+        defaults: { _controller: AppBundle:UserProfile:over19YO }
+
+application_user_profile_result:
+    path:     /bmi/ket-qua
+    defaults: { _controller: AppBundle:UserProfile:fiveYOResult }
+
+application_user_profile_result_print:
+    path:     /bmi/ket-qua/in
+    defaults: { _controller: AppBundle:UserProfile:printResult }
+
+application_user_profile_save:
+    path:     /bmi/ket-qua/luu
+    defaults: { _controller: AppBundle:UserProfile:saveAdvise }

@@ -1,0 +1,649 @@
+<div class="modal nuti-modal common-modal fade modal400" id='amz_common_error_modal' tabindex="-1" role="dialog"
+     aria-labelledby="nutiModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i class="icon close-icon"></i>
+                </button>
+                <h4 class="modal-title" id="nutiModalLabel"></h4>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" class="redirect_url" value="" />
+                <strong></strong>
+
+            </div>
+        </div>
+    </div>
+</div>
+{% if app.user is not empty %}
+    {% if is_granted('ROLE_PRINCIPAL') %}
+        {% set school = current_school() %}
+        <div class="modal nuti-modal school-modal fade modal400" id="editStudentModalComplete" tabindex="-1" role="dialog"
+             aria-labelledby="nutiModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <i class="icon close-icon"></i>
+                        </button>
+                        <h4 class="modal-title" id="nutiModalLabel">Chỉnh sửa học sinh</h4>
+                    </div>
+                    <div class="modal-body">
+                        <input type="hidden" class="redirect_url" value="" />
+                        <strong>Thành công!</strong>
+                        Thông tin học sinh đã được cập nhật
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal nuti-modal school-modal fade modal400" id="editClassModalComplete" tabindex="-1" role="dialog"
+             aria-labelledby="nutiModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <i class="icon close-icon"></i>
+                        </button>
+                        <h4 class="modal-title" id="nutiModalLabel">Chỉnh sửa lớp</h4>
+                    </div>
+                    <div class="modal-body">
+                        <input type="hidden" class="redirect_url" value="" />
+                        <strong>Thành công!</strong>
+                        Thông tin lớp đã được cập nhật
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal nuti-modal school-modal fade modal400" id="addClassModalComplete" tabindex="-1" role="dialog"
+             aria-labelledby="nutiModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <i class="icon close-icon"></i>
+                        </button>
+                        <h4 class="modal-title" id="nutiModalLabel">Thêm lớp - Hoàn tất</h4>
+                    </div>
+                    <div class="modal-body">
+                        <input type="hidden" class="redirect_url" value="" />
+                        <strong>Thành công!</strong>
+                        Lớp đã được tạo mới
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Add Class Modal -->
+        <div class="modal nuti-modal school-modal fade modal400" id="addClassModal" tabindex="-1" role="dialog"
+             aria-labelledby="nutiModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <i class="icon close-icon"></i>
+                        </button>
+                        <h4 class="modal-title" id="nutiModalLabel">Thêm lớp</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form action="{{ path('application_for_school_addClass') }}" class="add-class-form"
+                              method="post" novalidate>
+                            <div class="alert alert-danger" role="alert" style="display: none;">
+                                <strong>Lỗi!</strong> <span class="error-msg"></span>
+                            </div>
+                            <div class="form-group">
+                                <div class="s-name">
+                                    <div class="avatar" style="background-image: url('{{ asset('frontend/') }}images/av.png')"></div>
+                                    <div class="name">{{ school.name }}</div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <input name="code" type="text" class="form-control" id="class-code" placeholder="Mã Lớp"
+                                       autocomplete="off" required>
+                            </div>
+                            <div class="form-group">
+                                <select name="schoolUnit" class="chosen" data-placeholder="Khối lớp" style="width:100%;"
+                                        tabindex="1">
+                                    {% set schoolUnits = get_school_units() %}
+                                    {% for item in schoolUnits %}
+                                        <option value="{{ item.id }}">{{ item.name }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <input name="name" type="text" class="form-control" id="class-name"
+                                       placeholder="Tên Lớp"
+                                       autocomplete="off" required>
+                            </div>
+                            <div class="form-group">
+                                <select name="schoolYear" class="chosen" data-placeholder="Năm học" style="width:100%;"
+                                        tabindex="1">
+                                    {% set schoolYears = get_school_years() %}
+                                    {% for item in schoolYears %}
+                                        <option value="{{ item.id }}">{{ item.name }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div class="form-action">
+                                <button class="nuti-button white btn-submit-form" type="button">
+                                    <i class="fa fa-spin fa-spinner" style="display: none"></i> Thêm lớp
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Edit Class Modal -->
+        <div class="modal nuti-modal school-modal fade modal400" id="editClassModal" tabindex="-1" role="dialog"
+             aria-labelledby="nutiModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <i class="icon close-icon"></i>
+                        </button>
+                        <h4 class="modal-title" id="nutiModalLabel">Chỉnh sửa lớp</h4>
+                    </div>
+                    <div class="modal-body">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Edit Class Modal -->
+        <div class="modal nuti-modal school-modal fade modal400" id="editStudentModal" tabindex="-1" role="dialog"
+             aria-labelledby="nutiModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <i class="icon close-icon"></i>
+                        </button>
+                        <h4 class="modal-title" id="nutiModalLabel">Chỉnh sửa học sinh</h4>
+                    </div>
+                    <div class="modal-body">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Add Student Modal -->
+        <div class="modal nuti-modal school-modal modal500 fade" id="addStudentModal" tabindex="-1" role="dialog"
+             aria-labelledby="nutiModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <i class="icon close-icon"></i>
+                        </button>
+                        <h4 class="modal-title" id="nutiModalLabel">Thêm danh sách học sinh</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form action="{{ path('application_for_school_ajax_import_profile_to_class_step1') }}"
+                              method="post" class="add-profile-to-class" novalidate enctype="multipart/form-data">
+                            <div class="alert alert-danger" role="alert" style="display: none;">
+                                <strong>Lỗi!</strong> <span class="error-msg"></span>
+                            </div>
+                            <div class="form-group">
+                                <div class="s-name">
+                                    <div class="avatar" style="background-image: url('{{ asset('frontend/') }}images/av.png')"></div>
+                                    <div class="name">{{ school.name }}</div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col50">
+                                    <select name="schoolYear" class="chosen add-profile-to-class-school-year"
+                                            data-placeholder="Năm học" style="width:100%;"
+                                            data-url-load-class="{{ path('application_for_school_ajax_loadClassByYear') }}"
+                                            tabindex="1">
+                                        {% set schoolYears = get_school_years() %}
+                                        <option value="">Chọn năm học</option>
+                                        {% for item in schoolYears %}
+                                            <option value="{{ item.id }}">{{ item.name }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                                <div class="col50">
+                                    <select name="schoolClass" class="chosen add-profile-to-class-school-class"
+                                            data-placeholder="Lớp" style="width:100%;" tabindex="1">
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <input type="file" name="excel-file"/>
+                            </div>
+                            <div class="form-group">
+                                <div class="drag-n-drop">
+
+                                </div>
+                            </div>
+                            <div class="form-action">
+                                <button class="nuti-button white btn-submit-form" type="button">
+                                    <i class="fa fa-spin fa-spinner" style="display: none"></i>
+                                    Thêm danh sách
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Confirm add student list -->
+        <div class="modal nuti-modal school-modal fade" id="confirmAddStudentModal" tabindex="-1" role="dialog"
+             aria-labelledby="nutiModalLabel">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <i class="icon close-icon"></i>
+                        </button>
+                        <h4 class="modal-title" id="nutiModalLabel">Thêm danh sách học sinh - Xác nhận</h4>
+                    </div>
+                    <div class="modal-body">
+
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-default go-back-btn" type="button">Chọn lại</button>
+                        <button class="btn btn-primary complete-btn" type="button"
+                                data-url="{{ path('application_for_school_ajax_import_profile_to_class_stepComplete') }}">
+                            Hoàn tất
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Add Student Modal -->
+        <div class="modal nuti-modal school-modal modal600 fade" id="addHeightWeightModal" tabindex="-1" role="dialog"
+             aria-labelledby="nutiModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <i class="icon close-icon"></i>
+                        </button>
+                        <h4 class="modal-title" id="nutiModalLabel">Thêm danh sách học sinh cân đo</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form action="{{ path('application_for_school_ajax_import_height_weight_step1') }}"
+                              method="post" class="add-height-weight-to-profile" novalidate
+                              enctype="multipart/form-data">
+                            <div class="alert alert-danger" role="alert" style="display: none;">
+                                <strong>Lỗi!</strong> <span class="error-msg"></span>
+                            </div>
+                            <div class="form-group">
+                                <div class="s-name">
+                                    <div class="avatar" style="background-image: url('{{ asset('frontend/') }}images/av.png')"></div>
+                                    <div class="name">{{ school.name }}</div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col50">
+                                    <select name="schoolYear" class="chosen add-height-weight-to-profile-school-year"
+                                            data-placeholder="Năm học" style="width:100%;"
+                                            data-url-load-class="{{ path('application_for_school_ajax_loadClassByYear') }}"
+                                            tabindex="1">
+                                        {% set schoolYears = get_school_years() %}
+                                        <option value="">Chọn năm học</option>
+                                        {% for item in schoolYears %}
+                                            <option value="{{ item.id }}">{{ item.name }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                                <div class="col50">
+                                    <select name="schoolClass" class="chosen add-height-weight-to-profile-school-class"
+                                            data-placeholder="Lớp" style="width:100%;" tabindex="1">
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <input type="file" name="excel-file"/>
+                            </div>
+                            <div class="form-group">
+                                <div class="drag-n-drop">
+
+                                </div>
+                            </div>
+                            <div class="form-action">
+                                <button class="nuti-button white btn-submit-form" type="button">
+                                    <i class="fa fa-spin fa-spinner" style="display: none"></i>
+                                    Thêm danh sách
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Confirm add student list -->
+        <div class="modal nuti-modal school-modal fade" id="confirmAddHeightWeightModal" tabindex="-1" role="dialog"
+             aria-labelledby="nutiModalLabel">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <i class="icon close-icon"></i>
+                        </button>
+                        <h4 class="modal-title" id="nutiModalLabel">Thêm danh sách học sinh cân đo - Xác nhận</h4>
+                    </div>
+                    <div class="modal-body">
+
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-default go-back-btn" type="button">Chọn lại</button>
+                        <button class="btn btn-primary complete-btn" type="button"
+                                data-url="{{ path('application_for_school_ajax_import_height_weight_stepComplete') }}">
+                            Hoàn tất
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Add Bmi measure Modal -->
+        <div class="modal nuti-modal school-modal modal600 fade" id="addBmiModal" tabindex="-1" role="dialog"
+             aria-labelledby="nutiModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <i class="icon close-icon"></i>
+                        </button>
+                        <h4 class="modal-title" id="nutiModalLabel">Thêm cân đo cho học sinh</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form action="{{ path('application_for_school_ajax_add_bmi_profile') }}"
+                              method="post" class="add-bmi-profile" novalidate
+                              enctype="multipart/form-data">
+                            <div class="alert alert-danger" role="alert" style="display: none;">
+                                <strong>Lỗi!</strong> <span class="error-msg"></span>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="height" placeholder="Chiều cao" required/>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="weight" placeholder="Cân nặng" required/>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="date" id="calendar" placeholder="Ngày cân đo" required/>
+                            </div>
+                            <div class="form-action">
+                                <input type="hidden" class="hidden-profileId" name="profileId" value="">
+                                <button class="nuti-button white btn-submit-form" type="button">
+                                    <i class="fa fa-spin fa-spinner" style="display: none"></i>
+                                    Thêm cân đo
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Edit Bmi measure Modal -->
+        <div class="modal nuti-modal school-modal modal600 fade" id="editBmiModal" tabindex="-1" role="dialog"
+             aria-labelledby="nutiModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <i class="icon close-icon"></i>
+                        </button>
+                        <h4 class="modal-title" id="nutiModalLabel">Chỉnh sửa cân đo của học sinh</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form action="{{ path('application_for_school_ajax_edit_bmi_profile') }}"
+                              method="post" class="edit-bmi-profile" novalidate
+                              enctype="multipart/form-data">
+                            <div class="alert alert-danger" role="alert" style="display: none;">
+                                <strong>Lỗi!</strong> <span class="error-msg"></span>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="date" id="calendar" placeholder="Ngày cân đo" required/>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="height" placeholder="Chiều cao" required/>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="weight" placeholder="Cân nặng" required/>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="result" placeholder="Kết quả" required/>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="bmi" placeholder="BMI" required/>
+                            </div>
+                            <div class="form-group">
+                                <textarea class="form-control" name="recommend" placeholder="Khuyến cáo" required ></textarea>
+                            </div>
+                            <div class="form-action">
+                                <input type="hidden" class="hidden-profileId" name="profileId" value="">
+                                <button class="nuti-button white btn-submit-form" type="button">
+                                    <i class="fa fa-spin fa-spinner" style="display: none"></i>
+                                    Sửa cân đo
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+    <!-- Change password Modal -->
+    <div class="modal nuti-modal fade modal450" id="changePw" tabindex="-1" role="dialog"
+         aria-labelledby="nutiModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <i class="icon close-icon"></i>
+                    </button>
+                    <h4 class="modal-title" id="nutiModalLabel">Đổi mật khẩu</h4>
+                </div>
+                <div class="modal-body">
+                    <form class="change-password-form" method="post"
+                          action="{{ path('application_security_change_password') }}" novalidate>
+                        <div class="alert alert-danger" role="alert" style="display: none;">
+                            <strong>Lỗi!</strong> <span class="error-msg"></span>
+                        </div>
+                        <div class="alert alert-success" role="alert" style="display: none;">
+                            <strong>Thành công!</strong> Mật khẩu của bạn đã được thay đổi
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control" name="old-pw" id="old-pw"
+                                   placeholder="Mật khẩu hiện tại *"
+                                   autocomplete="off" required>
+                            <i class="icon lock-icon"></i>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control" name="new-pw" id="new-pw"
+                                   placeholder="Mật khẩu mới *"
+                                   autocomplete="off" required>
+                            <i class="icon lock-icon"></i>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control" name="confirm-pw" id="confirm-pw"
+                                   placeholder="Xác nhận mật khẩu mới *" autocomplete="off" required>
+                            <i class="icon lock-icon"></i>
+                        </div>
+                        <div class="form-action">
+                            <button type="button" class="nuti-button popup-frm-submit white">
+                                <i class="fa fa-spin fa-spinner" style="display: none"></i>Thay đổi
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% else %}
+    <div class="modal nuti-modal fade modal450" id="login" tabindex="-1" role="dialog" aria-labelledby="nutiModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <i class="icon close-icon"></i>
+                    </button>
+                    <h4 class="modal-title" id="nutiModalLabel">Đăng nhập</h4>
+                </div>
+                <div class="modal-body">
+                    <form class="login-popup-form" method="post" action="{{ path('application_login_check') }}"
+                          novalidate>
+                        <div class="alert alert-danger" role="alert" style="display: none;">
+                            <strong>Lỗi!</strong> <span class="error-msg"></span>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="_username" class="form-control" id="old-pw"
+                                   placeholder="Tài khoản *"
+                                   autocomplete="off" required>
+                            <i class="icon user-login"></i>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" name="_password" class="form-control" id="new-pw"
+                                   placeholder="Mật khẩu *"
+                                   autocomplete="off" required>
+                            <i class="icon lock-icon"></i>
+                        </div>
+                        <div class="form-action">
+                            <button type="button" class="nuti-button popup-frm-submit white">
+                                <i class="fa fa-spin fa-spinner" style="display: none"></i>
+                                Đăng nhập
+                            </button>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-sm-6 text-left">
+                                    <a class="sub-action" href="#login" data-dismiss="modal" data-toggle="modal"
+                                       data-target="#forgotPw">
+                                        Quên mật khẩu?
+                                    </a>
+                                </div>
+                                <div class="col-sm-6 text-right">
+                                    <a class="sub-action" href="#login" data-dismiss="modal" data-toggle="modal"
+                                       data-target="#register">
+                                        Chưa có tài khoản
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal nuti-modal school-modal fade modal400" id="registerComplete" tabindex="-1" role="dialog"
+         aria-labelledby="nutiModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <i class="icon close-icon"></i>
+                    </button>
+                    <h4 class="modal-title" id="nutiModalLabel">Đăng ký thành công</h4>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" class="redirect_url" value="" />
+                    Tài khoản của bạn đã được đăng ký thành công!<br/>
+                    Vui lòng đóng thông báo để tiếp tục.
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal nuti-modal fade modal450" id="register" tabindex="-1" role="dialog"
+         aria-labelledby="nutiModalLabelRegister">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <i class="icon close-icon"></i>
+                    </button>
+                    <h4 class="modal-title" id="nutiModalLabelRegister">Đăng ký tài khoản</h4>
+                </div>
+                <div class="modal-body">
+                    <form action="{{ path('application_security_register') }}" method="post" class="register-form"
+                          novalidate>
+                        <div class="alert alert-danger" role="alert" style="display: none;">
+                            <strong>Lỗi!</strong> <span class="error-msg"></span>
+                        </div>
+                        <div class="form-group">
+                            <input name="fullName" type="text" class="form-control" id="input-user-name"
+                                   placeholder="Tên của bạn *"/>
+                            <i class="icon user-name"></i>
+                        </div>
+                        <div class="form-group">
+                            <input name="username" type="text" class="form-control" id="input-user-login"
+                                   placeholder="Tên đăng nhập *">
+                            <i class="icon user-login"></i>
+                        </div>
+                        <div class="form-group">
+                            <input name="password" type="password" class="form-control" id="input-pw"
+                                   placeholder="Mật khẩu *">
+                            <i class="icon lock-icon"></i>
+                        </div>
+                        <div class="form-group">
+                            <input name="confirm-password" type="password" class="form-control" id="input-confirm-pw"
+                                   placeholder="Nhập lại mật khẩu *">
+                            <i class="icon lock-icon"></i>
+                        </div>
+                        <div class="form-group">
+                            <input name="email" type="email" class="form-control" id="input-email"
+                                   placeholder="Địa chỉ email *">
+                            <i class="icon user-mail"></i>
+                        </div>
+                        <div class="form-action">
+                            <button class="nuti-button white btn-submit-form" type="button">
+                                <i class="fa fa-spin fa-spinner" style="display: none"></i> Đăng ký
+                            </button>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-xs-12 text-center">
+                                    <a class="sub-action" href="#login" data-dismiss="modal" data-toggle="modal"
+                                       data-target="#login">
+                                        Đã có tài khoản?
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Change password Modal -->
+    <div class="modal nuti-modal fade modal450" id="forgotPw" tabindex="-1" role="dialog"
+         aria-labelledby="nutiModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <i class="icon close-icon"></i>
+                    </button>
+                    <h4 class="modal-title" id="nutiModalLabel">Quên mật khẩu</h4>
+                </div>
+                <div class="modal-body">
+                    <form class="change-password-form" novalidate>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="old-pw" placeholder="Tên đăng nhập *"
+                                   autocomplete="off"
+                                   required>
+                            <i class="icon person-icon"></i>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control" id="new-pw" placeholder="Địa chỉ email *"
+                                   autocomplete="off"
+                                   required>
+                            <i class="icon letter-icon"></i>
+                        </div>
+                        <div class="form-action">
+                            <button class="nuti-button white">Lấy lại mật khẩu</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endif %}

@@ -1,0 +1,9 @@
+core_application_login:
+    path:      /login
+    defaults:  { _controller: AMZUserBundle:Security:login }
+
+core_application_logout:
+    path:      /logout
+
+core_application_login_check:
+    path:      /check-login

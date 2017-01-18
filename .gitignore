@@ -1,0 +1,9 @@
+/web/bundles/
+/app/cache/*
+/app/config/parameters.yml
+/app/logs/*
+/app/phpunit.xml
+/build/
+/.idea/
+/bin/
+/composer.phar

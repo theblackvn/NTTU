@@ -1,0 +1,89 @@
+<div class="col-lg-8 col-md-8 col-sm-6 col-xs-12">
+    <div class="white-box">
+        <div class="row">
+            <div class="col-sm-12 col-xs-12">
+                <div class="form-group">
+                    <label for="post_lang1_title1">Tiêu đề <span class="required-field">*</span></label>
+                    {{ form_widget(form.title) }}
+                    <div class="amz-error">
+                        {{ form_errors(form.title) }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="post_lang1_slug">Slug <span class="required-field">*</span></label>
+                    {{ form_widget(form.slug) }}
+                    <div class="amz-error">
+                        {{ form_errors(form.slug) }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="post_lang1_categories">Danh mục</label>
+                    {{ form_widget(form.categories) }}
+                    <div class="amz-error">
+                        {{ form_errors(form.categories) }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="post_lang1_excerpt1">Giới thiệu ngắn</label>
+                    {{ form_widget(form.excerpt) }}
+                    <div class="amz-error">
+                        {{ form_errors(form.excerpt) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+    <div class="white-box">
+        <div class="row">
+            <div class="col-sm-12 col-xs-12">
+                <div class="form-group">
+                    <label for="product_lang1_isFeatured">Trạng thái</label>
+                    {{ form_widget(form.status) }}
+                    <div class="amz-error">
+                        {{ form_errors(form.status) }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="post_lang1_isFeatured">Hiển thị ở trang chủ</label>
+                    {{ form_widget(form.isFeatured) }}
+                    <div class="amz-error">
+                        {{ form_errors(form.isFeatured) }}
+                    </div>
+                </div>
+
+                {#<div class="form-group">#}
+                    {#<label for="post_lang1_tags">Tag</label>#}
+                    {#{{ form_widget(form.tags) }}#}
+                    {#<div class="amz-error">#}
+                        {#{{ form_errors(form.tags) }}#}
+                    {#</div>#}
+                {#</div>#}
+                <div class="form-group">
+                    <label for="post_lang1_excerpt1">Hình ảnh</label>
+                    {{ form_widget(form.thumbnail) }}
+                    <div>
+                        <img style="margin-top: 4px;" height="117px" title="Nhấn chọn hình khác"
+                             class="image-browser-btn entity-thumbnail-img"
+                             data-hidden-class=".post-thumbnail"
+                             src="{{ asset('backend/assets/img/browser.png') }}"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-sm-12 col-xs-12">
+    <div class="white-box">
+        <div class="row">
+            <div class="col-sm-12 col-xs-12">
+                <div class="form-group">
+                    <label for="post_lang1_content1">Nội dung</label>
+                    {{ form_widget(form.content) }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{#{ include('AMZBackendBundle:Default:seo.html.twig') }#}

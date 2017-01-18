@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('backend') }}/plugins/images/favicon.png">
+    <title>Trường Đại Học Nguyễn Tất Thành | Admin Panel</title>
+    {% stylesheets
+    'backend/assets/bootstrap/dist/css/bootstrap.min.css'
+    'backend/plugins/bower_components/sidebar-nav/dist/sidebar-nav.min.css'
+    'backend/plugins/bower_components/toast-master/css/jquery.toast.css'
+    'backend/plugins/bower_components/morrisjs/morris.css'
+    'backend/plugins/bower_components/bootstrap-datepicker/bootstrap-datepicker.min.css'
+    'backend/plugins/bower_components/custom-select/custom-select.css'
+    'backend/plugins/bower_components/bootstrap-select/bootstrap-select.min.css'
+    'backend/plugins/bower_components/multiselect/css/multi-select.css'
+    'backend/plugins/bower_components/fancybox/jquery.fancybox.css'
+    'backend/plugins/bower_components/bootstrap-datepicker/bootstrap-datepicker.min.css'
+    'backend/assets/css/animate.css'
+    filter='?uglifycss' filter='cssrewrite' %}
+    <link rel="stylesheet" href="{{ asset_url }}"/>
+    {% endstylesheets %}
+    <link href="{{ asset('backend') }}/assets/css/style.css" rel="stylesheet">
+    <link href="{{ asset('backend') }}/assets/css/colors/default.css" rel="stylesheet">
+    <link href="{{ asset('backend') }}/assets/css/modify.css" rel="stylesheet">
+    <script>
+        var amz_domain = '{{ domain }}';
+        var amz_root_link = '{{ rootLink }}';
+    </script>
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<!-- Preloader -->
+<div class="preloader">
+    <div class="cssload-speeding-wheel"></div>
+</div>
+<div id="wrapper">
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-static-top m-b-0">
+        <div class="navbar-header"><a class="navbar-toggle hidden-sm hidden-md hidden-lg " href="javascript:void(0)"
+                                      data-toggle="collapse" data-target=".navbar-collapse"><i class="ti-menu"></i></a>
+            <div class="top-left-part"><a class="logo" href="{{ url('amz_dashboard') }}"><b><!--This is dark logo icon-->
+                        <img
+                                src="{{ asset('upload/images/logo_ntt.png') }}" alt="home"
+                                class="dark-logo"/>
+                    </b><span class="hidden-xs"><!--This is dark logo text-->
+                        <img
+                                src="{{ asset('upload/images/logo_ntt.png') }}" alt="home" style="width: 200px;" />
+                    </span></a></div>
+            <ul class="nav navbar-top-links navbar-left hidden-xs">
+                <li><a href="javascript:void(0)" class="open-close hidden-xs waves-effect waves-light"><i
+                                class="icon-arrow-left-circle ti-menu"></i></a></li>
+            </ul>
+        </div>
+        <!-- /.navbar-header -->
+        <!-- /.navbar-top-links -->
+        <!-- /.navbar-static-side -->
+    </nav>
+    <!-- Left navbar-header -->
+    {{ include('_backend-left-nav.html.twig') }}
+    <!-- Left navbar-header end -->
+
+    <div id="page-wrapper">
+        {% block content %}{% endblock %}
+        <footer class="footer text-center"> 2016 &copy NTTU</footer>
+    </div>
+</div>
+<!-- /#wrapper -->
+<!-- jQuery -->
+{% javascripts
+'backend/plugins/bower_components/jquery/dist/jquery.min.js'
+'backend/assets/bootstrap/dist/js/bootstrap.min.js'
+'backend/plugins/bower_components/sidebar-nav/dist/sidebar-nav.min.js'
+'backend/assets/js/jquery.slimscroll.js'
+'backend/assets/js/waves.js'
+'backend/plugins/bower_components/waypoints/lib/jquery.waypoints.js'
+'backend/plugins/bower_components/counterup/jquery.counterup.min.js'
+'backend/plugins/bower_components/raphael/raphael-min.js'
+'backend/assets/js/custom.min.js'
+'backend/plugins/bower_components/jquery-sparkline/jquery.sparkline.min.js'
+'backend/plugins/bower_components/jquery-sparkline/jquery.charts-sparkline.js'
+'backend/plugins/bower_components/custom-select/custom-select.min.js'
+'backend/plugins/bower_components/bootstrap-select/bootstrap-select.min.js'
+'backend/plugins/bower_components/multiselect/js/jquery.multi-select.js'
+'backend/plugins/bower_components/fancybox/jquery.fancybox.js'
+'backend/plugins/bower_components/bootstrap-datepicker/bootstrap-datepicker.min.js'
+'backend/assets/js/dashboard1.js'
+filter='?uglifyjs2' %}
+<script src="{{ asset_url }}"></script>
+{% endjavascripts %}
+<script src="{{ asset('backend/plugins/bower_components/cke-editor/ckeditor.js') }}"></script>
+<script src="{{ asset('backend/plugins/bower_components/cke-editor/adapters/jquery.js') }}"></script>
+{% block theme_js_files %}{% endblock %}
+<script src="{{ asset('backend/assets/js/modify.js') }}"></script>
+</body>
+</html>

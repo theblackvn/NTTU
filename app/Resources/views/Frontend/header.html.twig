@@ -1,0 +1,116 @@
+<header class="header">
+    <div class="login">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-10 col-sm-offset-2">
+                    <div class="row">
+                        <div class="col-sm-4 col-xs-8">
+                            <div class="hotline">
+                                <h4 class="title-hotline">HOTLINE</h4>
+                                <h3 class="phone-number">(08) 38 255 777</h3>
+                            </div>
+                        </div>
+                        <div class="col-sm-8 col-xs-4">
+                            <ul class="user-action">
+                                <li><a href="#"><span><i class="ion-ios-search-strong"></i></span></a></li>
+                                {% if app.user is not empty %}
+                                    {% if is_granted('ROLE_USER') %}
+                                        <li>
+                                            <a href="{{ url('application_profile_index') }}"><span>{{ app.user.fullName }}</span></a>
+                                        </li>
+                                    {% else %}
+                                        <li>
+                                            <a><span>{{ app.user.fullName }}</span></a>
+                                        </li>
+                                    {% endif %}
+                                    <li><a href="{{ path('application_logout') }}"><span>Thoát</span></a></li>
+                                {% else %}
+                                    <li><a href="#" data-toggle="modal" data-target="#register"><span>Đăng Ký</span></a>
+                                    </li>
+                                    <li><a href="#" data-toggle="modal" data-target="#login">
+                                            <span>Đăng Nhập</span>
+                                            {#<span class="login-icon"><i class=" ion-social-facebook"></i></span>#}
+                                        </a></li>
+                                {% endif %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <nav class="navigation">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-2 col-xs-6">
+                    <a href="{{ path('application_homepage') }}" class="brand"
+                       style="background-image: url({{ asset('frontend/') }}images/logo.png)"></a>
+                </div>
+                <div class="col-sm-10 col-sm-offset-2">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed nav-icon" data-toggle="collapse"
+                                data-target="#navigation-bar" aria-expanded="false">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </button>
+                    </div>
+                    <div class="collapse navbar-collapse no-padding" id="navigation-bar">
+                        <ul class="navigation-header">
+                            <li>
+                                <a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><span>Tình trạng dinh dưỡng</span>
+                                    <i class="ion-chevron-down"></i></a>
+                                <ul class="dropDown-navigation" aria-labelledby="menu1">
+                                    <li><a href="{{ url('application_user_profile_0_5') }}">Trẻ 0-5 tuổi</a></li>
+                                    <li><a href="{{ url('application_user_profile_5_19') }}">Trẻ 5-19 tuổi</a></li>
+                                    <li><a href="{{ url('application_user_profile_over_19') }}">Trên 19 tuổi</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><span>Kỹ thuật cân đo</span>
+                                    <i class="ion-chevron-down"></i></a>
+                                <ul class="dropDown-navigation" aria-labelledby="menu1">
+                                    <li>
+                                        <a href="{{ url('application_page_detail',{'slug':'ky-thuat-can'}) }}">{{ "Kỹ thuật cân" | raw }}</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ url('application_page_detail',{'slug':'ky-thuat-do-chieu-cao'}) }}">{{ "Kỹ thuật đo chiều cao" | raw }}</a>
+                                    </li>
+
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="{{ url('application_post_category',{category_slug:'ban-tin'}) }}"><span>Bản tin</span></a>
+                            </li>
+                            <li><a href="http://www.nutifood.com.vn/vi/cam-nang-dinh-duong-cho-be.html" target="_blank"><span>Cẩm nang dinh dưỡng</span></a>
+                            </li>
+                            <li><a href="{{ url('application_for_school_index') }}"><span>Cho trường học</span>
+                                    {#<i class="ion-chevron-down"></i>#}
+                                </a>
+                                {#{% if is_granted('ROLE_PRINCIPAL') %}#}
+                                {#<ul class="dropDown-navigation" aria-labelledby="menu1">#}
+                                {#<li><a data-toggle="modal"#}
+                                {#data-target="#addClassModal">{{ "Tạo lớp" }}</a></li>#}
+                                {#</ul>#}
+                                {#{% endif %}#}
+                            </li>
+                            {% if is_granted('ROLE_DOCTOR') %}
+                            <li>
+                                <a href="{{ url('application_statistic_index') }}"><span>Cho nhân viên y tế</span></a>
+                                {#<ul class="dropDown-navigation" aria-labelledby="menu1">#}
+                                {#<li><a href="#">{{ "Báo cáo" | raw }}</a></li>#}
+                                {#<li><a href="{{ url('application_statistic_index') }}">{{ "Thống kê" | raw }}</a></li>#}
+
+                                {#</ul>#}
+                            </li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>

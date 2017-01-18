@@ -1,0 +1,23 @@
+amz_profile:
+    resource: "@AMZProfileBundle/Resources/config/routing.yml"
+    prefix:   /admin
+
+amz_user:
+    resource: "@AMZUserBundle/Resources/config/routing.yml"
+    prefix:   /admin
+
+amz_post:
+    resource: "@AMZPostBundle/Resources/config/routing.yml"
+    prefix:   /admin
+
+amz_backend:
+    resource: "@AMZBackendBundle/Resources/config/routing.yml"
+    prefix:   /admin
+
+amz_slider:
+    resource: "@AMZSliderBundle/Resources/config/routing.yml"
+    prefix:   /admin
+
+amz_application:
+    resource: "@AppBundle/Resources/config/routing.yml"
+    prefix:   /

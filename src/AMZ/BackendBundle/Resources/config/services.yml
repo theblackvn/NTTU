@@ -1,0 +1,33 @@
+services:
+    amz_db.service.query:
+        class: AMZ\BackendBundle\Service\DBQueryService
+        arguments: ['@doctrine.orm.entity_manager', '@knp_paginator', "@security.token_storage"]
+
+    amz_option.service:
+        class: AMZ\BackendBundle\Service\OptionService
+        arguments: ['@doctrine.orm.entity_manager', '@knp_paginator']
+
+    amz.validate:
+        class: AMZ\BackendBundle\Service\ValidateService
+        arguments: ['@validator']
+
+    application.excel.export:
+        class: AMZ\BackendBundle\Service\ExportExcel
+        arguments: ['@phpexcel']
+
+    application.excel.import:
+        class: AMZ\BackendBundle\Service\ImportExcel
+
+    amz.twig_extension:
+        class: AMZ\BackendBundle\Twig\AMZExtension
+        public: false
+        arguments: []
+        tags:
+            - { name: twig.extension }
+
+    amz_configuration.twig_extension:
+        class: AMZ\BackendBundle\Twig\OptionExtension
+        public: false
+        arguments: ["@amz_db.service.query"]
+        tags:
+            - { name: twig.extension }

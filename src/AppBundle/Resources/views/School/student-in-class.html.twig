@@ -1,0 +1,282 @@
+{% extends '::frontend.html.twig' %}
+
+{% block body %}
+    <section id="nuti-school" xmlns="http://www.w3.org/1999/html">
+        {{ include('@App/School/_header.html.twig') }}
+        <div class="school-body">
+            <div class="container">
+                <div class="row">
+                    <h1 class="student-list-title clearfix" style="margin-bottom: 20px; font-size: 18px;">
+                        DANH SÁCH HỌC SINH -
+                        {{ class.name | upper }} ({{ class.schoolYear.name }})
+                        <div class="pull-right">
+                            <button type="button" class="nuti-button" data-toggle="modal"
+                                    data-target="#addOneStudentModal">Thêm HS
+                            </button>
+                        </div>
+                    </h1>
+                    {% for flash_message in app.session.flashBag.get('notice') %}
+                        <div class="alert alert-success" role="alert">
+                            <strong>Thành công!</strong> {{ flash_message }}
+                        </div>
+                    {% endfor %}
+                    {% for flash_message in app.session.flashBag.get('error-no-item-imported') %}
+                        <div class="alert alert-warning" role="alert">
+                            <strong>Thông báo!</strong> {{ flash_message }}
+                        </div>
+                    {% endfor %}
+                    <div class="school-table">
+                        <table class="table table-bordered">
+                            <thead>
+                            <tr>
+                                <th class="text-left">Mã HS</th>
+                                <th class="text-left">Họ tên</th>
+                                <th class="text-left">Giới tính</th>
+                                <th class="text-right">Ngày sinh</th>
+                                <th>Thao tác</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for item in class.profiles %}
+                                <tr>
+                                    <td class="text-left">{{ item.profileId }}</td>
+                                    <td class="text-left">{{ item.name }}</td>
+                                    <td class="text-left">
+                                        {% if item.gender == constant('\\AMZ\\ProfileBundle\\Entity\\Profile::GENDER_MALE') %}
+                                            Nam
+                                        {% else %}
+                                            Nữ
+                                        {% endif %}
+                                    </td>
+                                    <td class="text-right">{{ item.dateOfBirth|date('d-m-Y') }}</td>
+                                    <td>
+                                        <div class="dropdown">
+                                            <button id="openAct1" class="dropdown-btn" type="button"
+                                                    data-toggle="dropdown" aria-haspopup="true"
+                                                    aria-expanded="false">
+                                                <i class="icon more-icon"></i>
+                                            </button>
+                                            <ul class="dropdown-menu" aria-labelledby="openAct1">
+                                                <li><a class="edit-student-in-class"
+                                                       data-url="{{ path('application_for_school_editStudent', {'id': class.id, 'profileId': item.id}) }}">Chỉnh
+                                                        sửa</a></li>
+                                                <li>
+                                                    <a href="{{ path('application_for_school_deleteStudentInClass', {'id': class.id, 'profileId': item.profileId}) }}"
+                                                       onclick="return confirm('Bạn chắc muốn xóa học sinh này ra khỏi lớp ?');">
+                                                        Xóa
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                            {% else %}
+                                <tr>
+                                    <td colspan="5">Không có dữ liệu</td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {% set school = current_school() %}
+    <div class="modal nuti-modal school-modal fade modal400" id="addOneStudentModal" tabindex="-1" role="dialog"
+         aria-labelledby="nutiModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <i class="icon close-icon"></i>
+                    </button>
+                    <h4 class="modal-title" id="nutiModalLabel">Thêm HS</h4>
+                </div>
+                <div class="modal-body">
+                    <form action="{{ path('application_for_school_ajax_addOneStudentToClass') }}" class="add-one-student-to-class-form"
+                          method="post" novalidate>
+                        <input type="hidden" name="class" value="{{ class.id }}" />
+                        <div class="alert alert-danger" role="alert" style="display: none;">
+                            <strong>Lỗi!</strong> <span class="error-msg"></span>
+                        </div>
+                        <div class="form-group">
+                            <div class="s-name">
+                                <div class="avatar"
+                                     style="background-image: url('{{ asset('frontend/') }}images/av.png')"></div>
+                                <div class="name">{{ school.name }}</div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control"
+                                   value="{{ class.name | upper }} ({{ class.schoolYear.name }})"
+                                   readonly>
+                        </div>
+                        <div class="form-group">
+                            <input id="student-code" name="code" type="text" class="form-control"
+                                   placeholder="Mã học sinh">
+                        </div>
+                        <div class="form-group">
+                            <input name="name" type="text" class="form-control student-name"
+                                   placeholder="Tên học sinh"
+                                   autocomplete="off" required>
+                        </div>
+                        <div class="form-group">
+                            <input id="student-dateOfBirth" value="{{ 'now' | date('d/m/Y') }}" name="dateOfBirth" type="text" class="form-control student-date-of-birth"
+                                   placeholder="Ngày sinh"
+                                   autocomplete="off" required>
+                        </div>
+                        <div class="form-group">
+                            <select name="gender" class="chosen student-gender" data-placeholder="Giới tính" style="width:100%;"
+                                    tabindex="1">
+                                {% set male = constant('\\AMZ\\ProfileBundle\\Entity\\Profile::GENDER_MALE') %}
+                                {% set female = constant('\\AMZ\\ProfileBundle\\Entity\\Profile::GENDER_FEMALE') %}
+                                <option value="{{ male }}">Nam</option>
+                                <option value="{{ female }}">Nữ</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <input name="address" type="text" class="form-control student-address"
+                                   placeholder="Địa chỉ"
+                                   autocomplete="off" required>
+                        </div>
+                        <div class="form-group">
+                            <input name="email" type="text" class="form-control student-email"
+                                   placeholder="Email"
+                                   autocomplete="off" required>
+                        </div>
+                        <div class="form-group">
+                            <input name="phone" type="text" class="form-control student-phone"
+                                   placeholder="Điện thoại"
+                                   autocomplete="off" required>
+                        </div>
+
+                        <div class="form-action">
+                            <button class="nuti-button white btn-submit-form" type="button">
+                                <i class="fa fa-spin fa-spinner" style="display: none"></i> Thêm vào lớp
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal nuti-modal school-modal fade modal400" id="confirmAddOneStudentModal" tabindex="-1" role="dialog"
+         aria-labelledby="nutiModalLabel">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <i class="icon close-icon"></i>
+                    </button>
+                    <h4 class="modal-title" id="nutiModalLabel">Thêm HS - Xác nhận</h4>
+                </div>
+                <div class="modal-body">
+                    <strong>Thành công!</strong>
+                    Đã thêm học sinh vào lớp
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block css_script %}
+    <style>
+        .ui-menu.ui-widget.ui-widget-content.ui-autocomplete.ui-front {
+            z-index: 9999;
+        }
+    </style>
+{% endblock %}
+
+{% block js_script %}
+    <script>
+        var currentClass = {{ class.id }};
+        $(document).ready(function () {
+            $('#student-code').focusout(function () {
+                var value = $("#student-code").val();
+                if ('' == value) {
+                    $('#addOneStudentModal').find('.student-name').val('').attr('readonly', false);
+                    $('#addOneStudentModal').find('.student-address').val('').attr('readonly', false);
+                    $('#addOneStudentModal').find('.student-phone').val('').attr('readonly', false);
+                    $('#addOneStudentModal').find('.student-email').val('').attr('readonly', false);
+                    $('#addOneStudentModal').find('.student-date-of-birth').val('').attr({'readonly': false, 'disabled': false});
+                    $('#addOneStudentModal').find('.student-gender').val(1).attr({'readonly': false, 'disabled': false});
+                    $('.chosen').trigger('chosen:updated');
+                }
+            });
+            $('#addOneStudentModal').on('shown.bs.modal', function (e) {
+                $(".chosen").chosen();
+                $('#addOneStudentModal').find('#student-code').val('');
+                $('#addOneStudentModal').find('.student-name').val('').attr('readonly', false);
+                $('#addOneStudentModal').find('.student-address').val('').attr('readonly', false);
+                $('#addOneStudentModal').find('.student-phone').val('').attr('readonly', false);
+                $('#addOneStudentModal').find('.student-email').val('').attr('readonly', false);
+                $('#addOneStudentModal').find('.student-gender').val(1).attr({'readonly': false, 'disabled': false});
+                $('.chosen').trigger('chosen:updated');
+                $('#student-dateOfBirth').datepicker({
+                    format: "dd/mm/yyyy",
+                    endDate: "-1d",
+                });
+                $("#student-code").autocomplete({
+                    source: function (request, response) {
+                        $.ajax({
+                            url: '{{ path('application_for_school_ajax_listAllProfiles') }}',
+                            data: {value: $("#student-code").val(), currentClass: currentClass}
+                        }).success(function (data) {
+                            data = $.parseJSON(data);
+                            if (0 == data.length) {
+                                $('#addOneStudentModal').find('.student-name').val('').attr('readonly', false);
+                                $('#addOneStudentModal').find('.student-address').val('').attr('readonly', false);
+                                $('#addOneStudentModal').find('.student-phone').val('').attr('readonly', false);
+                                $('#addOneStudentModal').find('.student-email').val('').attr('readonly', false);
+                                $('#addOneStudentModal').find('.student-date-of-birth').val('').attr({'readonly': false, 'disabled': false});
+                                $('#addOneStudentModal').find('.student-gender').val(1).attr({'readonly': false, 'disabled': false});
+                                $('.chosen').trigger('chosen:updated');
+                            }
+                            response(data);
+                        }).fail(function () {
+                        });
+                    },
+                    select: function (event, ui) {
+                        $.ajax({
+                            url: '{{ path('application_for_school_ajax_loadProfile') }}',
+                            data: {value: ui.item.value, currentClass: currentClass}
+                        }).success(function (data) {
+                            data = $.parseJSON(data);
+                            $('#addOneStudentModal').find('.student-name').val(data.name).attr('readonly', true);
+                            $('#addOneStudentModal').find('.student-address').val(data.address).attr('readonly', true);
+                            $('#addOneStudentModal').find('.student-phone').val(data.phone).attr('readonly', true);
+                            $('#addOneStudentModal').find('.student-email').val(data.email).attr('readonly', true);
+                            $('#addOneStudentModal').find('.student-date-of-birth').val(data.dateOfBirth).attr({'readonly': true, 'disabled': true});
+                            $('#addOneStudentModal').find('.student-gender').val(data.gender).attr({'readonly': true, 'disabled': true});
+                            $('.chosen').trigger('chosen:updated');
+                        }).fail(function () {
+                        });
+                    },
+                });
+            });
+            $('#addOneStudentModal').on('click', '.btn-submit-form', function () {
+                var own = $(this);
+                own.find('i').show();
+                var frm = $('.add-one-student-to-class-form');
+                frm.ajaxSubmit({
+                    success: function (result) {
+                        $('#addOneStudentModal').modal('hide');
+                        $('#confirmAddOneStudentModal').modal('show');
+                    },
+                    error: function (jqXHR) {
+                        own.find('i').hide();
+                        var data = jqXHR.responseText;
+                        data = $.parseJSON(data);
+                        frm.find('.alert.alert-danger').show();
+                        frm.find('.alert.alert-danger .error-msg').text(data.message);
+                    }
+                });
+            });
+            $('#confirmAddOneStudentModal').on('hidden.bs.modal', function (e) {
+                window.location.href = '{{ path('application_for_school_studentInClass', {'id': class.id}) }}';
+            });
+        });
+    </script>
+{% endblock %}

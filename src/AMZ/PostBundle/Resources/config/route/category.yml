@@ -1,0 +1,15 @@
+amz_post_category_homepage:
+    path:     /
+    defaults: { _controller: AMZPostBundle:Category:index }
+
+amz_post_category_create:
+    path:     /create
+    defaults: { _controller: AMZPostBundle:Category:create }
+
+amz_post_category_edit:
+    path:     /{id}/edit
+    defaults: { _controller: AMZPostBundle:Category:edit }
+
+amz_post_category_delete:
+    path:     /{id}/delete
+    defaults: { _controller: AMZPostBundle:Category:delete }

@@ -1,0 +1,35 @@
+<div class="col-lg-8 col-md-8 col-sm-6 col-xs-12">
+    <div class="white-box">
+        <div class="row">
+            <div class="col-sm-12 col-xs-12">
+                <div class="form-group">
+                    <label for="post_lang1_title1">Tiêu đề <span class="required-field">*</span></label>
+                    {{ form_widget(form.name) }}
+                    <div class="amz-error">
+                        {{ form_errors(form.name) }}
+                    </div>
+                </div>
+                {% if 'image' != entity.type %}
+                    <div class="form-group">
+                        <label for="post_lang1_excerpt1">Nội dung</label>
+                        {{ form_widget(form.value) }}
+                        <div class="amz-error">
+                            {{ form_errors(form.value) }}
+                        </div>
+                    </div>
+                {% else %}
+                    <div class="form-group">
+                        <label for="post_lang1_excerpt1">Nội dung</label>
+                        {{ form_widget(form.value) }}
+                        <div>
+                            <img style="margin-top: 4px;" height="117px" title="Nhấn chọn hình khác"
+                                 class="image-browser-btn entity-thumbnail-img"
+                                 data-hidden-class=".post-thumbnail"
+                                 src="{{ asset('backend/assets/img/browser.png') }}"/>
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,197 @@
+{% extends '::frontend.html.twig' %}
+
+{% block body %}
+    <!-- slider -->
+    {#{{ include('@App/Default/Index/header-banner.html.twig') }}#}
+
+
+    <div class="d-md-flex section mt-4">
+        <div class="col-md-9">
+            <h2 class="heading-2">Bảng tin NTTU</h2>
+            <div class="row">
+                {% for it in itNews %}
+                <article class="col-md-4 col-sm-6 post-home">
+                    <a class="thumbnail" href="03_detail.html">
+                        <img src="{{ asset(it.thumbnail) }}" alt="">
+                    </a>
+                    <a href="03_detail.html" class="title">{{ it.title|raw }}</a>
+                    <div class="content">
+                        <p>{{ it.excerpt }}</p>
+                    </div>
+                </article>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="col-md-3">
+            <h2 class="heading-2">Media</h2>
+            <article class="post-video border">
+                <video src="#" controls="controls"></video>
+                <div class="description">
+                    <p>NTTU - Nhằm tạo điều kiện cho các học viên cao học theo ngành ...</p>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <div class="row m-0 section mt-4">
+        <article class="col-md-3 col-sm-6 mb-4">
+            <div class="post-home border have-link">
+                <a class="thumbnail" href="03_detail.html">
+                    <img src="{{ asset('frontend/images/post_4.jpg') }}" alt="">
+                </a>
+                <div class="content p-3">
+                    <p>NTTU - Nhằm tạo điều kiện cho các học viên cao học theo ngành công nghệ Thông tin!</p>
+                </div>
+                <a href="03_detail.html" class="link blue"><i class="fa fa-chevron-circle-right mr-1" aria-hidden="true"></i>Đăng ký</a>
+            </div>
+        </article>
+        <article class="col-md-3 col-sm-6 post-home">
+            <a class="thumbnail" href="03_detail.html">
+                <img src="{{ asset('frontend/images/post_5.jpg') }}" alt="">
+                <!-- <span>
+                    <span>
+                        <b>BẬC</b> SAU ĐẠI HỌC
+                    </span>
+                    <span>Đào tạo theo tiêu chuẩn QS-Star</span>
+                </span> -->
+            </a>
+            <a href="03_detail.html" class="title">NTTU tuyển sinh Thạc sĩ CNTT khóa #K27</a>
+            <div class="content p-1">
+                <p>Nhằm tạo điều kiện cho các học viên cao học theo ngành công nghệ Thông tin, Ban Giám hiệu trường ...</p>
+            </div>
+        </article>
+        <article class="col-md-3 col-sm-6 post-home">
+            <a class="thumbnail" href="03_detail.html">
+                <img src="{{ asset('frontend/images/post_6.jpg') }}" alt="">
+            </a>
+            <a href="03_detail.html" class="title">NTTU tuyển sinh Thạc sĩ CNTT khóa #K27</a>
+            <div class="content p-1">
+                <p>Nhằm tạo điều kiện cho các học viên cao học theo ngành công nghệ Thông tin, Ban Giám hiệu trường ...</p>
+            </div>
+        </article>
+        <article class="col-md-3 col-sm-6 post-home">
+            <a class="thumbnail" href="03_detail.html">
+                <img src="{{ asset('frontend/images/post_7.jpg') }}" alt="">
+            </a>
+            <a href="03_detail.html" class="title">NTTU tuyển sinh Thạc sĩ CNTT khóa #K27</a>
+            <div class="content p-1">
+                <p>Nhằm tạo điều kiện cho các học viên cao học theo ngành công nghệ Thông tin, Ban Giám hiệu trường ...</p>
+            </div>
+        </article>
+    </div>
+
+    <div class="section sub-slider col-12">
+        <div class="multi-slide">
+            <div class="slide d-flex align-items-center justify-content-center" style="background-image: url(dist/images/slide_4.jpg)">
+                <div class="caption text-center">
+                    <ul class="highlight pl-0">
+                        <li class="fa fa-star" aria-hidden="true"></li>
+                        <li class="fa fa-star" aria-hidden="true"></li>
+                        <li class="fa fa-star" aria-hidden="true"></li>
+                    </ul>
+                    <p class="line">Theo tiêu chuẩn Quốc tế QS-Star</p>
+                </div>
+            </div>
+            <div class="slide d-flex align-items-center justify-content-center" style="background-image: url(dist/images/slide_5.jpg)">
+                <div class="caption text-center">
+                    <p class="highlight">62%</p>
+                    <p class="line">CB, GV, CNV có trình độ GS., PGS., TS., ThS</p>
+                </div>
+            </div>
+            <div class="slide d-flex align-items-center justify-content-center" style="background-image: url(dist/images/slide_6.jpg)">
+                <div class="caption text-center">
+                    <p class="highlight">26.000</p>
+                    <p class="line">Sinh viên đang theo học tại trường</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section d-md-flex border-top pt-4">
+        <div class="col-lg-8">
+            <div class="row">
+                <article class="col-sm-6 post-home">
+                    <h2 class="heading-2"><a href="02_subpage.html">Hợp tác doanh nghiệp</a></h2>
+                    <a class="thumbnail large" href="03_detail.html">
+                        <img src="{{ asset('frontend/images/post_8.jpg') }}" alt="">
+                    </a>
+                    <a href="03_detail.html" class="title">ĐH Nguyễn Tất Thành và ĐH Sư phạm Kỹ thuật hợp tác đào tạo nguồn nhân lực</a>
+                    <div class="content">
+                        <p>NTTU - Với mục đích bổ sung và nâng cao kiến thức khoa học Công nghệ Thông tin và trang bị những kiến thức cơ bản phục vụ cho công việc nghiên cứu khoa học, tạo tiền đề cho nghiên cứu sinh tiến sĩ ...</p>
+                    </div>
+                </article>
+                <article class="col-sm-6 post-home">
+                    <h2 class="heading-2"><a href="02_subpage.html">Môi trường học tập</a></h2>
+                    <a class="thumbnail large" href="03_detail.html">
+                        <img src="{{ asset('frontend/images/post_9.jpg') }}" alt="">
+                    </a>
+                    <a href="03_detail.html" class="title">ĐH Nguyễn Tất Thành và ĐH Sư phạm Kỹ thuật hợp tác đào tạo nguồn nhân lực</a>
+                    <div class="content">
+                        <p>NTTU - Với mục đích bổ sung và nâng cao kiến thức khoa học Công nghệ Thông tin và trang bị những kiến thức cơ bản phục vụ cho công việc nghiên cứu khoa học, tạo tiền đề cho nghiên cứu sinh tiến sĩ ...</p>
+                    </div>
+                </article>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <h2 class="heading-2"><a href="02_subpage.html">Sự kiện nổi bật</a></h2>
+            <ul class="list-unstyled">
+                <li class="media event">
+                    <div class="d-flex align-items-center mr-3 thumb c-white">
+						<span class="inner text-center w-100">
+							DEC<br>
+							<b>28</b>
+						</span>
+                    </div>
+                    <div class="media-body">
+                        <h5 class="title mt-0"><a href="03_detail.html">Lễ phát động sinh viên góp một quyển sách ...</a></h5>
+                        <ul class="breadcrumb mb-0 bgm-white">
+                            <li class="breadcrumb-item col-xs-auto time">
+                                <i class="fa fa-clock-o mr-2" aria-hidden="true"></i>9:30AM
+                            </li>
+                            <li class="breadcrumb-item col-xs-auto">Hội trường chính</li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="media event">
+                    <div class="d-flex align-items-center mr-3 thumb c-white">
+						<span class="inner text-center w-100">
+							DEC<br>
+							<b>28</b>
+						</span>
+                    </div>
+                    <div class="media-body">
+                        <h5 class="title mt-0"><a href="03_detail.html">Lễ phát động sinh viên góp một quyển sách ...</a></h5>
+                        <ul class="breadcrumb mb-0 bgm-white">
+                            <li class="breadcrumb-item col-xs-auto time">
+                                <i class="fa fa-clock-o mr-2" aria-hidden="true"></i>9:30AM
+                            </li>
+                            <li class="breadcrumb-item col-xs-auto">Hội trường chính</li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="media event">
+                    <div class="d-flex align-items-center mr-3 thumb c-white">
+						<span class="inner text-center w-100">
+							DEC<br>
+							<b>28</b>
+						</span>
+                    </div>
+                    <div class="media-body">
+                        <h5 class="title mt-0"><a href="03_detail.html">Lễ phát động sinh viên góp một quyển sách ...</a></h5>
+                        <ul class="breadcrumb mb-0 bgm-white">
+                            <li class="breadcrumb-item col-xs-auto time">
+                                <i class="fa fa-clock-o mr-2" aria-hidden="true"></i>9:30AM
+                            </li>
+                            <li class="breadcrumb-item col-xs-auto">Hội trường chính</li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    {#{{ include('@App/Default/Index/nuti-feature.html.twig') }}#}
+    {#{{ include('@App/Default/Index/hot-handbooks.html.twig') }}#}
+    {#{{ include('@App/Default/Index/nuti-gallery.html.twig') }}#}
+
+{% endblock %}

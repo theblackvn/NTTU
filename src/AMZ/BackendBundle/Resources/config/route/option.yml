@@ -1,0 +1,7 @@
+amz_option_homepage:
+    path:     /
+    defaults: { _controller: AMZBackendBundle:Option:index }
+
+amz_option_edit:
+    path:     /{id}/edit
+    defaults: { _controller: AMZBackendBundle:Option:edit }

@@ -1,0 +1,16 @@
+amz_personal_user_index:
+    path:      /
+    defaults:  { _controller: AMZUserBundle:PersonalUser:index }
+    methods: [GET]
+
+amz_personal_user_create:
+    path:      /create
+    defaults:  { _controller: AMZUserBundle:PersonalUser:create }
+
+amz_personal_user_edit:
+    path:      /{id}/edit
+    defaults:  { _controller: AMZUserBundle:PersonalUser:edit }
+
+amz_personal_user_delete:
+    path:      /{id}/delete
+    defaults:  { _controller: AMZUserBundle:PersonalUser:delete }

@@ -1,0 +1,99 @@
+application_for_school_index:
+    path:     /
+    defaults: { _controller: AppBundle:School:index }
+
+application_for_school_export:
+    path:     /xuat-danh-sach
+    defaults: { _controller: AppBundle:School:export }
+
+application_for_school_heightWeightHistory:
+    path:     /lich-su-can-do-{profileId}
+    defaults: { _controller: AppBundle:School:heightWeightHistory }
+
+application_for_school_ajax_listAllProfiles:
+    path:     /load-all-profiles
+    defaults: { _controller: AppBundle:School:ajaxLoadAllProfiles }
+
+application_for_school_ajax_addOneStudentToClass:
+    path:     /add-one-student-to-class
+    defaults: { _controller: AppBundle:School:ajaxAddOneStudentToClass }
+
+application_for_school_ajax_loadProfile:
+    path:     /load-profile
+    defaults: { _controller: AppBundle:School:ajaxLoadProfile }
+
+application_for_school_ajax_loadClassByYear:
+    path:     /load-classes-by-year
+    defaults: { _controller: AppBundle:School:ajaxLoadClassByYear }
+
+application_for_school_ajax_import_profile_to_class_step1:
+    path:     /import-profile-to-class/step-1
+    defaults: { _controller: AppBundle:School:importProfileToClassStep1 }
+
+application_for_school_ajax_import_profile_to_class_stepComplete:
+    path:     /import-profile-to-class/step-complete
+    defaults: { _controller: AppBundle:School:importProfileToClassStepComplete }
+
+application_for_school_ajax_import_height_weight_step1:
+    path:     /import-height-weight-to-class/step-1
+    defaults: { _controller: AppBundle:School:importHeightWeightToProfileStep1 }
+
+application_for_school_ajax_import_height_weight_stepComplete:
+    path:     /import-height-weight-to-class/step-complete
+    defaults: { _controller: AppBundle:School:importHeightWeightToProfileStepComplete }
+
+application_for_school_heightWeightList:
+    path:     /danh-sach-hoc-sinh-can-do
+    defaults: { _controller: AppBundle:School:heightWeightList }
+
+application_for_school_classList:
+    path:     /danh-sach-lop
+    defaults: { _controller: AppBundle:School:classList }
+
+application_for_school_deleteClass:
+    path:     /danh-sach-lop/xoa-lop-{id}
+    defaults: { _controller: AppBundle:School:deleteClass }
+
+application_for_school_editClass:
+    path:     /danh-sach-lop/chinh-sua-lop-{id}
+    defaults: { _controller: AppBundle:School:editClass }
+
+application_for_school_exportHeightWeightStandardFile:
+    path:     /danh-sach-lop/xuat-file-can-do-{id}
+    defaults: { _controller: AppBundle:School:exportHeightWeightStandardFile }
+
+application_for_school_doEditClass:
+    path:     /danh-sach-lop/chinh-sua-lop-{id}/thuc-hien-thay-dioi
+    defaults: { _controller: AppBundle:School:doEditClass }
+
+application_for_school_addClass:
+    path:     /danh-sach-lop/them-lop
+    defaults: { _controller: AppBundle:School:addClass }
+
+application_for_school_studentInClass:
+    path:     /danh-sach-hoc-sinh-{id}
+    defaults: { _controller: AppBundle:School:studentInClass }
+
+application_for_school_editStudent:
+    path:     /danh-sach-hoc-sinh-{id}/chinh-sua-hoc-sinh-{profileId}
+    defaults: { _controller: AppBundle:School:editStudent }
+
+application_for_school_doEditStudent:
+    path:     /danh-sach-hoc-sinh-{id}/chinh-sua-hoc-sinh-{profileId}/thuc-hien
+    defaults: { _controller: AppBundle:School:doEditStudent }
+
+application_for_school_deleteStudentInClass:
+    path:     /danh-sach-hoc-sinh-{id}/xoa-hoc-sinh-{profileId}
+    defaults: { _controller: AppBundle:School:deleteStudentInClass }
+
+application_for_school_ajax_add_bmi_profile:
+    path:     /add-bmi-profile
+    defaults: { _controller: AppBundle:School:addBmiProfile }
+
+application_for_school_ajax_edit_bmi_profile:
+    path:     /edit-bmi-profile
+    defaults: { _controller: AppBundle:School:editBmiProfile }
+
+application_for_school_print:
+    path:     /in-danh-sach
+    defaults: { _controller: AppBundle:School:heightWeightPrint }

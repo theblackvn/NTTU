@@ -1,0 +1,38 @@
+# Learn more about services, parameters and containers at
+# http://symfony.com/doc/current/book/service_container.html
+parameters:
+#    parameter_name: value
+
+services:
+#    service_name:
+#        class: AppBundle\Directory\ClassName
+#        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
+    security.authentication.handler:
+        class: AppBundle\Service\AuthenticationHandler
+        arguments: ["@security.http_utils", "@router"]
+    application.service.security:
+        class: AppBundle\Service\SecurityService
+        arguments: ["@amz_db.service.query", "@security.token_storage", "@amz.validate"]
+        calls:
+            - [setEncoderFactory, ["@security.encoder_factory"]]
+    application.service.profile:
+        class: AppBundle\Service\ProfileService
+        arguments:
+            - "@amz_db.service.query"
+            - "@security.token_storage"
+            - "@amz.validate"
+            - "%file_import_directory%"
+            - "@session"
+            - "@amz.service.bmi"
+    application.form.personal_user_profile:
+        class: AppBundle\Form\PersonalUserProfileType
+        arguments: ["%profile_avatar_directory%", "%full_avatar_url%"]
+        tags:
+            - { name: form.type }
+
+    amz_application.twig_extension:
+        class: AppBundle\Twig\AMZApplicationExtension
+        public: false
+        arguments: ['@session', '@amz_db.service.query']
+        tags:
+            - { name: twig.extension }

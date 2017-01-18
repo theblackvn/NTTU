@@ -1,0 +1,15 @@
+amz_page_homepage:
+    path:     /
+    defaults: { _controller: AMZPostBundle:Page:index }
+
+amz_page_create:
+    path:     /create
+    defaults: { _controller: AMZPostBundle:Page:create }
+
+amz_page_edit:
+    path:     /{id}/edit
+    defaults: { _controller: AMZPostBundle:Page:edit }
+
+amz_page_delete:
+    path:     /{id}/delete
+    defaults: { _controller: AMZPostBundle:Page:delete }

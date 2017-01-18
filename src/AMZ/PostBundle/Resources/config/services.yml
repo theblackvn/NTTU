@@ -1,0 +1,7 @@
+services:
+    amz_post.twig_extension:
+        class: AMZ\PostBundle\Twig\PostExtension
+        public: false
+        arguments: ["@amz_db.service.query"]
+        tags:
+            - { name: twig.extension }

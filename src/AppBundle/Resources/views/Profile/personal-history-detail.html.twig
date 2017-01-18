@@ -1,0 +1,126 @@
+{% extends '::frontend.html.twig' %}
+
+{% block body %}
+    <section id="nuti-profile">
+        {{ include('AppBundle:Profile/__Layout:__header.html.twig') }}
+        <div  id="nuti-nutritional-status" style="padding: 0">
+            <div class="personal-detail-info">
+            <div class="container">
+                <div class="row">
+                    {{ include('@App/Profile/__Layout/_group_sidebar.html.twig') }}
+                    <div class="col-xs-12 col-sm-6 col-md-7 col-lg-8">
+                        <div class="alert alert-danger save-error" role="alert" style="display: none;">
+                            <strong>Lỗi!</strong> <span class="error-msg"></span>
+                        </div>
+                        <div class="alert alert-success save-success" role="alert" style="display: none;">
+                            <strong>Lưu thành công!</strong>
+                        </div>
+                        <div class="tab">
+                            <div id="tab-1" class="nutrition-menu-content">
+                                <h3 class="heading">Kết quả đánh giá tình trạng dinh dưỡng
+                                    {#<a href="{{ url("application_profile_personal_history_print", {'id': profile.id, 'historyId': history.id}) }}" target="_blank"><i class="icon print-icon"></i></a>#}
+                                </h3>
+
+                                <form class="pro5-form">
+                                    <div class="pro5-avatar">
+                                        <div class=" {% if category == 1 %}orange{% elseif category==2 %}pink {% else %}yellow{% endif %}">
+                                            <a href="#"><i class="icon camera-icon"></i></a>
+                                            {% if category == 1 %}
+                                                <div class="pro5-ava" style="background-image: url('{{ asset('frontend/images/ava01.png') }}')"></div>
+                                            {% elseif category == 2 %}
+                                                <div class="pro5-ava" style="background-image: url('{{ asset('frontend/images/ava02.png') }}')"></div>
+                                            {% else %}
+                                                <div class="pro5-ava" style="background-image: url('{{ asset('frontend/images/ava03.png') }}')"></div>
+                                            {% endif %}
+                                            <h4 class="pro5-name desc"><a href="{{ url('application_profile_personal_detail',{id:profile.id}) }}">{{ profile.firstName }} {{ profile.lastName }}</a></h4>
+                                        </div>
+                                    </div>
+                                    <div class="pro5-info">
+                                        <div>
+                                            <p>Họ và Tên</p>
+
+                                            <p><a href="{{ url('application_profile_personal_detail',{id:profile.id}) }}">{{ profile.firstName }} {{ profile.lastName }}</a></p>
+                                        </div>
+                                        <div>
+                                            <p>Giới tính</p>
+
+                                            <p>{% if (result.gender) and (result.gender==1) %}Nam{% else %}Nữ{% endif %}</p>
+                                        </div>
+                                        <div>
+                                            <p>Ngày sinh</p>
+
+                                            <p>{{ profile.dateOfBirth|date('d/m/Y') }}</p>
+                                        </div>
+                                        <div>
+                                            <p>Số tuổi</p>
+                                            {% set yearOld = month // 12 %}
+                                            {% set monthOld = month % 12 %}
+                                            <p>
+                                                {% if yearOld > 0 %}
+                                                    {{ yearOld }} tuổi
+                                                {% endif %}
+
+
+                                                {% if yearOld < 19 and monthOld > 0 %}
+                                                    {{ monthOld }} tháng
+                                                {% endif %}
+                                                {#{% if month %}{{ month }}{% endif %}#}
+                                            </p>
+                                        </div>
+                                        <div>
+                                            <p>Cân nặng</p>
+
+                                            <p>{% if result.weight %}{{ result.weight }}{% endif %} kg<br>
+                                                <span>Chuẩn cân nặng trung bình theo tuổi:
+                                                    {% if result.bmi %}{{ result.bmi|round(1, 'floor') }}{% endif %} kg
+                                                   {# [{% if result.bmi_from %}{{ result.bmi_from|round(1, 'floor') }}{% endif %}kg đến {% if result.bmi_to %}{{ result.bmi_to|round(1, 'floor') }}{% endif %} kg]#}</span></p>
+                                        </div>
+                                        <div>
+                                            <p>Chiều cao</p>
+
+                                            <p>{% if result.length %}{{ result.length }}{% endif %} cm<br>
+                                                {# <span>Chuẩn chiều cao trung bình theo tuổi: {% if result.heightMedian %}{{ result.heightMedian }}{% endif %} cm
+                                                    [{% if result.height_from %}{{ result.height_from }}{% endif %} cm đến {% if result.height_to %}{{ result.height_to }}{% endif %} cm]</span>#}</p>
+                                        </div>
+                                    </div>
+
+                                </form>
+
+                                <div class="pro5-result">
+                                    <div>
+                                        <p>Đánh giá chung</p>
+                                    </div>
+                                    <div>
+                                        <div class="result">
+                                            <p>{% if result.result %}{{ result.result }}{% endif %}</p>
+
+                                            <p>{% if result.resultValue %}{{ result.resultValue }}{% endif %}</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <h4 class="small-title">Khuyến nghị</h4>
+
+                                <div class="nuti-recommendations">
+                                    {% if result.recommend %}{{ result.recommend|raw }}{% endif %}
+                                    {#<br><br>Hãy gọi số <b>(08) 38 255 777</b> để cùng Chuyên gia dinh dưỡng chăm sóc tốt nhất cho gia đình.#}
+                                </div>
+
+
+                                {#<div class="nuti-advice">#}
+                                    {#<div class="advice-header">#}
+                                        {#<p>Lời khuyên từ bác sĩ</p>#}
+                                    {#</div>#}
+                                    {#<div class="advice-body">#}
+                                        {#<textarea id="doctorAdvice" class="form-control" placeholder="Nhập lời khuyên" rows="4">{{ result.advise }}</textarea>#}
+                                    {#</div>#}
+                                {#</div>#}
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

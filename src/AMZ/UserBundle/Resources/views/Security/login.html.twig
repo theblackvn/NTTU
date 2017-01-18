@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="#hoang">
+    <link rel="icon" type="image/png" sizes="16x16" href="../plugins/images/favicon.png">
+    <title>Nâng tầm vóc Việt | Admin Panel - Powered by MaxX Communication</title>
+    {% stylesheets
+    'backend/assets/bootstrap/dist/css/bootstrap.min.css'
+    'backend/assets/css/animate.css'
+    filter='?uglifycss' filter='cssrewrite' %}
+    <link rel="stylesheet" href="{{ asset_url }}"/>
+    {% endstylesheets %}
+    <link href="{{ asset('backend') }}/assets/css/style.css" rel="stylesheet">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<!-- Preloader -->
+<div class="preloader">
+    <div class="cssload-speeding-wheel"></div>
+</div>
+<section id="wrapper" class="login-register">
+    <div class="login-box">
+        <div class="white-box">
+            <form class="form-horizontal form-material" id="loginform" action="{{ path('core_application_login_check') }}" method="post">
+                <h3 class="box-title m-b-20">Đăng nhập</h3>
+                {% if error %}
+                    <div class="alert alert-danger">
+                        <button type="button" class="close" data-dismiss="alert">×</button>
+                        <h4>Lỗi!</h4>
+                        {{ error.message }}
+                    </div>
+                {% endif %}
+                <div class="form-group ">
+                    <div class="col-xs-12">
+                        <input id="username" name="_username" value="{{ last_username }}" type="text" placeholder="Tên đăng nhập" required="" class="form-control" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-xs-12">
+                        <input id="password" name="_password" type="password" placeholder="Mật khẩu" class="form-control" />
+                    </div>
+                </div>
+                <div class="form-group text-center m-t-20">
+                    <div class="col-xs-12">
+                        <button class="btn btn-info btn-lg btn-block text-uppercase waves-effect waves-light" type="submit">Log In</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+{% javascripts
+'backend/plugins/bower_components/jquery/dist/jquery.min.js'
+'backend/assets/bootstrap/dist/js/bootstrap.min.js'
+'backend/plugins/bower_components/sidebar-nav/dist/sidebar-nav.min.js'
+'backend/assets/js/jquery.slimscroll.js'
+'backend/plugins/bower_components/jquery-sparkline/jquery.sparkline.min.js'
+'backend/assets/js/waves.js'
+'backend/assets/js/custom.min.js'
+filter='?uglifyjs2' %}
+<script src="{{ asset_url }}"></script>
+{% endjavascripts %}
+</body>
+</html>

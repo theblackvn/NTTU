@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+  <title>Tính lãi suất theo gốc giảm dần</title>
+
+  <!-- Bootstrap -->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+      <![endif]-->
+  </head>
+  <!--
+  <body>
+
+
+<div class="input-group">
+  <span class="input-group-addon" id="basic-addon1">@</span>
+  <input type="text" class="form-control" placeholder="Username" aria-describedby="basic-addon1">
+</div>
+
+<div class="input-group">
+  <input type="text" class="form-control" placeholder="Recipient's username" aria-describedby="basic-addon2">
+  <span class="input-group-addon" id="basic-addon2">@example.com</span>
+</div>
+
+<div class="input-group">
+  <span class="input-group-addon">$</span>
+  <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+  <span class="input-group-addon">.00</span>
+</div>
+
+<label for="basic-url">Your vanity URL</label>
+<div class="input-group">
+  <span class="input-group-addon" id="basic-addon3">https://example.com/users/</span>
+  <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+</div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+  </body>
+-->
+<body>
+
+  <div class="container">
+    <div class="header clearfix">
+      <nav>
+        <ul class="nav nav-pills pull-right">
+          <li class="active" role="presentation"><a href="#">Home</a></li>
+          <li role="presentation"><a href="#">About</a></li>
+          <li role="presentation"><a href="#">Contact</a></li>
+      </ul>
+  </nav>
+  <h3 class="text-muted">Project name</h3>
+</div>
+
+<div class="jumbotron">
+    <!-- <form class="row">
+        <div class="input-group">
+          <span class="input-group-addon" id="basic-addon1">@</span>
+          <input type="text" class="form-control" placeholder="Username" aria-describedby="basic-addon1">
+      </div>
+
+      <div class="input-group">
+          <input type="text" class="form-control" placeholder="Recipient's username" aria-describedby="basic-addon2">
+          <span class="input-group-addon" id="basic-addon2">@example.com</span>
+      </div>
+
+      <div class="input-group">
+          <span class="input-group-addon">$</span>
+          <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+          <span class="input-group-addon">.00</span>
+      </div>
+
+      <label for="basic-url">Your vanity URL</label>
+      <div class="input-group">
+          <span class="input-group-addon" id="basic-addon3">https://example.com/users/</span>
+          <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+      </div>
+  </form> -->
+  <form method="post" action="">
+      <div class="form-group">
+        <label for="borrowMoney">Số tiền cần vay</label>
+        <input type="number" class="form-control" id="borrowMoney" placeholder="Số tiền cần vay" value="1000000000">
+    </div>
+    <div class="form-group">
+        <label for="borrowMonth">Số tháng vay</label>
+        <input type="number" class="form-control" id="borrowMonth" placeholder="Số tháng vay" value="120">
+    </div>
+    <div class="form-group">
+        <label for="borrowMoney">Lãi suất đầu</label>
+        <input type="number" class="form-control" id="firstRate" placeholder="Lãi suất đầu" value="7.5">
+    </div>
+    <div class="form-group">
+        <label for="borrowMoney">Thời hạn lãi suất đầu</label>
+        <input type="number" class="form-control" id="firstRateMonth" placeholder="Thời hạn lãi suất đầu" value="18">
+    </div>
+    <div class="form-group">
+        <label for="borrowMonth">Lãi suất sau</label>
+        <input type="number" class="form-control" id="lateRate" placeholder="Lãi suất sau" value="10.5">
+    </div>
+
+    <button type="submit" class="btn btn-default" name="calculate">Tính toán</button>
+</form>
+</div>
+<div data-example-id="simple-table" class="bs-example"> 
+    <table class="table"> 
+    <caption>KẾT QUẢ</caption> 
+        <thead> 
+            <tr> 
+                <th>Tháng thứ</th> 
+                <th>Tiền gốc phải trả</th> 
+                <th>Tiền lãi phải trả</th> 
+                <th>Tổng cộng</th> </tr> 
+            </thead> 
+            <tbody> 
+                <tr> 
+                    <th scope="row">1</th> 
+                    <td>Mark</td> 
+                    <td>Otto</td>
+                    <td>@mdo</td> 
+                </tr> 
+                <tr> 
+                   <th scope="row">2</th>
+                   <td>Jacob</td>
+                   <td>Thornton</td>
+                   <td>@fat</td> 
+               </tr> 
+               <tr> 
+                <th scope="row">3</th> 
+                <td>Larry</td>
+                <td>the Bird</td>
+                <td>@twitter</td>
+            </tr> 
+        </tbody> 
+    </table> 
+</div>
+
+
+
+<footer class="footer">
+  <p>&copy; 2016 Company, Inc.</p>
+</footer>
+
+</div> <!-- /container -->
+
+
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+
+
+</body>
+</html>

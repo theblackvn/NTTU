@@ -1,0 +1,64 @@
+<div class="col-lg-8 col-md-8 col-sm-6 col-xs-12">
+    <div class="white-box">
+        <div class="row">
+            <div class="col-sm-12 col-xs-12">
+                <div class="form-group">
+                    <label for="product_lang1_title1">Vị trí</label>
+                    {{ form_widget(form.position) }}
+                    <div class="amz-error">
+                        {{ form_errors(form.position) }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="product_lang1_slug">Link</label>
+                    {{ form_widget(form.link) }}
+                    <div class="amz-error">
+                        {{ form_errors(form.link) }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="product_lang1_excerpt1">Giới thiệu ngắn</label>
+                    {{ form_widget(form.content) }}
+                    <div class="amz-error">
+                        {{ form_errors(form.content) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+    <div class="white-box">
+        <div class="row">
+            <div class="col-sm-12 col-xs-12">
+                <div class="form-group">
+                    <label for="product_lang1_slug">Thứ tự hiển thị</label>
+                    {{ form_widget(form.sortOrder) }}
+                    <div class="amz-error">
+                        {{ form_errors(form.sortOrder) }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="product_lang1_excerpt1">Hình nhỏ</label>
+                    {{ form_widget(form.smallSizeThumbnail) }}
+                    <div>
+                        <img style="margin-top: 4px;" width="100%" title="Nhấn chọn hình khác"
+                             class="image-browser-btn small-thumbnail-img"
+                             data-hidden-class=".small-size-thumbnail"
+                             src="{{ asset('backend/assets/img/browser.png') }}"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="product_lang1_excerpt1">Hình lớn</label>
+                    {{ form_widget(form.fullSizeThumbnail) }}
+                    <div>
+                        <img style="margin-top: 4px;" width="100%" title="Nhấn chọn hình khác"
+                             class="image-browser-btn full-thumbnail-img"
+                             data-hidden-class=".full-size-thumbnail"
+                             src="{{ asset('backend/assets/img/browser.png') }}"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

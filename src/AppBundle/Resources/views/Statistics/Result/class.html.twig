@@ -1,0 +1,70 @@
+<div class="row">
+    <div class="col-xs-12 col-md-10 col-md-offset-1">
+        <div class="statistic-view">
+            <div class="st-title">
+                <div>
+                    <h4>{{ parameters.district | upper }} <br>
+                        {{ school.name | upper }}</h4>
+                </div>
+                <div>
+                    <h4>Cộng hòa xã hội chủ nghĩa Việt Nam <br>
+                        <span>Độc lập - Tự do - Hạnh phúc</span></h4>
+                </div>
+            </div>
+
+            <div class="st-heading">
+                <h1>Báo cáo</h1>
+                <p>Tình trạng dinh dưỡng học sinh lớp {{ class.name }} tháng {{ parameters.month }} năm
+                    học {{ year.name }}</p>
+            </div>
+
+            <div class="st-table">
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th>STT</th>
+                        <th>Họ tên</th>
+                        <th>Giới tính</th>
+                        <th>Ngày sinh</th>
+                        <th>Cân nặng (kg)</th>
+                        <th>Chiều cao (cm)</th>
+                        <th>Tình trạng dinh dưỡng</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for item in bmiResults %}
+                        <tr>
+                            <td>{{ loop.index }}</td>
+                            <td>{{ item.profile.name }}</td>
+                            <td>
+                                {% if item.profile.gender == constant('\\AMZ\\ProfileBundle\\Entity\\Profile::GENDER_MALE') %}
+                                    Nam
+                                {% else %}
+                                    Nữ
+                                {% endif %}
+                            </td>
+                            <td>{{ item.profile.dateOfBirth|date('d/m/Y') }}</td>
+                            <td>{{ item.weight | number_format }}</td>
+                            <td>{{ item.height }}</td>
+                            <td>{{ item.result }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+
+                <p>(Học sinh được cân đo trong khoảng thời gian từ {{ startEnd.start_date|date('d/m/Y') }} đến ngày {{ startEnd.end_date|date('d/m/Y') }})</p>
+            </div>
+
+            <div class="st-signature">
+                <div>
+                    <h4>Người báo cáo</h4>
+                    <em>(Ký và ghi rõ họ tên)</em>
+                </div>
+                <div>
+                    <h4>Đại diện lãnh đạo</h4>
+                    <em>(Ký và ghi rõ họ tên)</em>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

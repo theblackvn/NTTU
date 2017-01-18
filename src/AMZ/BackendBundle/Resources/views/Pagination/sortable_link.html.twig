@@ -1,0 +1,6 @@
+<a{% for attr, value in options %} {{ attr }}="{{ value }}"{% endfor %}>{{ title }}</a>
+{% if 'desc' == options['class'] %}
+    <i class="fa fa-angle-up text-right"></i>
+{% elseif 'asc' == options['class'] %}
+    <i class="fa fa-angle-down text-right"></i>
+{% endif %}

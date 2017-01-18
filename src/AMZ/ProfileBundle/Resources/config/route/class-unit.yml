@@ -1,0 +1,15 @@
+amz_profile_class_unit_homepage:
+    path:     /
+    defaults: { _controller: AMZProfileBundle:SchoolClassUnit:index }
+
+amz_profile_class_unit_create:
+    path:     /create
+    defaults: { _controller: AMZProfileBundle:SchoolClassUnit:create }
+
+amz_profile_class_unit_edit:
+    path:     /{id}/edit
+    defaults: { _controller: AMZProfileBundle:SchoolClassUnit:edit }
+
+amz_profile_class_unit_delete:
+    path:     /{id}/delete
+    defaults: { _controller: AMZProfileBundle:SchoolClassUnit:delete }

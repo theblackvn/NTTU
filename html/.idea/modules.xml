@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/html.iml" filepath="$PROJECT_DIR$/.idea/html.iml" />
+<<<<<<< .mine
+      <module fileurl="file://$PROJECT_DIR$/.idea/nangtamvocviet.iml" filepath="$PROJECT_DIR$/.idea/nangtamvocviet.iml" />
+||||||| .r36
+=======
+      <module fileurl="file://$PROJECT_DIR$/.idea/html.iml" filepath="$PROJECT_DIR$/.idea/html.iml" />
+>>>>>>> .r57
+    </modules>
+  </component>
+</project>

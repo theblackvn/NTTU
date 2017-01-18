@@ -1,0 +1,89 @@
+{% extends '::frontend.html.twig' %}
+
+{% block body %}
+    <section id="nuti-school" xmlns="http://www.w3.org/1999/html">
+        {{ include('@App/School/_header.html.twig') }}
+        <div class="school-body">
+            <div class="container">
+                <div class="row">
+                    <h1 class="student-list-title" style="margin-bottom: 20px; font-size: 18px;">
+                        LỊCH SỬ CÂN ĐO - {{ profile.name | upper }} - {{ profile.profileId | upper }}
+                    </h1>
+                    {% for flash_message in app.session.flashBag.get('notice') %}
+                        <div class="alert alert-success" role="alert">
+                            <strong>Thành công!</strong> {{ flash_message }}
+                        </div>
+                    {% endfor %}
+                    <div class="school-table">
+                        <table class="table table-bordered">
+                            <thead>
+                            <tr>
+                                <th class="text-left">STT</th>
+                                <th class="text-left">Ngày đo</th>
+                                <th class="text-right" width="110">Chiều cao</th>
+                                <th class="text-right" width="110">Cân nặng</th>
+                                <th class="text-left" width="170">Kết quả</th>
+                                <th class="text-left">BMI</th>
+                                <th class="text-left">Khuyến cáo</th>
+                                <th>Thao tác</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for item in profile.profileBmiResults %}
+                                <tr>
+                                    <td class="text-left">{{ loop.index }}</td>
+                                    <td class="text-left dayWeight">{{ item.dayWeight | date('d/m/Y') }}</td>
+                                    <td class="text-right height">{{ item.height }}</td>
+                                    <td class="text-right weight">{{ item.weight|number_format(1, ',') }}</td>
+                                    <td class="text-left result">{{ item.result }}</td>
+                                    <td class="text-left bmi">{{ item.bmi|number_format(1, ',') }}</td>
+                                    <td class="text-left recommend">{{ item.recommend | raw }}</td>
+                                    <td>
+                                        <div class="dropdown">
+                                            <button id="openAct1" class="dropdown-btn" type="button"
+                                                    data-toggle="dropdown" aria-haspopup="true"
+                                                    aria-expanded="false">
+                                                <i class="icon more-icon"></i>
+                                            </button>
+                                            <ul class="dropdown-menu" aria-labelledby="openAct1">
+                                                <li><a href="#" data-toggle="modal" data-target="#editBmiModal" data-id={{ item.id }}>Chỉnh sửa</a></li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                            {% else %}
+                                <tr>
+                                    <td colspan="7">Không có dữ liệu</td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}
+{% block js_script %}
+    <script>
+        jQuery(document).ready(function () {
+            $("#calendar").datetimepicker({
+                timepicker: false,
+                format: 'd/m/Y',
+                mask: true
+            });
+        });
+        $('#editBmiModal').on('show.bs.modal', function(e) {
+            var profileId = $(e.relatedTarget).data('id');
+            $(e.currentTarget).find('.hidden-profileId').val(profileId);
+            var _tr = $(e.relatedTarget).parent().parent().parent().parent().parent();
+            $(e.currentTarget).find('input[name="height"]').val(_tr.find('.height').html());
+            $(e.currentTarget).find('input[name="weight"]').val(_tr.find('.weight').html());
+            $(e.currentTarget).find('input[name="date"]').val(_tr.find('.dayWeight').html());
+            $(e.currentTarget).find('input[name="bmi"]').val(_tr.find('.bmi').html());
+            $(e.currentTarget).find('input[name="result"]').val(_tr.find('.result').html());
+            $(e.currentTarget).find('textarea[name="recommend"]').val(_tr.find('.recommend').html());
+        });
+    </script>
+{% endblock %}

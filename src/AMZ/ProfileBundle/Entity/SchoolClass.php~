@@ -1,0 +1,362 @@
+<?php
+
+namespace AMZ\ProfileBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * @ORM\Entity(repositoryClass="AMZ\ProfileBundle\Repository\SchoolClassRepository")
+ * @ORM\Table(name="school_class")
+ * @ORM\HasLifecycleCallbacks
+ */
+class SchoolClass
+{
+    const ADMIN_NUMBER_ITEM_PER_PAGE = 20;
+    /**
+     * @ORM\Column(type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="Profile", inversedBy="classes")
+     * @ORM\JoinTable(name="school_class_profiles")
+     */
+    private $profiles;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="School", inversedBy="classes")
+     * @ORM\JoinColumn(name="school_id", referencedColumnName="id", onDelete="CASCADE")
+     */
+    private $school;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="SchoolYear", inversedBy="classes")
+     * @ORM\JoinColumn(name="school_year_id", referencedColumnName="id", onDelete="CASCADE")
+     */
+    private $schoolYear;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="SchoolClassUnit", inversedBy="classes")
+     * @ORM\JoinColumn(name="school_class_unit_id", referencedColumnName="id", onDelete="CASCADE")
+     */
+    private $schoolClassUnit;
+
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $code;
+
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $name;
+
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $slug;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $description;
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $createdAt;
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $updatedAt;
+
+    /**
+     * @ORM\PrePersist
+     */
+    public function prePersist()
+    {
+        $now = new \DateTime('now');
+        $this->setUpdatedAt($now);
+        $this->setCreatedAt($now);
+    }
+
+    /**
+     * @ORM\PreUpdate
+     */
+    public function preUpdate()
+    {
+        $now = new \DateTime('now');
+        $this->setUpdatedAt($now);
+    }
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->profiles = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set code
+     *
+     * @param string $code
+     *
+     * @return SchoolClass
+     */
+    public function setCode($code)
+    {
+        $this->code = $code;
+
+        return $this;
+    }
+
+    /**
+     * Get code
+     *
+     * @return string
+     */
+    public function getCode()
+    {
+        return $this->code;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     *
+     * @return SchoolClass
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Set slug
+     *
+     * @param string $slug
+     *
+     * @return SchoolClass
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
+    /**
+     * Get slug
+     *
+     * @return string
+     */
+    public function getSlug()
+    {
+        return $this->slug;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     *
+     * @return SchoolClass
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * Set createdAt
+     *
+     * @param \DateTime $createdAt
+     *
+     * @return SchoolClass
+     */
+    public function setCreatedAt($createdAt)
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    /**
+     * Get createdAt
+     *
+     * @return \DateTime
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * Set updatedAt
+     *
+     * @param \DateTime $updatedAt
+     *
+     * @return SchoolClass
+     */
+    public function setUpdatedAt($updatedAt)
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get updatedAt
+     *
+     * @return \DateTime
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
+    }
+
+    /**
+     * Add profile
+     *
+     * @param \AMZ\ProfileBundle\Entity\Profile $profile
+     *
+     * @return SchoolClass
+     */
+    public function addProfile(\AMZ\ProfileBundle\Entity\Profile $profile)
+    {
+        $this->profiles[] = $profile;
+
+        return $this;
+    }
+
+    /**
+     * Remove profile
+     *
+     * @param \AMZ\ProfileBundle\Entity\Profile $profile
+     */
+    public function removeProfile(\AMZ\ProfileBundle\Entity\Profile $profile)
+    {
+        $this->profiles->removeElement($profile);
+    }
+
+    /**
+     * Get profiles
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getProfiles()
+    {
+        return $this->profiles;
+    }
+
+    /**
+     * Set school
+     *
+     * @param \AMZ\ProfileBundle\Entity\School $school
+     *
+     * @return SchoolClass
+     */
+    public function setSchool(\AMZ\ProfileBundle\Entity\School $school = null)
+    {
+        $this->school = $school;
+
+        return $this;
+    }
+
+    /**
+     * Get school
+     *
+     * @return \AMZ\ProfileBundle\Entity\School
+     */
+    public function getSchool()
+    {
+        return $this->school;
+    }
+
+    /**
+     * Set schoolYear
+     *
+     * @param \AMZ\ProfileBundle\Entity\SchoolYear $schoolYear
+     *
+     * @return SchoolClass
+     */
+    public function setSchoolYear(\AMZ\ProfileBundle\Entity\SchoolYear $schoolYear = null)
+    {
+        $this->schoolYear = $schoolYear;
+
+        return $this;
+    }
+
+    /**
+     * Get schoolYear
+     *
+     * @return \AMZ\ProfileBundle\Entity\SchoolYear
+     */
+    public function getSchoolYear()
+    {
+        return $this->schoolYear;
+    }
+
+    /**
+     * Set schoolClassUnit
+     *
+     * @param \AMZ\ProfileBundle\Entity\SchoolClassUnit $schoolClassUnit
+     *
+     * @return SchoolClass
+     */
+    public function setSchoolClassUnit(\AMZ\ProfileBundle\Entity\SchoolClassUnit $schoolClassUnit = null)
+    {
+        $this->schoolClassUnit = $schoolClassUnit;
+
+        return $this;
+    }
+
+    /**
+     * Get schoolClassUnit
+     *
+     * @return \AMZ\ProfileBundle\Entity\SchoolClassUnit
+     */
+    public function getSchoolClassUnit()
+    {
+        return $this->schoolClassUnit;
+    }
+}

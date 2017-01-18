@@ -1,0 +1,198 @@
+{% extends '::frontend.html.twig' %}
+
+{% block body %}
+    <section id="nuti-medical">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-sm-6 col-md-5 col-lg-4">
+                    <ul class="age-menu">
+                        <li class="{% if category == 1 %}current{% endif %}"><a
+                                    href="{{ path('application_user_profile_0_5') }}">Từ 0-5 tuổi</a></li>
+                        <li class="{% if category == 2 %}current{% endif %}"><a
+                                    href="{{ path('application_user_profile_5_19') }}">Từ 5-19 tuổi</a></li>
+                        <li class="{% if category == 3 %}current{% endif %}"><a
+                                    href="{{ path('application_user_profile_over_19') }}">Trên 19 tuổi</a></li>
+                    </ul>
+
+                    <div class="kid-img">
+                        <figure>
+                            <img class="img-responsive" src="{{ asset('frontend/images/kid-1.jpg') }}">
+                        </figure>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-7 col-lg-8">
+                    <h3 class="heading">Tình trạng dinh dưỡng của trẻ
+                        từ {% if category == 1 %}0-5{% elseif category == 2 %}5-19{% else %}trên 19{% endif %} tuổi
+                    </h3>
+                    <div class="">
+                        <div id="tab-2" class="profile-detail-menu-content" style="">
+                            <form class="pro5-form" action="{{ path('application_user_profile_result') }}"
+                                  method="post">
+
+                                <div class="pro5-avatar">
+                                    {% set temp = 1 %}
+                                    {% set color = 'orange' %}
+                                    {% if app.request.attributes.get('_route') == 'application_user_profile_0_5' %}
+                                        {% set temp = 1 %}
+                                        {% set color = 'orange' %}
+                                    {% elseif app.request.attributes.get('_route') == 'application_user_profile_5_19' %}
+                                        {% set temp = 2 %}
+                                        {% set color = 'pink' %}
+                                    {% else %}
+                                        {% set temp = 3 %}
+                                        {% set color = 'yellow' %}
+                                    {% endif %}
+
+                                    <div class="{{ color }}">
+                                        <a href="#"><i class="icon camera-icon"></i></a>
+
+                                        <div class="pro5-ava mb-0"
+                                             style="background-image: url('{{ asset('frontend/images/ava0'~temp~'.png') }}')"></div>
+
+                                        {#<div class="pro5-ava mb-0" style="background-image: url('images/lg-avatar-2.png')"></div>#}
+                                        <h4 class="pro5-name desc">Hồ sơ
+                                            <br> {% if category == 1 %}trẻ từ 0-5{% elseif category == 2 %}trẻ từ 5-19{% else %}trên 19{% endif %}
+                                            tuổi</h4>
+                                    </div>
+                                </div>
+                                <div class="pro5-info">
+                                    <div class="pro5-input">
+                                        <input id="category-user-profile" type="hidden" name="category"
+                                               value="{% if category %}{{ category }}{% endif %}">
+                                        <div class="col-1">
+                                            <div class="form-group">
+                                                <input type="text" name="firstName"
+                                                       value="{% if result %}{{ result.firstName }}{% endif %}"
+                                                       class="form-control" id="last-name" placeholder="Họ" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-2">
+                                            <div class="form-group">
+                                                <input type="text" name="lastName"
+                                                       value="{% if result %}{{ result.lastName }}{% endif %}"
+                                                       class="form-control" id="first-name" placeholder="Tên" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-1">
+                                            <div class="form-group gender-group">
+                                                <select name="gender" class="chosen gender-select"
+                                                        data-placeholder="Giới tính"
+                                                        style="width: 100%; display: none;">
+                                                    {#<option value=""></option>#}
+                                                    <option value="1">Nam</option>
+                                                    <option value="2">Nữ</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-2">
+                                            <div class="form-group calendar-group">
+                                                <input type="text" name="birthday"
+                                                       value="{% if result %}{{ result.birthday }}{% endif %}"
+                                                       class="form-control" id="calendar" placeholder="dd/mm/yyyy" required>
+                                                <i class="icon calendar-icon"></i>
+                                            </div>
+                                        </div>
+                                        <div class="col-1">
+                                            <div class="form-group">
+                                                <input type="number" minlength="10" maxlength="11" name="phone"
+                                                       class="form-control" id="phone" placeholder="Điện thoại">
+                                            </div>
+                                        </div>
+                                        <div class="col-2">
+                                            <div class="form-group">
+                                                <input type="text" name="address" class="form-control" id="address"
+                                                       placeholder="Địa chỉ">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="pro5-divider"></div>
+                                <div class="pro5-index">
+                                    <div class="input-group">
+                                        <input id="weight-user-profile" type="number" step="0.1" required name="weight"
+                                               value="{% if result %}{{ result.weight }}{% endif %}"
+                                               class="form-control" placeholder="Cân nặng" aria-describedby="addon1"
+                                               required>
+                                        <span class="input-group-addon" id="addon1">kg</span>
+                                    </div>
+                                    <div class="input-group">
+                                        <input id="length-user-profile" type="number" step="0.1" required name="length"
+                                               value="{% if result %}{{ result.length }}{% endif %}"
+                                               class="form-control" placeholder="Chiều cao" aria-describedby="addon2"
+                                               required>
+                                        <span class="input-group-addon" id="addon2">cm</span>
+                                    </div>
+                                    <div class="input-group">
+                                        <input type="text" name="age"
+                                               value="{% if result %}{{ (result.month/12)|round(0,'floor') }} tuổi {% if result.month%12 > 0 %}{{ result.month%12 }} tháng{% endif %}{% endif %}"
+                                               class="form-control" placeholder="Số tuổi" aria-describedby="addon3"
+                                               id="age" title="">
+                                        <span class="input-group-addon" id="addon3">tuổi</span>
+                                        <input type="hidden" name="realAge" id="real-age" value="0">
+                                    </div>
+                                    {% if category != 1 %}
+                                    <div class="input-group">
+                                        <input id="bmi-user-profile" type="text" name="bmi"
+                                               value="{% if result %}{{ result.bmi }}{% endif %}" class="form-control"
+                                               placeholder="Số BMI" aria-describedby="addon4" readonly>
+                                        <span class="input-group-addon" id="addon4">BMI</span>
+                                    </div>
+                                    {% endif %}
+                                </div>
+
+                                <div class="pro4-action">
+                                    <a href="#">
+                                        <button class="nuti-button white" type="submit">Kết quả</button>
+                                    </a>
+                                    {#<a href="#"><button class="nuti-button white" type="button">Lịch sử</button></a>#}
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block js_script %}
+    <script>
+        jQuery(document).ready(function () {
+            $("#calendar").datetimepicker({
+                timepicker: false,
+                format: 'd/m/Y',
+                mask: true,
+                onChangeDateTime: function (currentDateTime) {
+                    var today = new Date();
+//                alert(currentDateTime);
+//                dob = new Date(value);
+                    //var age = new Date(today - currentDateTime).getFullYear() - 1970;
+                    var days = Math.floor(Math.abs(today - currentDateTime)/(24*60*60*1000));
+                    var age = Math.floor(days/366);
+                    var months = Math.floor((days/366)*12);
+                    var month_number = months%12;
+                    console.log(month_number);
+                    var month = '';
+                    if (month_number > 0) month = month_number+' tháng'
+                    $('#age').val(age+' tuổi '+month);
+                    $('#real-age').val(months/12);
+                },
+            });
+            var availableCities = [
+                {% for city, item in cities %}
+                "{{ city }}",
+                {% endfor %}
+            ];
+            $("#address").autocomplete({
+                source: function (request, response) {
+                    var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(request.term), "i");
+                    response($.grep(availableCities, function (item) {
+                        var result = matcher.test(item);
+                        return result
+                    }));
+                },
+//                source: availableCities
+            });
+        });
+    </script>
+{% endblock %}

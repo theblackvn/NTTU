@@ -1,0 +1,23 @@
+amz_page:
+    resource: "@AMZPostBundle/Resources/config/route/page.yml"
+    prefix:   /page
+
+amz_static_block:
+    resource: "@AMZPostBundle/Resources/config/route/static-block.yml"
+    prefix:   /static-block
+
+amz_post_category:
+    resource: "@AMZPostBundle/Resources/config/route/category.yml"
+    prefix:   /post/category
+
+amz_post_tag:
+    resource: "@AMZPostBundle/Resources/config/route/tag.yml"
+    prefix:   /post/tag
+
+amz_post:
+    resource: "@AMZPostBundle/Resources/config/route/post.yml"
+    prefix:   /post
+
+amz_daotao:
+    resource: "@AMZPostBundle/Resources/config/route/dao-tao.yml"
+    prefix:   /dao-tao

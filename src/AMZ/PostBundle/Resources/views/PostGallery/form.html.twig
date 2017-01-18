@@ -1,0 +1,50 @@
+<div class="col-lg-8 col-md-8 col-sm-6 col-xs-12">
+    <div class="white-box">
+        <div class="row">
+            <div class="col-sm-12 col-xs-12">
+                <div class="form-group">
+                    <label for="post_lang1_title1">Tiêu đề <span class="required-field">*</span></label>
+                    {{ form_widget(form.title) }}
+                    <div class="amz-error">
+                        {{ form_errors(form.title) }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="post_lang1_excerpt1">Giới thiệu ngắn</label>
+                    {{ form_widget(form.content) }}
+                    <div class="amz-error">
+                        {{ form_errors(form.content) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+    <div class="white-box">
+        <div class="row">
+            <div class="col-sm-12 col-xs-12">
+                <div class="form-group">
+                    <label for="post_lang1_excerpt1">Hình nhỏ</label>
+                    {{ form_widget(form.smallSizeThumbnail) }}
+                    <div>
+                        <img style="margin-top: 4px;" height="117px" title="Nhấn chọn hình khác"
+                             class="image-browser-btn small-thumbnail-img"
+                             data-hidden-class=".small-size-thumbnail"
+                             src="{{ asset('backend/assets/img/browser.png') }}"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="post_lang1_excerpt1">Hình lớn</label>
+                    {{ form_widget(form.fullSizeThumbnail) }}
+                    <div>
+                        <img style="margin-top: 4px;" height="117px" title="Nhấn chọn hình khác"
+                             class="image-browser-btn full-thumbnail-img"
+                             data-hidden-class=".full-size-thumbnail"
+                             src="{{ asset('backend/assets/img/browser.png') }}"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

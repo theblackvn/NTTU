@@ -1,0 +1,40 @@
+application_homepage:
+    path:     /
+    defaults: { _controller: AppBundle:Default:index }
+
+application_security_test_login:
+    path:     /dang-nhap
+    defaults: { _controller: AppBundle:Security:login }
+
+application_logout:
+    path:      /dang-xuat
+
+application_login_check:
+    path:      /check-login
+
+application_profile:
+    resource: "@AppBundle/Resources/config/route/user_profile.yml"
+    prefix:   /ca-nhan
+
+application_user_profile:
+    resource: "@AppBundle/Resources/config/route/doctor_profile.yml"
+    prefix:   /bac-sy
+
+application_for_school:
+    resource: "@AppBundle/Resources/config/route/for_school.yml"
+    prefix:   /cho-truong-hoc
+
+application_security:
+    resource: "@AppBundle/Resources/config/route/security.yml"
+    prefix:   /security
+application_page:
+    resource: "@AppBundle/Resources/config/route/page.yml"
+    prefix:   /thong-tin
+
+application_post:
+    resource: "@AppBundle/Resources/config/route/post.yml"
+    prefix:   /bai-viet
+
+application_statistic:
+    resource: "@AppBundle/Resources/config/route/statistics.yml"
+    prefix:   /thong-ke
