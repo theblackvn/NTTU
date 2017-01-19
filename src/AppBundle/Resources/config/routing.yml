@@ -12,17 +12,6 @@ application_logout:
 application_login_check:
     path:      /check-login
 
-application_profile:
-    resource: "@AppBundle/Resources/config/route/user_profile.yml"
-    prefix:   /ca-nhan
-
-application_user_profile:
-    resource: "@AppBundle/Resources/config/route/doctor_profile.yml"
-    prefix:   /bac-sy
-
-application_for_school:
-    resource: "@AppBundle/Resources/config/route/for_school.yml"
-    prefix:   /cho-truong-hoc
 
 application_security:
     resource: "@AppBundle/Resources/config/route/security.yml"
@@ -35,6 +24,6 @@ application_post:
     resource: "@AppBundle/Resources/config/route/post.yml"
     prefix:   /bai-viet
 
-application_statistic:
-    resource: "@AppBundle/Resources/config/route/statistics.yml"
-    prefix:   /thong-ke
+application_education:
+    resource: "@AppBundle/Resources/config/route/education.yml"
+    prefix:   /dao-tao

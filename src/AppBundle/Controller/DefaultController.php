@@ -36,19 +36,17 @@ class DefaultController extends Controller
                 'type' => Post::TYPE_POST,
                 'is_featured' => 1,
                 'category_slug' => 'khoa-cong-nghe-thong-tin',
-
-
             ), array('created','DESC'), 3, 0);
 
-        $hotNews641 = $this->get('amz_db.service.query')
+        $tuyenSinhNews = $this->get('amz_db.service.query')
             ->getRepository('AMZPostBundle:Post')
             ->get(array(
                 'status' => Post::STATUS_PUBLISH,
                 'type' => Post::TYPE_POST,
                 'is_featured' => 1,
-                'category_slug' => 'de-an-641',
+                'category_slug' => 'tuyen-sinh',
 
-            ), array(), 3, 0);
+            ), array('created', 'DESC'), 3, 0);
 
         $hotNewsTruyenThong = $this->get('amz_db.service.query')
             ->getRepository('AMZPostBundle:Post')
@@ -89,7 +87,7 @@ class DefaultController extends Controller
             'bannerFooterLeft' => $bannerFooterLeft,
             'bannerFooterTopRight' => $bannerFooterTopRight,
             'bannerFooterBottomRight' => $bannerFooterBottomRight,
-            'hotNews641' => $hotNews641,
+            'tuyenSinhNews' => $tuyenSinhNews,
             'hotNewsTruyenThong' => $hotNewsTruyenThong,
             'hotNewsVanBan' => $hotNewsVanBan,
             'kyThuatCan' => $kyThuatCan,

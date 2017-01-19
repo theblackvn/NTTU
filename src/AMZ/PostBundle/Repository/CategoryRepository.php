@@ -47,6 +47,12 @@ class CategoryRepository extends \Doctrine\ORM\EntityRepository
                 $qb->expr()->eq('t.parent', $criteria['parent'])
             );
         }
+        if (isset($criteria['parent_slug'])) {
+            $qb->leftJoin('t.categories', 'c');
+            $qb->andWhere(
+                $qb->expr()->like('c.slug', $qb->expr()->literal($criteria['parent_slug']))
+            );
+        }
         return $qb;
     }
 

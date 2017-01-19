@@ -21,16 +21,7 @@ class Profile
      */
     private $id;
 
-    /**
-     * @ORM\ManyToMany(targetEntity="SchoolClass", mappedBy="profiles")
-     */
-    private $classes;
 
-    /**
-     * @ORM\OneToMany(targetEntity="ProfileBmiResult", mappedBy="profile", fetch="EXTRA_LAZY")
-     * @ORM\OrderBy({"id" = "DESC"})
-     */
-    private $profileBmiResults;
 
     /**
      * @ORM\Column(type="string", nullable=true)
@@ -413,29 +404,6 @@ class Profile
         return $this->updatedAt;
     }
 
-    /**
-     * Add class
-     *
-     * @param \AMZ\ProfileBundle\Entity\SchoolClass $class
-     *
-     * @return Profile
-     */
-    public function addClass(\AMZ\ProfileBundle\Entity\SchoolClass $class)
-    {
-        $this->classes[] = $class;
-
-        return $this;
-    }
-
-    /**
-     * Remove class
-     *
-     * @param \AMZ\ProfileBundle\Entity\SchoolClass $class
-     */
-    public function removeClass(\AMZ\ProfileBundle\Entity\SchoolClass $class)
-    {
-        $this->classes->removeElement($class);
-    }
 
     /**
      * Get classes
@@ -447,39 +415,7 @@ class Profile
         return $this->classes;
     }
 
-    /**
-     * Add profile bmi result
-     *
-     * @param \AMZ\ProfileBundle\Entity\ProfileBmiResult $profileBmiResult
-     *
-     * @return Profile
-     */
-    public function addProfileBmiResult(\AMZ\ProfileBundle\Entity\ProfileBmiResult $profileBmiResult)
-    {
-        $this->profileBmiResults[] = $profileBmiResult;
 
-        return $this;
-    }
-
-    /**
-     * Remove profile bmi result
-     *
-     * @param \AMZ\ProfileBundle\Entity\ProfileBmiResult $profileBmiResult
-     */
-    public function removeProfileBmiResult(\AMZ\ProfileBundle\Entity\ProfileBmiResult $profileBmiResult)
-    {
-        $this->profileBmiResults->removeElement($profileBmiResult);
-    }
-
-    /**
-     * Get profile bmi result
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getProfileBmiResult()
-    {
-        return $this->profileBmiResults;
-    }
 
     public function getProfileId()
     {

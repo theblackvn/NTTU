@@ -3,8 +3,39 @@
 {% block body %}
     <!-- slider -->
     {#{{ include('@App/Default/Index/header-banner.html.twig') }}#}
-
-
+    <div class="container">
+    <div class="row">
+    <section id="content">
+    <div id="slider-main" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner" role="listbox">
+            <div class="carousel-item active" style="background-image: url({{ asset('frontend/images/slide_1.jpg') }});">
+                <div class="carousel-caption d-block text-left">
+                    <h3>Phát động cuộc thi tìm hiểu về chiến lược của NTTU</h3>
+                    <p>Cuộc thi sẽ diễn ra từ ngày 21-11-2016 đến 13-12-2016. Lễ trao giải sẽ diễn ra lúc 9 giờ sáng thứ Bảy 17-12-2016 ...</p>
+                </div>
+            </div>
+            <div class="carousel-item" style="background-image: url({{ asset('frontend/images/slide_2.jpg') }});">
+                <div class="carousel-caption d-block text-left">
+                    <h3>Phát động cuộc thi tìm hiểu về chiến lược của NTTU</h3>
+                    <p>Cuộc thi sẽ diễn ra từ ngày 21-11-2016 đến 13-12-2016. Lễ trao giải sẽ diễn ra lúc 9 giờ sáng thứ Bảy 17-12-2016 ...</p>
+                </div>
+            </div>
+            <div class="carousel-item" style="background-image: url({{ asset('frontend/images/slide_2.jpg') }});">
+                <div class="carousel-caption d-block text-left">
+                    <h3>Phát động cuộc thi tìm hiểu về chiến lược của NTTU</h3>
+                    <p>Cuộc thi sẽ diễn ra từ ngày 21-11-2016 đến 13-12-2016. Lễ trao giải sẽ diễn ra lúc 9 giờ sáng thứ Bảy 17-12-2016 ...</p>
+                </div>
+            </div>
+        </div>
+        <div class="carousel-controls">
+            <a class="carousel-control-prev justify-content-end" href="#slider-main" role="button" data-slide="prev">
+                <span class="fa fa-angle-left" aria-hidden="true"></span>
+            </a>
+            <a class="carousel-control-next justify-content-start" href="#slider-main" role="button" data-slide="next">
+                <span class="fa fa-angle-right" aria-hidden="true"></span><span class="sr-only">Next</span>
+            </a>
+        </div>
+    </div>
     <div class="d-md-flex section mt-4">
         <div class="col-md-9">
             <h2 class="heading-2">Bảng tin NTTU</h2>
@@ -45,39 +76,17 @@
                 <a href="03_detail.html" class="link blue"><i class="fa fa-chevron-circle-right mr-1" aria-hidden="true"></i>Đăng ký</a>
             </div>
         </article>
-        <article class="col-md-3 col-sm-6 post-home">
-            <a class="thumbnail" href="03_detail.html">
-                <img src="{{ asset('frontend/images/post_5.jpg') }}" alt="">
-                <!-- <span>
-                    <span>
-                        <b>BẬC</b> SAU ĐẠI HỌC
-                    </span>
-                    <span>Đào tạo theo tiêu chuẩn QS-Star</span>
-                </span> -->
-            </a>
-            <a href="03_detail.html" class="title">NTTU tuyển sinh Thạc sĩ CNTT khóa #K27</a>
-            <div class="content p-1">
-                <p>Nhằm tạo điều kiện cho các học viên cao học theo ngành công nghệ Thông tin, Ban Giám hiệu trường ...</p>
-            </div>
-        </article>
-        <article class="col-md-3 col-sm-6 post-home">
-            <a class="thumbnail" href="03_detail.html">
-                <img src="{{ asset('frontend/images/post_6.jpg') }}" alt="">
-            </a>
-            <a href="03_detail.html" class="title">NTTU tuyển sinh Thạc sĩ CNTT khóa #K27</a>
-            <div class="content p-1">
-                <p>Nhằm tạo điều kiện cho các học viên cao học theo ngành công nghệ Thông tin, Ban Giám hiệu trường ...</p>
-            </div>
-        </article>
-        <article class="col-md-3 col-sm-6 post-home">
-            <a class="thumbnail" href="03_detail.html">
-                <img src="{{ asset('frontend/images/post_7.jpg') }}" alt="">
-            </a>
-            <a href="03_detail.html" class="title">NTTU tuyển sinh Thạc sĩ CNTT khóa #K27</a>
-            <div class="content p-1">
-                <p>Nhằm tạo điều kiện cho các học viên cao học theo ngành công nghệ Thông tin, Ban Giám hiệu trường ...</p>
-            </div>
-        </article>
+        {% for item in tuyenSinhNews %}
+            <article class="col-md-3 col-sm-6 post-home">
+                <a class="thumbnail" href="03_detail.html">
+                    <img src="{{ asset(item.thumbnail) }}" alt="">
+                </a>
+                <a href="03_detail.html" class="title">{{ (item.title|raw) }}</a>
+                <div class="content p-1">
+                    <p>{{ item.excerpt }} ...</p>
+                </div>
+            </article>
+        {% endfor %}
     </div>
 
     <div class="section sub-slider col-12">
@@ -193,5 +202,9 @@
     {#{{ include('@App/Default/Index/nuti-feature.html.twig') }}#}
     {#{{ include('@App/Default/Index/hot-handbooks.html.twig') }}#}
     {#{{ include('@App/Default/Index/nuti-gallery.html.twig') }}#}
+        <!-- /content --></section>
+        <!-- /container --></div>
+        <!-- /container --></div>
+    <!-- /main --></div>
 
 {% endblock %}

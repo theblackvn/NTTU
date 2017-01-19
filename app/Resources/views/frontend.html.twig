@@ -18,8 +18,8 @@
     <link rel="stylesheet" href="{{ asset_url }}"/>
     {% endstylesheets %}
     {% block css_script %}{% endblock %}
-    <link rel="stylesheet" href="../../../AppData/Roaming/Skype/My Skype Received Files/_header.scss">
-    <link rel="stylesheet" href="scss/custom_bootstrap/_header.scss">
+    {#<link rel="stylesheet" href="../../../AppData/Roaming/Skype/My Skype Received Files/_header.scss">#}
+    {#<link rel="stylesheet" href="scss/custom_bootstrap/_header.scss">#}
 </head>
 
 <body>
@@ -74,7 +74,7 @@
 <div class="header">
     <div class="container">
         <div class="d-flex align-items-center py-2">
-            <h1 class="logo m-0"><a href="index.html"><img src="{{ asset('frontend/images/logo_ntt.png') }}" alt="NTTU"></a></h1>
+            <h1 class="logo m-0"><a href="html/index.html"><img src="{{ asset('frontend/images/logo_ntt.png') }}" alt="NTTU"></a></h1>
             <p class="stars mb-0 mr-5 ml-2 hidden-sm-down"><img src="{{ asset('frontend/images/img_stars.png') }}" alt=""></p>
 
             <div class=" w-100 hidden-md-down">
@@ -86,7 +86,7 @@
 <span class="d-block c-gray">Admission</span>
 </span>
                         </a></li>
-                    <li><a href="daotao.html" class="d-flex align-items-center">
+                    <li><a href="{{ path('application_education_index') }}" class="d-flex align-items-center">
                             <span class="bdr-round"><i class="fa fa-book"></i></span>
                             <span class="txt">
 <span class="d-block">Đào tạo</span>
@@ -130,14 +130,14 @@
                     </ul>
                 </div>
                 <div class="col-lg-3 col-sm-6">
-                    <p><a href="02_subpage.html">Tuyển sinh</a></p>
+                    <p><a href="#">Tuyển sinh</a></p>
                     <ul class="sub-nav">
                         <li><a href="#"><i class="fa fa-angle-double-right"></i>Bậc sau đại học</a></li>
                         <li><a href="#"><i class="fa fa-angle-double-right"></i>Bậc đại học</a></li>
                         <li><a href="#"><i class="fa fa-angle-double-right"></i>Bậc cao đẳng và liên thông</a></li>
                     </ul>
 
-                    <p><a href="02_subpage.html">Nghiên cứu</a></p>
+                    <p><a href="#>Nghiên cứu</a></p>
                     <ul class="sub-nav">
                         <li><a href="#"><i class="fa fa-angle-double-right"></i>Departments A - Z</a></li>
                         <li><a href="#"><i class="fa fa-angle-double-right"></i>Interdisciplinary Programs</a></li>
@@ -145,7 +145,7 @@
                 </div>
 
                 <div class="col-lg-3 col-sm-6">
-                    <p><a href="daotao.html">Đào tạo</a></p>
+                    <p><a href="{{ path('application_education_index') }}">Đào tạo</a></p>
                     <ul class="sub-nav">
                         <li><a href="#"><i class="fa fa-angle-double-right"></i>Khối ngành Công nghệ kỹ thuật</a></li>
                         <li><a href="#"><i class="fa fa-angle-double-right"></i>Energy &amp; Environmental Sciences</a></li>
@@ -169,49 +169,7 @@
     <!-- /gnav --></div>
 
 <div id="main">
-    <div class="container">
-        <div class="row">
-            <section id="content">
-                <div id="slider-main" class="carousel slide" data-ride="carousel">
-                    <div class="carousel-inner" role="listbox">
-                        <div class="carousel-item active" style="background-image: url({{ asset('frontend/images/slide_1.jpg') }});">
-                            <div class="carousel-caption d-block text-left">
-                                <h3>Phát động cuộc thi tìm hiểu về chiến lược của NTTU</h3>
-                                <p>Cuộc thi sẽ diễn ra từ ngày 21-11-2016 đến 13-12-2016. Lễ trao giải sẽ diễn ra lúc 9 giờ sáng thứ Bảy 17-12-2016 ...</p>
-                            </div>
-                        </div>
-                        <div class="carousel-item" style="background-image: url({{ asset('frontend/images/slide_2.jpg') }});">
-                            <div class="carousel-caption d-block text-left">
-                                <h3>Phát động cuộc thi tìm hiểu về chiến lược của NTTU</h3>
-                                <p>Cuộc thi sẽ diễn ra từ ngày 21-11-2016 đến 13-12-2016. Lễ trao giải sẽ diễn ra lúc 9 giờ sáng thứ Bảy 17-12-2016 ...</p>
-                            </div>
-                        </div>
-                        <div class="carousel-item" style="background-image: url({{ asset('frontend/images/slide_2.jpg') }});">
-                            <div class="carousel-caption d-block text-left">
-                                <h3>Phát động cuộc thi tìm hiểu về chiến lược của NTTU</h3>
-                                <p>Cuộc thi sẽ diễn ra từ ngày 21-11-2016 đến 13-12-2016. Lễ trao giải sẽ diễn ra lúc 9 giờ sáng thứ Bảy 17-12-2016 ...</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="carousel-controls">
-                        <a class="carousel-control-prev justify-content-end" href="#slider-main" role="button" data-slide="prev">
-                            <span class="fa fa-angle-left" aria-hidden="true"></span>
-                        </a>
-                        <a class="carousel-control-next justify-content-start" href="#slider-main" role="button" data-slide="next">
-                            <span class="fa fa-angle-right" aria-hidden="true"></span><span class="sr-only">Next</span>
-                        </a>
-                    </div>
-                </div>
-                {#{{ include(':Frontend:header.html.twig') }}#}
-                {% block body %}{% endblock %}
-                {#{{ include(':Frontend:footer.html.twig') }}#}
-                {#{{ include(':Frontend:_frontend-pop-up.html.twig') }}#}
-
-
-                <!-- /content --></section>
-            <!-- /container --></div>
-        <!-- /container --></div>
-    <!-- /main --></div>
+    {% block body %}{% endblock %}
 
 <footer>
     <div class="container">
