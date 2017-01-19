@@ -9,17 +9,13 @@ class EducationController extends Controller
 {
     public function indexAction()
     {
-        $childCategory = $this->get('amz_db.service.query')
-            ->getRepository('AMZPostBundle:Category')
-            ->get(array(
-                'parent' => 10
-            ));
         $category = $this->get('amz_db.service.query')
             ->getRepository('AMZPostBundle:Category')
             ->findOneBy(array(
                 'isFeature' => 1,
                 'slug' => 'dao-tao'
             ));
+        $childCategory = $category->getChildren();
         $headerBanners = $this->get('amz_db.service.query')
             ->getRepository('AMZSliderBundle:Item')
             ->get(array(

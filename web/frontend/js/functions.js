@@ -1,6 +1,7 @@
 $(document).ready(function(){
 	toggledMenu();
 	slideMulti();
+    breakingPhone();
         $('#contactForm').validate({
         rules: {
             name: 'required',
@@ -71,7 +72,7 @@ $('body').on('click', '#hnav-trigger, #menu-trigger', function (e) {
 })
 };
 function slideMulti(){
-    console.log($('.multi-slide .slide').width());
+    //console.log($('.multi-slide .slide').width());
     $('.multi-slide').bxSlider({
         slideWidth: $('.multi-slide .slide').width(),
         minSlides: 1,
@@ -81,5 +82,12 @@ function slideMulti(){
         pager: false,
         nextText: '<i class="fa fa-angle-right" aria-hidden="true"></i>',
         prevText: '<i class="fa fa-angle-left" aria-hidden="true"></i>'
+    });
+}
+function breakingPhone() {
+    $("#phoneList").breakingNews({
+        effect      :"slide-v",
+        autoplay    :true,
+        timer       :3000
     });
 }

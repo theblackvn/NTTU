@@ -21,6 +21,7 @@ class Category
 
     /**
      * @ORM\OneToMany(targetEntity="Category", mappedBy="parent", fetch="EXTRA_LAZY")
+     * @ORM\OrderBy({"sortOrder" = "ASC"})
      */
     private $children;
 
