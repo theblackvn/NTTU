@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <head>
 <meta charset="utf-8">
@@ -26,7 +27,17 @@
 
 <div class="d-lg-flex justify-content-md-end" id="hnav">
 <div class="mr-auto">
-<p class="hotline mb-0 text-md-left">Hotline: <a href="tel:012 345 6789">(+84) 012 345 6789</a></p>
+<div class="hotline mb-0 text-md-left" id="phoneList">
+<div class="h-title">Hotline: </div>
+<ul class="list-unstyled">
+	<li>
+		<a href="tel:0902298300">0902.298.300</a>&nbsp;-&nbsp;<a href="tel:0906298300">0906.298.300</a>
+	</li>
+	<li>
+		<a href="tel:0912298300">0912.298.300</a>&nbsp;-&nbsp;<a href="tel:0914298300">0914.298.300</a>
+	</li>
+</ul>    
+</div>
 </div>
 <nav class="hnav col-lg-8">
 <ul class="d-lg-flex justify-content-between">
@@ -53,10 +64,10 @@
 
 <div class="language">
 <div class="dropdown">
-<button class="btn btn-transparent btn-sm" type="button" data-toggle="dropdown"><span>VI</span><i class="fa fa-angle-down ml-1 mt-1"></i></button>
+<button class="btn btn-transparent btn-sm" type="button" data-toggle="dropdown"><span><img src="dist/images/ico-flagvn.jpg" alt=""></span><i class="fa fa-angle-down ml-1 mt-1"></i></button>
 <div class="dropdown-menu dropdown-menu-right">
-<a class="dropdown-item" href="#">VN</a>
-<a class="dropdown-item" href="#">EN</a>
+<a class="dropdown-item text-center" href="#"><img src="dist/images/ico-flagvn.jpg" alt=""></a>
+<a class="dropdown-item text-center" href="#"><img src="dist/images/ico-flagen.jpg" alt=""></a>
 </div>
 </div>
 </div>
@@ -73,38 +84,30 @@
 
 <div class=" w-100 hidden-md-down">
 <ul class="h-nav list-unstyled mb-0 d-flex justify-content-between align-items-center">
+<li><a href="about.html" class="d-flex align-items-center">
+<span class="bdr-round"><i class="fa fa-info-circle"></i></span>
+<span class="txt">Giới thiệu</span>
+</a></li>
 <li><a href="02_subpage.html" class="d-flex align-items-center">
 <span class="bdr-round"><i class="fa fa-graduation-cap"></i></span>
-<span class="txt">
-<span class="d-block">Tuyển sinh</span>
-<span class="d-block c-gray">Admission</span>
-</span>
+<span class="txt">Tuyển sinh</span>
 </a></li>
 <li><a href="daotao.html" class="d-flex align-items-center">
 <span class="bdr-round"><i class="fa fa-book"></i></span>
-<span class="txt">
-<span class="d-block">Đào tạo</span>
-<span class="d-block c-gray">Academics</span>
-</span>
+<span class="txt">Đào tạo</span>
 </a></li>
 <li><a href="02_subpage.html" class="d-flex align-items-center">
-<span class="bdr-round"><i class="fa fa-database"></i></span>
-<span class="txt">
-<span class="d-block">Nghiên cứu</span>
-<span class="d-block c-gray">Research</span>
-</span>
+<span class="bdr-round"><i class="fa fa-bookmark"></i></span>
+<span class="txt">Nghiên cứu</span>
 </a></li>
 <li><a href="hoptacdn.html" class="d-flex align-items-center">
 <span class="bdr-round"><i class="fa fa-paper-plane"></i></span>
-<span class="txt">
-<span class="d-block">Hợp tác quốc tế</span>
-<span class="d-block c-gray">International coop</span>
-</span>
+<span class="txt">Hợp tác DN</span>
 </a></li>
 <!-- /h-nav --></ul>
 </div>
 <!-- /d-flex --></div>
-<button type="button" class="btn btn-gnav" id="menu-trigger" data-trigger="#menu"><span class="d-block">MENU</span><i class="fa fa-bars c-gray"></i></button>
+<button type="button" class="btn btn-gnav" id="menu-trigger" data-trigger="#menu"><i class="fa fa-bars c-lime-a5"></i></button>
 <!-- /container --></div>
 <!-- /header --></div>
 
@@ -133,27 +136,27 @@
 
 <p><a href="02_subpage.html">Nghiên cứu</a></p>
 <ul class="sub-nav">
-<li><a href="#"><i class="fa fa-angle-double-right"></i>Departments A - Z</a></li>
-<li><a href="#"><i class="fa fa-angle-double-right"></i>Interdisciplinary Programs</a></li>
+<li><a href="#"><i class="fa fa-angle-double-right"></i>Đề tài cấp bộ</a></li>
+<li><a href="#"><i class="fa fa-angle-double-right"></i>Đề tài của sinh viên</a></li>
 </ul>
 </div>
 
 <div class="col-lg-3 col-sm-6">
 <p><a href="daotao.html">Đào tạo</a></p>
 <ul class="sub-nav">
-<li><a href="#"><i class="fa fa-angle-double-right"></i>Khối ngành Công nghệ kỹ thuật</a></li>
-<li><a href="#"><i class="fa fa-angle-double-right"></i>Energy &amp; Environmental Sciences</a></li>
-<li><a href="#"><i class="fa fa-angle-double-right"></i>Education</a></li>
-<li><a href="#"><i class="fa fa-angle-double-right"></i>Engineering</a></li>
-<li><a href="#"><i class="fa fa-angle-double-right"></i>Humanities &amp; Sciences</a></li>
-<li><a href="#"><i class="fa fa-angle-double-right"></i>Medicine</a></li>
+<li><a href="#"><i class="fa fa-angle-double-right"></i>Khoa học sức khỏe</a></li>
+<li><a href="#"><i class="fa fa-angle-double-right"></i>Kinh tế - Tài chính</a></li>
+<li><a href="#"><i class="fa fa-angle-double-right"></i>Công nghệ kỹ thuật</a></li>
+<li><a href="#"><i class="fa fa-angle-double-right"></i>Khoa học Xã hội &apm; Nhân văn</a></li>
+<li><a href="#"><i class="fa fa-angle-double-right"></i>Nghệ thuật - Mỹ thuật</a></li>
+<li><a href="#"><i class="fa fa-angle-double-right"></i>Khoa học cơ bản</a></li>
 </ul>
 </div>
 
 <div class="col-lg-3 col-sm-6">
 <ul class="sub-page">
-<li><a href="05_contact.html" class="btn"><i class="fa fa-envelope"></i>Contact us</a></li>
-<li><a href="#" class="btn"><i class="fa fa-map"></i>Locations map</a></li>
+<li><a href="05_contact.html" class="btn"><i class="fa fa-envelope"></i>Liên hệ</a></li>
+<li><a href="#" class="btn"><i class="fa fa-map"></i>Cơ sở đào tạo</a></li>
 <li><a href="#" class="btn"><i class="fa fa-question-circle"></i>FAQ</a></li>
 </ul>
 </div>
@@ -163,6 +166,7 @@
 <!-- /gnav --></div>
 
 <div id="main">
+	<a class="link-old" href="http://ntt.edu.vn/ntt_trangchu/" target="_blank"><i class="fa fa-chevron-circle-right mr-2"></i>XEM GIAO DIỆN CŨ</a>
 <div class="container">
 <div class="row">
 <aside id="sidebar" class="col-md-3 col-sm-4 mb-3">
@@ -345,6 +349,7 @@
 <script src="dist/js/bootstrap.min.js"></script>
 <script src="dist/js/jquery.bxslider.min.js"></script>
 <script src="dist/js/jquery.validate.min.js"></script>
+<script src="dist/js/breakingNews.js"></script>
 <script src="dist/js/functions.js"></script>
 </body>
 </html>
