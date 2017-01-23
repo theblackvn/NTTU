@@ -15,6 +15,9 @@ services:
         arguments: ["@amz_db.service.query", "@security.token_storage", "@amz.validate"]
         calls:
             - [setEncoderFactory, ["@security.encoder_factory"]]
+    application.service.menu:
+            class: AppBundle\Service\MenuService
+            arguments: ["@amz_db.service.query", "@security.token_storage"]
     application.service.profile:
         class: AppBundle\Service\ProfileService
         arguments:

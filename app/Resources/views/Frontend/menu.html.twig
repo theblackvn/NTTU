@@ -1,0 +1,76 @@
+<div class="gnav">
+    <div class="container">
+        <nav id="menu">
+            <div class="row">
+                {% if menu %}
+                    <div class="col-lg-3 col-sm-6">
+                        <p><a href="#">Giới thiệu chung</a></p>
+                        <ul class="sub-nav">
+                            {% if menu.menuGioiThieu %}
+                                {% set child = menu.menuGioiThieu.getPosts() %}
+                                {% if child %}
+                                    {% for item in child %}
+                                        <li><a href="{{ path('application_page_detail', {'slug':item.slug}) }}"><i class="fa fa-angle-double-right"></i>{{ item.title|raw }}</a></li>
+                                    {% endfor %}
+                                {% endif %}
+                            {% endif %}
+                            {#<li><a href="#"><i class="fa fa-angle-double-right"></i>Tổng quan</a></li>#}
+                            {#<li><a href="#"><i class="fa fa-angle-double-right"></i>Bảo đảm chất lượng</a></li>#}
+                            {#<li><a href="#"><i class="fa fa-angle-double-right"></i>Sơ đồ tổ chức</a></li>#}
+                            {#<li><a href="#"><i class="fa fa-angle-double-right"></i>Các phòng ban</a></li>#}
+                            {#<li><a href="#"><i class="fa fa-angle-double-right"></i>Các viện</a></li>#}
+                            {#<li><a href="#"><i class="fa fa-angle-double-right"></i>Trung tâm</a></li>#}
+                        </ul>
+                    </div>
+                    <div class="col-lg-3 col-sm-6">
+                        <p><a href="#">Tuyển sinh</a></p>
+                        <ul class="sub-nav">
+                            {% if menu.menuTuyenSinh %}
+                                {% set child = menu.menuTuyenSinh.children() %}
+                                {% if child %}
+                                    {% for item in child %}
+                                        <li><a href="{{ path('application_admission_page', {'slug':item.slug}) }}"><i class="fa fa-angle-double-right"></i>{{ item.title|raw }}</a></li>
+                                    {% endfor %}
+                                {% endif %}
+                            {% endif %}
+                        </ul>
+
+                        <p><a href="#">Nghiên cứu</a></p>
+                        <ul class="sub-nav">
+                            {% if menu.menuNghienCuu %}
+                                {% set child = menu.menuNghienCuu.children() %}
+                                {% if child %}
+                                    {% for item in child %}
+                                        <li><a href="{{ path('application_research_page', {'slug':item.slug}) }}"><i class="fa fa-angle-double-right"></i>{{ item.title|raw }}</a></li>
+                                    {% endfor %}
+                                {% endif %}
+                            {% endif %}
+                        </ul>
+                    </div>
+
+                    <div class="col-lg-3 col-sm-6">
+                        <p><a href="{{ path('application_education_index') }}">Đào tạo</a></p>
+                        <ul class="sub-nav">
+                            {% if menu.menuDaoTao %}
+                                {% set child = menu.menuDaoTao.children() %}
+                                {% if child %}
+                                    {% for item in child %}
+                                        <li><a href="{{ path('application_education_page', {'slug':item.slug}) }}"><i class="fa fa-angle-double-right"></i>{{ item.title|raw }}</a></li>
+                                    {% endfor %}
+                                {% endif %}
+                            {% endif %}
+                        </ul>
+                    </div>
+
+                    <div class="col-lg-3 col-sm-6">
+                        <ul class="sub-page">
+                            <li><a href="#" class="btn"><i class="fa fa-envelope"></i>Liên hệ</a></li>
+                            <li><a href="#" class="btn"><i class="fa fa-map"></i>Cơ sở đào tạo</a></li>
+                            <li><a href="#" class="btn"><i class="fa fa-question-circle"></i>FAQ</a></li>
+                        </ul>
+                    </div>
+                {% endif %}
+            </div>
+        </nav>
+        <!-- /container --></div>
+    <!-- /gnav --></div>

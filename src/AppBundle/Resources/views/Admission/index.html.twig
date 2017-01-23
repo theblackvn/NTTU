@@ -1,0 +1,51 @@
+{% set menu = menu %}
+{% extends '::frontend.html.twig' %}
+{% block body  %}
+    <div class="container">
+        <div class="row">
+            <aside id="sidebar" class="col-md-3 col-sm-4 mb-3">
+                <div class="heading p-4">
+                    <h2>NTTU</h2>
+                    <h3>Triết lý Đào tạo:</h3>
+                    <ul class="list-unstyled">
+                        <li class="c-lime-a5 font-weight-bold">“Thực học - Thực hành - Thực danh - Thực nghiệp”</li>
+                    </ul>
+                    <!-- /heading --></div>
+
+                <article class="p-4">
+                    <p><img alt="" class="img-fluid" src="{{ category.thumbnail }}" /></p>
+                    {{ category.content|raw }}
+                </article>
+                <!-- /sidebar --></aside>
+
+            <section id="content" class="col-md-9 col-sm-8">
+
+                <div class="cate-heading mb-3">
+                    <img class="img-fluid" src="{{ category.thumbnail }}" alt="" width="100%">
+                    <article class="p-4">
+                        <h4 class="c-black">{{ category.title|raw }}</h4>
+                        <p><span class="c-lime-a5 font-weight-bold">{{ category.excerpt }}</p>
+                        <ul class="list-unstyled">
+                            <li><a class="font-weight-bold" href="http://{{ category.link }}/"><i class="fa fa-chevron-circle-right mr-2 c-red"></i>{{ category.link }}</a></li>
+                        </ul>
+                    </article>
+                    <!-- /heading --></div>
+
+                <h3 class="heading-3">Các bậc tuyển sinh</h3>
+                {% set childCategory = category.children %}
+                {% for item in childCategory %}
+                    <article class="media sub-cate">
+                        <figure class="thumb mb-0 mr-3"><img class="d-flex img-fluid" src="{{ item.thumbnail }}" alt="Generic placeholder image"></figure>
+                        <div class="media-body">
+                            <h5 class="title mt-0"><a href="{{ path('application_education_subPage', {'parentSlug':category.slug,'slug':item.slug}) }}">{{ item.title|raw }}</a></h5>
+                            <b class="c-black">NTTU</b>
+                            {{ item.excerpt }}
+                        </div>
+                    </article>
+                {% endfor %}
+
+
+                <!-- /content --></section>
+        </div>
+        <!-- /container --></div>
+{% endblock %}

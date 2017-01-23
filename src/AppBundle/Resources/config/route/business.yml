@@ -1,0 +1,7 @@
+application_business_index:
+    path:     /
+    defaults: { _controller: AppBundle:Business:index }
+
+application_business_page:
+    path:     /{slug}
+    defaults: { _controller: AppBundle:Business:page }

@@ -17,6 +17,13 @@
                     </div>
                 </div>
                 <div class="form-group">
+                    <label for="post_lang1_slug">Link <span class="required-field">*</span></label>
+                    {{ form_widget(form.link) }}
+                    <div class="amz-error">
+                        {{ form_errors(form.link) }}
+                    </div>
+                </div>
+                <div class="form-group">
                     <label for="post_lang1_excerpt1">Giới thiệu ngắn</label>
                     {{ form_widget(form.excerpt) }}
                     <div class="amz-error">

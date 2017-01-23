@@ -23,7 +23,6 @@
 </head>
 
 <body>
-
 <header class="top-header">
     <div class="container">
         <div class="d-flex justify-content-sm-center justify-content-sm-end">
@@ -46,10 +45,12 @@
                     </div>
                     <nav class="hnav col-lg-8">
                         <ul class="d-lg-flex justify-content-between">
-                            <li><a href="#">Sinh viên</a></li>
-                            <li><a href="#">Giảng viên</a></li>
-                            <li><a href="#">Cựu sinh viên</a></li>
-                            <li><a href="#">Cơ sở đào tạo</a></li>
+                            {% if header %}
+                                {% for text, link in header %}
+                                    <li><a href="{{ link }}">{{ text }}</a></li>
+                                {% endfor %}
+                            {% endif %}
+                            <li><a href="{{ path('application_page_csdt') }}">Cơ sở đào tạo</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -89,11 +90,11 @@
 
             <div class=" w-100 hidden-md-down">
                 <ul class="h-nav list-unstyled mb-0 d-flex justify-content-between align-items-center">
-                    <li><a href="#" class="d-flex align-items-center">
+                    <li><a href="{{ path('application_page_intro') }}" class="d-flex align-items-center">
                             <span class="bdr-round"><i class="fa fa-info-circle"></i></span>
                             <span class="txt">Giới thiệu</span>
                         </a></li>
-                    <li><a href="#" class="d-flex align-items-center">
+                    <li><a href="{{ path('application_admission_index') }}" class="d-flex align-items-center">
                             <span class="bdr-round"><i class="fa fa-graduation-cap"></i></span>
                             <span class="txt">Tuyển sinh</span>
                         </a></li>
@@ -101,11 +102,11 @@
                             <span class="bdr-round"><i class="fa fa-book"></i></span>
                             <span class="txt">Đào tạo</span>
                         </a></li>
-                    <li><a href="#" class="d-flex align-items-center">
+                    <li><a href="{{ path('application_research_index') }}" class="d-flex align-items-center">
                             <span class="bdr-round"><i class="fa fa-bookmark"></i></span>
                             <span class="txt">Nghiên cứu</span>
                         </a></li>
-                    <li><a href="#" class="d-flex align-items-center">
+                    <li><a href="{{ path('application_business_index') }}" class="d-flex align-items-center">
                             <span class="bdr-round"><i class="fa fa-paper-plane"></i></span>
                             <span class="txt">Hợp tác DN</span>
                         </a></li>
@@ -116,60 +117,7 @@
         <!-- /container --></div>
     <!-- /header --></div>
 
-<div class="gnav">
-    <div class="container">
-        <nav id="menu">
-            <div class="row">
-                <div class="col-lg-3 col-sm-6">
-                    <p><a href="#">Giới thiệu chung</a></p>
-                    <ul class="sub-nav">
-                        <li><a href="#"><i class="fa fa-angle-double-right"></i>Tổng quan</a></li>
-                        <li><a href="#"><i class="fa fa-angle-double-right"></i>Bảo đảm chất lượng</a></li>
-                        <li><a href="#"><i class="fa fa-angle-double-right"></i>Sơ đồ tổ chức</a></li>
-                        <li><a href="#"><i class="fa fa-angle-double-right"></i>Các phòng ban</a></li>
-                        <li><a href="#"><i class="fa fa-angle-double-right"></i>Các viện</a></li>
-                        <li><a href="#"><i class="fa fa-angle-double-right"></i>Trung tâm</a></li>
-                    </ul>
-                </div>
-                <div class="col-lg-3 col-sm-6">
-                    <p><a href="#"">Tuyển sinh</a></p>
-                    <ul class="sub-nav">
-                        <li><a href="#"><i class="fa fa-angle-double-right"></i>Bậc sau đại học</a></li>
-                        <li><a href="#"><i class="fa fa-angle-double-right"></i>Bậc đại học</a></li>
-                        <li><a href="#"><i class="fa fa-angle-double-right"></i>Bậc cao đẳng và liên thông</a></li>
-                    </ul>
-
-                    <p><a href="#">Nghiên cứu</a></p>
-                    <ul class="sub-nav">
-                        <li><a href="#"><i class="fa fa-angle-double-right"></i>Đề tài cấp bộ</a></li>
-                        <li><a href="#"><i class="fa fa-angle-double-right"></i>Đề tài của sinh viên</a></li>
-                    </ul>
-                </div>
-
-                <div class="col-lg-3 col-sm-6">
-                    <p><a href="{{ path('application_education_index') }}">Đào tạo</a></p>
-                    <ul class="sub-nav">
-                        <li><a href="#"><i class="fa fa-angle-double-right"></i>Khoa học sức khỏe</a></li>
-                        <li><a href="#"><i class="fa fa-angle-double-right"></i>Kinh tế - Tài chính</a></li>
-                        <li><a href="#"><i class="fa fa-angle-double-right"></i>Công nghệ kỹ thuật</a></li>
-                        <li><a href="#"><i class="fa fa-angle-double-right"></i>Khoa học Xã hội &apm; Nhân văn</a></li>
-                        <li><a href="#"><i class="fa fa-angle-double-right"></i>Nghệ thuật - Mỹ thuật</a></li>
-                        <li><a href="#"><i class="fa fa-angle-double-right"></i>Khoa học cơ bản</a></li>
-                    </ul>
-                </div>
-
-                <div class="col-lg-3 col-sm-6">
-                    <ul class="sub-page">
-                        <li><a href="#" class="btn"><i class="fa fa-envelope"></i>Liên hệ</a></li>
-                        <li><a href="#" class="btn"><i class="fa fa-map"></i>Cơ sở đào tạo</a></li>
-                        <li><a href="#" class="btn"><i class="fa fa-question-circle"></i>FAQ</a></li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-        <!-- /container --></div>
-    <!-- /gnav --></div>
-
+{{ include(':Frontend:menu.html.twig', {'menu':menu}) }}
 <div id="main">
     <a class="link-old" href="http://ntt.edu.vn/ntt_trangchu/" target="_blank"><i class="fa fa-chevron-circle-right mr-2"></i>XEM GIAO DIỆN CŨ</a>
 
@@ -180,37 +128,36 @@
             <div class="row fnav pb-4">
                 <div class="col-lg-3 col-sm-6">
                     <p><a href="#">Các khối ngành</a></p>
-                    <ul class="fsub">
-                        <li><a href="#">Công nghệ kỹ thuật</a></li>
-                        <li><a href="#">Kinh tế tài chính</a></li>
-                        <li><a href="#">Khoa học xã hội và Nhân văn</a></li>
-                        <li><a href="#">Khoa hoc sức khỏe</a></li>
-                        <li><a href="#">Khoa học cơ bản</a></li>
-                        <li><a href="#">Chăm sóc thẩm mỹ</a></li>
-                    </ul>
+                    {% if menu.menuDaoTao %}
+                        {% set child = menu.menuDaoTao.children %}
+                        <ul class="fsub">
+                            {% for item in child %}
+                                <li><a href="{{ path('application_education_page', {'slug':item.slug}) }}">{{ item.title|raw }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
                 </div>
 
                 <div class="col-lg-3 col-sm-6">
                     <p><a href="#">Phòng ban</a></p>
+                    {% if footer.phong_ban %}
                     <ul class="fsub">
-                        <li><a href="#">Thư viện Đại Học NTT</a></li>
-                        <li><a href="#">Phòng Đảm bảo chất lượng</a></li>
-                        <li><a href="#">Phòng Hành chính - Tổng hợp</a></li>
-                        <li><a href="#">Phòng Quản lý Đào Tạo</a></li>
-                        <li><a href="#">Các phòng ban khác</a></li>
+                        {% for text, link in footer.phong_ban %}
+                            <li><a href="{{ link }}">{{ text }}</a></li>
+                        {% endfor %}
                     </ul>
+                    {% endif %}
                 </div>
 
                 <div class="col-lg-3 col-sm-6">
                     <p><a href="#">Trung tâm - Viện</a></p>
-                    <ul class="fsub">
-                        <li><a href="#">Viện Đào Tạo Quốc Tế</a></li>
-                        <li><a href="#">Viện Nghiên Cứu và Đào Tạo Việt Hàn</a></li>
-                        <li><a href="#">Viện Khoa học Môi trường</a></li>
-                        <li><a href="#">TT Xuất khẩu lao động Texgamex</a></li>
-                        <li><a href="#">TT Đào Tạo Kỹ Năng Nghề NTT</a></li>
-                        <li><a href="#">TT QH Doanh Nghiệp &amp; HTSV</a></li>
-                    </ul>
+                    {% if footer.trung_tam_vien %}
+                        <ul class="fsub">
+                            {% for text, link in footer.trung_tam_vien %}
+                                <li><a href="{{ link }}">{{ text }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
                 </div>
 
                 <div class="col-lg-3 col-sm-6">

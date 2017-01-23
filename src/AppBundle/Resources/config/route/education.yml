@@ -1,3 +1,10 @@
 application_education_index:
     path:     /
     defaults: { _controller: AppBundle:Education:index }
+
+application_education_subPage:
+    path:     /{parentSlug}/{slug}
+    defaults: { _controller: AppBundle:Education:subPage }
+application_education_page:
+    path:     /{slug}
+    defaults: { _controller: AppBundle:Page:index }

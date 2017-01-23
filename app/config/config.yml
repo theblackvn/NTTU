@@ -38,6 +38,8 @@ twig:
     globals:
         domain: "%domain%"
         rootLink: "%root_link%"
+        header: "%header%"
+        footer: "%footer%"
 
 # Doctrine Configuration
 doctrine:

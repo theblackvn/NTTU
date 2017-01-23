@@ -1,0 +1,7 @@
+application_research_index:
+    path:     /
+    defaults: { _controller: AppBundle:Research:index }
+
+application_research_page:
+    path:     /{slug}
+    defaults: { _controller: AppBundle:Research:page }

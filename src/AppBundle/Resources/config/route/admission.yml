@@ -1,0 +1,10 @@
+application_admission_index:
+    path:     /
+    defaults: { _controller: AppBundle:Admission:index }
+
+application_admission_subPage:
+    path:     /{parentSlug}/{slug}
+    defaults: { _controller: AppBundle:Admission:subPage }
+application_admission_page:
+    path:     /{slug}
+    defaults: { _controller: AppBundle:Admission:page }

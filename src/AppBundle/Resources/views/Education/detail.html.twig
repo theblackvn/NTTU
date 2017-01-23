@@ -1,0 +1,42 @@
+{% set menu = menu %}
+{% extends '::frontend.html.twig' %}
+{% block body %}
+<div class="container">
+    <div class="row">
+        <aside id="sidebar" class="col-md-3 col-sm-4 mb-3">
+            <div class="heading p-4">
+                <h2>{{ category.title }}</h2>
+                {#<h3>Lorem ipsum dolor sit amet</h3>#}
+                {#<ul class="list-unstyled">#}
+                    {#<li><a href="#"><i class="fa fa-chevron-circle-right mr-1"></i>Typi non habent </a></li>#}
+                    {#<li><a href="#"><i class="fa fa-chevron-circle-right mr-1"></i>Mirum est</a></li>#}
+                {#</ul>#}
+                <!-- /heading --></div>
+
+            <article class="p-4">
+                {{ category.content|raw }}
+            </article>
+            <!-- /sidebar --></aside>
+
+        <section id="content" class="col-md-9 col-sm-8">
+
+            <div class="cate-heading mb-3">
+                <img class="img-fluid" src="dist/images/slide_1.jpg" alt="">
+                <article class="p-4">
+                    <p class="c-black">{#<span class="text-underline font-weight-bold">Category descriptions</span> : #}{{ category.excerpt }}</p>
+                    <ul class="list-unstyled">
+                        <li><a href="{{ category.link }}" class="font-weight-bold"><i class="fa fa-chevron-circle-right mr-2 c-red"></i>{{ category.link }}</a></li>
+                    </ul>
+                </article>
+                <!-- /heading --></div>
+
+            <div class="section-detail">
+                <h3 class="c-blue-a5">{{ post.title|raw }}</h3>
+
+                {#<h4 class="heading-4">Ut wisi enim ad minim veniam</h4>#}
+                {{ post.content | raw}}
+                <!-- /section-detail--></div>
+            <!-- /content --></section>
+    </div>
+    <!-- /container --></div>
+{% endblock %}

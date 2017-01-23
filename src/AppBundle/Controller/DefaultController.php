@@ -9,26 +9,27 @@ class DefaultController extends Controller
 {
     public function indexAction()
     {
-        $headerBanners = $this->get('amz_db.service.query')
-            ->getRepository('AMZSliderBundle:Item')
-            ->get(array(
-                'position-slug' => 'homepage-header-banner'
-            ));
-        $bannerFooterLeft = $this->get('amz_db.service.query')
-            ->getRepository('AMZSliderBundle:Item')
-            ->findOneBy(array(
-                'position-slug' => 'homepage-footer-left-big-banner'
-            ), array('id' => 'DESC'));
-        $bannerFooterTopRight = $this->get('amz_db.service.query')
-            ->getRepository('AMZSliderBundle:Item')
-            ->findOneBy(array(
-                'position-slug' => 'homepage-footer-top-right'
-            ), array('id' => 'DESC'));
-        $bannerFooterBottomRight = $this->get('amz_db.service.query')
-            ->getRepository('AMZSliderBundle:Item')
-            ->findOneBy(array(
-                'position-slug' => 'homepage-footer-bottom-right'
-            ), array('id' => 'DESC'));
+//        $headerBanners = $this->get('amz_db.service.query')
+//            ->getRepository('AMZSliderBundle:Item')
+//            ->get(array(
+//                'position-slug' => 'homepage-header-banner'
+//            ));
+//        $bannerFooterLeft = $this->get('amz_db.service.query')
+//            ->getRepository('AMZSliderBundle:Item')
+//            ->findOneBy(array(
+//                'position-slug' => 'homepage-footer-left-big-banner'
+//            ), array('id' => 'DESC'));
+//        $bannerFooterTopRight = $this->get('amz_db.service.query')
+//            ->getRepository('AMZSliderBundle:Item')
+//            ->findOneBy(array(
+//                'position-slug' => 'homepage-footer-top-right'
+//            ), array('id' => 'DESC'));
+//        $bannerFooterBottomRight = $this->get('amz_db.service.query')
+//            ->getRepository('AMZSliderBundle:Item')
+//            ->findOneBy(array(
+//                'position-slug' => 'homepage-footer-bottom-right'
+//            ), array('id' => 'DESC'));
+        $menu = $this->get('application.service.menu')->getMenu();
         $itNews = $this->get('amz_db.service.query')
             ->getRepository('AMZPostBundle:Post')
             ->get(array(
@@ -48,50 +49,44 @@ class DefaultController extends Controller
 
             ), array('created', 'DESC'), 3, 0);
 
-        $hotNewsTruyenThong = $this->get('amz_db.service.query')
+        $hotHopTacDN = $this->get('amz_db.service.query')
+            ->getRepository('AMZPostBundle:Post')
+            ->findOneBy(array(
+                'status' => Post::STATUS_PUBLISH,
+                'type' => Post::TYPE_POST,
+                'is_featured' => 1,
+                'category_slug' => 'hop-tac-doanh-nghiep',
+
+            ), array(), 1, 0);
+
+        $hotMoiTruongHT = $this->get('amz_db.service.query')
+            ->getRepository('AMZPostBundle:Post')
+            ->findOneBy(array(
+                'status' => Post::STATUS_PUBLISH,
+                'type' => Post::TYPE_POST,
+                'is_featured' => 1,
+                'category_slug' => 'moi-truong-hoc-tap',
+
+            ), array(), 1, 0);
+
+        $fiveReason = $this->get('amz_db.service.query')
             ->getRepository('AMZPostBundle:Post')
             ->get(array(
                 'status' => Post::STATUS_PUBLISH,
                 'type' => Post::TYPE_POST,
                 'is_featured' => 1,
-                'category_slug' => 'truyen-thong-va-tuyen-truyen',
+                'category_slug' => '5-ly-do',
 
-            ), array(), 3, 0);
-
-        $hotNewsVanBan = $this->get('amz_db.service.query')
-            ->getRepository('AMZPostBundle:Post')
-            ->get(array(
-                'status' => Post::STATUS_PUBLISH,
-                'type' => Post::TYPE_POST,
-                'is_featured' => 1,
-                'category_slug' => 'he-thong-van-ban',
-
-            ), array(), 3, 0);
-
-        $kyThuatCan = $this->get('amz_db.service.query')->getRepository("AMZPostBundle:Post")
-            ->get(array(
-                'status' => Post::STATUS_PUBLISH,
-                'type' => Post::TYPE_PAGE,
-                'slug' => 'ky-thuat-can',
-            ));
-        $kyThuatDoChieuCao = $this->get('amz_db.service.query')->getRepository("AMZPostBundle:Post")
-            ->get(array(
-                'status' => Post::STATUS_PUBLISH,
-                'type' => Post::TYPE_PAGE,
-                'slug' => 'ky-thuat-do-chieu-cao',
-            ));
+            ), array(), 5, 0);
+        //var_dump($fiveReason);die();
 
         return $this->render('AppBundle:Default:index.html.twig', array(
-            'headerBanners' => $headerBanners,
             'itNews' => $itNews,
-            'bannerFooterLeft' => $bannerFooterLeft,
-            'bannerFooterTopRight' => $bannerFooterTopRight,
-            'bannerFooterBottomRight' => $bannerFooterBottomRight,
             'tuyenSinhNews' => $tuyenSinhNews,
-            'hotNewsTruyenThong' => $hotNewsTruyenThong,
-            'hotNewsVanBan' => $hotNewsVanBan,
-            'kyThuatCan' => $kyThuatCan,
-            'kyThuatDoChieuCao' => $kyThuatDoChieuCao
+            'hotHopTacDN' => $hotHopTacDN,
+            'hotMoiTruongHT' => $hotMoiTruongHT,
+            'fiveReason' => $fiveReason,
+            'menu' => $menu
         ));
     }
 		

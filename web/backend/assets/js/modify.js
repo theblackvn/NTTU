@@ -43,7 +43,8 @@ jQuery(document).ready(function () {
                 //alert("vinh");
                 window.KCFinder = null;
                 $item.attr('src', url);
-                $($item.data('hidden-class')).val(amz_domain + url);
+                //$($item.data('hidden-class')).val(amz_domain + url);
+                $($item.data('hidden-class')).val(url);
                 $.fancybox.close();
             }
         };

@@ -23,31 +23,32 @@
             <div class="cate-heading mb-3">
                 <img class="img-fluid" src="{{ asset('frontend/images/cate_DT.jpg') }}" alt="">
                 <article class="p-4">
-                    <h4 class="c-black">Đào tạo</h4>
-                    <p><span class="c-lime-a5 font-weight-bold">NTTU</span> - Là một trường ĐH định hướng ứng dụng và thực hành, chúng tôi hướng tới mục tiêu đáp ứng nhu cầu giáo dục đại học đại chúng, tạo lập một môi trường học tập tích cực và trải nghiệm thực tiễn cho mọi sinh viên, trang bị cho họ năng lực tự học, tinh thần sáng tạo khởi nghiệp.</p>
+                    <h4 class="c-black">{{ category.title|raw }}</h4>
+                    <p><span class="c-lime-a5 font-weight-bold">{{ category.excerpt }}</p>
                     <ul class="list-unstyled">
                         <li><a class="font-weight-bold" href="http://{{ category.link }}/"><i class="fa fa-chevron-circle-right mr-2 c-red"></i>{{ category.link }}</a></li>
                     </ul>
                 </article>
                 <!-- /heading --></div>
 
-            <h3 class="heading-3">Các Khoa &amp; Khối ngành đào tạo</h3>
+            <h3 class="heading-3">Các Khoa đào tạo</h3>
+            {% set childCategory = category.children %}
             {% for item in childCategory %}
                 <article class="media sub-cate">
-                    <figure class="thumb mb-0 mr-3"><img class="d-flex img-fluid" src="{{ asset(item.thumbnail) }}" alt="Generic placeholder image"></figure>
+                    <figure class="thumb mb-0 mr-3"><img class="d-flex img-fluid" src="{{ item.thumbnail }}" alt="Generic placeholder image"></figure>
                     <div class="media-body">
-                        <h5 class="title mt-0"><a href="#">{{ item.title|raw }}</a></h5>
+                        <h5 class="title mt-0"><a href="{{ path('application_education_subPage', {'parentSlug':category.slug,'slug':item.slug}) }}">{{ item.title|raw }}</a></h5>
                         <b class="c-black">NTTU</b>
                         {{ item.excerpt }}
-                        {% set child2 = item.children %}
-                        {% if child2  %}
-                        <ul class="list-unstyled list-sub mb-0 row">
-                            {% for item2 in child2 %}
-                            <li class="col-md-6"><i class="fa fa-angle-right c-lime-a5 mr-1" aria-hidden="true"></i>
-                                <a href="{{ item2.link }}">{{ item2.title | raw }}</a></li>
-                            {% endfor %}
-                        </ul>
-                        {% endif %}
+                        {#{% set child2 = item.children %}#}
+                        {#{% if child2  %}#}
+                        {#<ul class="list-unstyled list-sub mb-0 row">#}
+                            {#{% for item2 in child2 %}#}
+                            {#<li class="col-md-6"><i class="fa fa-angle-right c-lime-a5 mr-1" aria-hidden="true"></i>#}
+                                {#<a href="{{ item2.link }}">{{ item2.title | raw }}</a></li>#}
+                            {#{% endfor %}#}
+                        {#</ul>#}
+                        {#{% endif %}#}
                     </div>
                 </article>
             {% endfor %}

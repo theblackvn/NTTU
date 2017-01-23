@@ -52,6 +52,9 @@ class CategoryType extends AbstractType
                     'minMessage' => 'Vui lòng nhập  số lớn hơn 0'
                 ))
             )
+        ))->add('link', TextType::class, array(
+            'required' => false,
+            'attr' => array('class' => 'form-control')
         ))->add('thumbnail', HiddenType::class, array(
             'required' => false,
             'attr' => array('class' => 'post-thumbnail')
@@ -60,9 +63,6 @@ class CategoryType extends AbstractType
             'choices_as_values' => true,
             'choices' => array('Không' => false, 'Có' => true),
             'attr' => array('class' => 'form-control select2')
-        ))->add('link', TextType::class, array(
-            'required' => false,
-            'attr' => array('class' => 'form-control')
         ))->add('excerpt', TextareaType::class, array(
             'required' => false,
             'attr' => array('class' => 'form-control', 'rows' => 9)
