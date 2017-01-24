@@ -3,6 +3,9 @@ jQuery(document).ready(function () {
     $('.mydatepicker, #datepicker').datepicker({
         format: 'dd/mm/yyyy'
     });
+    $(".datepicker").datepicker({
+        format: 'dd/mm/yyyy',
+    });
     // For select 2
     $(".select2").select2();
     $('.selectpicker').selectpicker();

@@ -3,6 +3,7 @@
 namespace AppBundle\Controller;
 
 use AMZ\PostBundle\Entity\Post;
+use AMZ\PostBundle\Entity\Event;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class DefaultController extends Controller
@@ -30,6 +31,13 @@ class DefaultController extends Controller
 //                'position-slug' => 'homepage-footer-bottom-right'
 //            ), array('id' => 'DESC'));
         $menu = $this->get('application.service.menu')->getMenu();
+        $events = $this->get('amz_db.service.query')
+            ->getRepository('AMZPostBundle:Event')
+            ->get(array(
+                'status' => Event::STATUS_PUBLISH,
+                'is_featured' => 1,
+            ), array('created','DESC'), 3, 0);
+        //var_dump($events);die();
         $itNews = $this->get('amz_db.service.query')
             ->getRepository('AMZPostBundle:Post')
             ->get(array(
@@ -86,7 +94,8 @@ class DefaultController extends Controller
             'hotHopTacDN' => $hotHopTacDN,
             'hotMoiTruongHT' => $hotMoiTruongHT,
             'fiveReason' => $fiveReason,
-            'menu' => $menu
+            'menu' => $menu,
+            'events' => $events
         ));
     }
 		

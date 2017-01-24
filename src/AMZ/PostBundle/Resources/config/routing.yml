@@ -21,3 +21,7 @@ amz_post:
 amz_daotao:
     resource: "@AMZPostBundle/Resources/config/route/dao-tao.yml"
     prefix:   /dao-tao
+
+amz_event:
+    resource: "@AMZPostBundle/Resources/config/route/event.yml"
+    prefix:   /event

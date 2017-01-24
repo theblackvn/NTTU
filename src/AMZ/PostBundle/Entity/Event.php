@@ -5,23 +5,19 @@ namespace AMZ\PostBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="AMZ\PostBundle\Repository\PostRepository")
- * @ORM\Table(name="post", indexes={@ORM\Index(name="search_idx", columns={"slug"})})
+ * @ORM\Entity(repositoryClass="AMZ\PostBundle\Repository\EventRepository")
+ * @ORM\Table(name="event", indexes={@ORM\Index(name="search_idx", columns={"slug"})})
  * @ORM\HasLifecycleCallbacks
  */
 class Event
 {
     const TYPE_STATIC_BLOCK = 'static_block';
+    const TYPE_POST = 'post';
     const STATUS_DRAFT = 1;
     const STATUS_PUBLISH = 2;
     const STATUS_TRASH = 3;
     const ADMIN_NUMBER_ITEM_PER_PAGE = 10;
 
-
-    /**
-     * @ORM\OneToMany(targetEntity="Gallery", mappedBy="post", fetch="EXTRA_LAZY")
-     */
-    private $gallery;
 
     /**
      * @ORM\Column(type="integer")
@@ -44,6 +40,16 @@ class Event
      * @ORM\Column(type="string", nullable=true)
      */
     private $thumbnail;
+
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $location;
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $startDate;
     
 
     /**
@@ -191,6 +197,54 @@ class Event
     public function getThumbnail()
     {
         return $this->thumbnail;
+    }
+
+    /**
+     * Set location
+     *
+     * @param string $location
+     *
+     * @return Event
+     */
+    public function setLocation($location)
+    {
+        $this->location = $location;
+
+        return $this;
+    }
+
+    /**
+     * Get location
+     *
+     * @return string
+     */
+    public function getLocation()
+    {
+        return $this->location;
+    }
+
+    /**
+     * Set startDate
+     *
+     * @param \DateTime $startDate
+     *
+     * @return Event
+     */
+    public function setStartDate($startDate)
+    {
+        $this->startDate = $startDate;
+
+        return $this;
+    }
+
+    /**
+     * Get startDate
+     *
+     * @return \DateTime
+     */
+    public function getStartDate()
+    {
+        return $this->startDate;
     }
 
     /**
@@ -417,41 +471,6 @@ class Event
     {
         $this->categories = new \Doctrine\Common\Collections\ArrayCollection();
         $this->tags = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-
-
-    /**
-     * Add gallery
-     *
-     * @param \AMZ\PostBundle\Entity\Gallery $gallery
-     *
-     * @return Event
-     */
-    public function addGallery(\AMZ\PostBundle\Entity\Gallery $gallery)
-    {
-        $this->gallery[] = $gallery;
-
-        return $this;
-    }
-
-    /**
-     * Remove gallery
-     *
-     * @param \AMZ\PostBundle\Entity\Gallery $gallery
-     */
-    public function removeGallery(\AMZ\PostBundle\Entity\Gallery $gallery)
-    {
-        $this->gallery->removeElement($gallery);
-    }
-
-    /**
-     * Get gallery
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getGallery()
-    {
-        return $this->gallery;
     }
 
 }

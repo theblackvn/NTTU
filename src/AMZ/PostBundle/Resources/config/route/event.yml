@@ -1,0 +1,15 @@
+amz_event_homepage:
+    path:     /
+    defaults: { _controller: AMZPostBundle:Event:index }
+
+amz_event_create:
+    path:     /create
+    defaults: { _controller: AMZPostBundle:Event:create }
+
+amz_event_edit:
+    path:     /{id}/edit
+    defaults: { _controller: AMZPostBundle:Event:edit }
+
+amz_event_delete:
+    path:     /{id}/delete
+    defaults: { _controller: AMZPostBundle:Event:delete }

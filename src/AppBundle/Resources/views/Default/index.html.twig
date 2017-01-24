@@ -5,195 +5,178 @@
     <!-- slider -->
     {#{{ include('@App/Default/Index/header-banner.html.twig') }}#}
     <div class="container">
-    <div class="row">
-    <section id="content">
-        <div id="slider-main" class="carousel slide" data-ride="carousel">
-            <div class="carousel-inner" role="listbox">
-                <div class="carousel-item active" style="background-image: url({{ asset('frontend/images/slide_1.jpg') }});">
-                    <div class="carousel-caption d-block text-left">
-                        <h3>Phát động cuộc thi tìm hiểu về chiến lược của NTTU</h3>
-                        <p>Cuộc thi sẽ diễn ra từ ngày 21-11-2016 đến 13-12-2016. Lễ trao giải sẽ diễn ra lúc 9 giờ sáng thứ Bảy 17-12-2016 ...</p>
+        <div class="row">
+            <section id="content">
+                <div id="slider-main" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner" role="listbox">
+                        <div class="carousel-item active"
+                             style="background-image: url({{ asset('frontend/images/slide_1.jpg') }});">
+                            <div class="carousel-caption d-block text-left">
+                                <h3>Phát động cuộc thi tìm hiểu về chiến lược của NTTU</h3>
+                                <p>Cuộc thi sẽ diễn ra từ ngày 21-11-2016 đến 13-12-2016. Lễ trao giải sẽ diễn ra lúc 9
+                                    giờ sáng thứ Bảy 17-12-2016 ...</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item"
+                             style="background-image: url({{ asset('frontend/images/slide_2.jpg') }});">
+                            <div class="carousel-caption d-block text-left">
+                                <h3>Phát động cuộc thi tìm hiểu về chiến lược của NTTU</h3>
+                                <p>Cuộc thi sẽ diễn ra từ ngày 21-11-2016 đến 13-12-2016. Lễ trao giải sẽ diễn ra lúc 9
+                                    giờ sáng thứ Bảy 17-12-2016 ...</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item"
+                             style="background-image: url({{ asset('frontend/images/slide_3.jpg') }});">
+                            <div class="carousel-caption d-block text-left">
+                                <h3>Phát động cuộc thi tìm hiểu về chiến lược của NTTU</h3>
+                                <p>Cuộc thi sẽ diễn ra từ ngày 21-11-2016 đến 13-12-2016. Lễ trao giải sẽ diễn ra lúc 9
+                                    giờ sáng thứ Bảy 17-12-2016 ...</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-controls">
+                        <a class="carousel-control-prev justify-content-end" href="#slider-main" role="button"
+                           data-slide="prev">
+                            <span class="fa fa-angle-left" aria-hidden="true"></span>
+                        </a>
+                        <a class="carousel-control-next justify-content-start" href="#slider-main" role="button"
+                           data-slide="next">
+                            <span class="fa fa-angle-right" aria-hidden="true"></span><span class="sr-only">Next</span>
+                        </a>
                     </div>
                 </div>
-                <div class="carousel-item" style="background-image: url({{ asset('frontend/images/slide_2.jpg') }});">
-                    <div class="carousel-caption d-block text-left">
-                        <h3>Phát động cuộc thi tìm hiểu về chiến lược của NTTU</h3>
-                        <p>Cuộc thi sẽ diễn ra từ ngày 21-11-2016 đến 13-12-2016. Lễ trao giải sẽ diễn ra lúc 9 giờ sáng thứ Bảy 17-12-2016 ...</p>
+                <div class="d-md-flex section mt-4">
+                    <div class="col-md-9">
+                        <h2 class="heading-2">Tin tức</h2>
+                        <div class="row">
+                            {% for it in itNews %}
+                                <article class="col-md-4 col-sm-6 post-home">
+                                    <a class="thumbnail" href="{{ path('application_page_detail', {'slug':it.slug}) }}">
+                                        <img src="{{ it.thumbnail }}" alt="">
+                                    </a>
+                                    <a href="{{ path('application_page_detail', {'slug':it.slug}) }}"
+                                       class="title">{{ it.title|raw }}</a>
+                                    <div class="content">
+                                        <p>{{ it.excerpt }} ...</p>
+                                    </div>
+                                </article>
+                            {% endfor %}
+                        </div>
                     </div>
-                </div>
-                <div class="carousel-item" style="background-image: url({{ asset('frontend/images/slide_3.jpg') }});">
-                    <div class="carousel-caption d-block text-left">
-                        <h3>Phát động cuộc thi tìm hiểu về chiến lược của NTTU</h3>
-                        <p>Cuộc thi sẽ diễn ra từ ngày 21-11-2016 đến 13-12-2016. Lễ trao giải sẽ diễn ra lúc 9 giờ sáng thứ Bảy 17-12-2016 ...</p>
-                    </div>
-                </div>
-            </div>
-            <div class="carousel-controls">
-                <a class="carousel-control-prev justify-content-end" href="#slider-main" role="button" data-slide="prev">
-                    <span class="fa fa-angle-left" aria-hidden="true"></span>
-                </a>
-                <a class="carousel-control-next justify-content-start" href="#slider-main" role="button" data-slide="next">
-                    <span class="fa fa-angle-right" aria-hidden="true"></span><span class="sr-only">Next</span>
-                </a>
-            </div>
-        </div>
-        <div class="d-md-flex section mt-4">
-            <div class="col-md-9">
-                <h2 class="heading-2">Tin tức</h2>
-                <div class="row">
-                    {% for it in itNews %}
-                        <article class="col-md-4 col-sm-6 post-home">
-                            <a class="thumbnail" href="{{ path('application_page_detail', {'slug':it.slug}) }}">
-                                <img src="{{ asset(it.thumbnail) }}" alt="">
-                            </a>
-                            <a href="{{ path('application_page_detail', {'slug':it.slug}) }}" class="title">{{ it.title|raw }}</a>
-                            <div class="content">
-                                <p>{{ it.excerpt }} ...</p>
+                    <div class="col-md-3">
+                        <h2 class="heading-2">Media</h2>
+                        <article class="post-video border">
+                            <video src="#" controls="controls"></video>
+                            <div class="description">
+                                <p>NTTU - Nhằm tạo điều kiện cho các học viên cao học theo ngành ...</p>
                             </div>
                         </article>
-                    {% endfor %}
-                </div>
-            </div>
-            <div class="col-md-3">
-                <h2 class="heading-2">Media</h2>
-                <article class="post-video border">
-                    <video src="#" controls="controls"></video>
-                    <div class="description">
-                        <p>NTTU - Nhằm tạo điều kiện cho các học viên cao học theo ngành ...</p>
                     </div>
-                </article>
-            </div>
-        </div>
-        <div class="section sub-slider">
-        <h3 class="title-carousel"><span class="c-blue-a5">5 lý do</span> Đại học Nguyễn Tất Thành là Đại học Hạnh phúc</h3>
-        <div class="multi-slide">
-            {% if fiveReason %}
-                {% for item in fiveReason %}
-                    <div class="slide d-flex justify-content-center" style="background-image: url({{ item.thumbnail }});">
-                        <div class="caption text-center">
-                            <p class="highlight">{{ item.title|raw }}</p>
-                            <p class="line">{{ item.excerpt }}</p>
+                </div>
+                <div class="section sub-slider">
+                    <h3 class="title-carousel"><span class="c-blue-a5">5 lý do</span> Đại học Nguyễn Tất Thành là Đại
+                        học Hạnh phúc</h3>
+                    <div class="multi-slide">
+                        {% if fiveReason %}
+                            {% for item in fiveReason %}
+                                <div class="slide d-flex justify-content-center"
+                                     style="background-image: url({{ item.thumbnail }});">
+                                    <div class="caption text-center">
+                                        <p class="highlight">{{ item.title|raw }}</p>
+                                        <p class="line">{{ item.excerpt }}</p>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+                        {#
+                        <div class="slide d-flex  justify-content-center" style="background-image: url({{ asset('frontend/images/slide_5.jpg') }});">
+                            <div class="caption text-center">
+                                <p class="highlight">Hạnh phúc của sinh viên</p>
+                                <p class="line">Được học tập trong môi trường khang trang hiện đại, học phí ổn định...</p>
+                            </div>
+                        </div>
+                        <div class="slide d-flex justify-content-center" style="background-image: url({{ asset('frontend/images/slide_6.jpg') }});">
+                            <div class="caption text-center">
+                                <p class="highlight">Hạnh phúc của nhà trường</p>
+                                <p class="line">Đội ngũ giáo viên giàu kinh nghiệm và nhiệt huyết đào tạo ra các thế hệ sv ưu tú...</p>
+                            </div>
+                        </div>
+                        <div class="slide d-flex  justify-content-center" style="background-image: url({{ asset('frontend/images/slide_4.jpg') }});">
+                            <div class="caption text-center">
+                                <p class="highlight">Hạnh phúc của người thầy</p>
+                                <p class="line">Truyền cảm hứng cho SV</p>
+                            </div>
+                        </div>
+                        <div class="slide d-flex justify-content-center" style="background-image: url({{ asset('frontend/images/slide_5.jpg') }});">
+                            <div class="caption text-center">
+                                <p class="highlight">Hạnh phúc của xã hội và đất nước</p>
+                                <p class="line">Luôn đồng hành với xã hội và được thế giới công nhận</p>
+                            </div>
+                        </div>
+                        #}
+                    </div>
+                </div>
+
+                <div class="section d-md-flex border-top pt-4">
+                    <div class="col-lg-8">
+                        <div class="row">
+                            <article class="col-sm-6 post-home">
+                                <h2 class="heading-2"><a href="#">Hợp tác doanh nghiệp</a></h2>
+                                <a class="thumbnail large" href="#">
+                                    <img src="{{ hotHopTacDN.thumbnail }}" alt="" width="100%">
+                                </a>
+                                <a href="{{ path('application_page_detail', {'slug':hotHopTacDN.slug}) }}"
+                                   class="title">{{ hotHopTacDN.title|raw }}</a>
+                                <div class="content">
+                                    <p>{{ hotHopTacDN.excerpt|raw }}</p>
+                                </div>
+                            </article>
+                            <article class="col-sm-6 post-home">
+                                <h2 class="heading-2"><a href="#">Môi trường học tập</a></h2>
+                                <a class="thumbnail large" href="#">
+                                    <img src="{{ hotMoiTruongHT.thumbnail }}" alt="" width="100%">
+                                </a>
+                                <a href="{{ path('application_page_detail', {'slug':hotMoiTruongHT.slug}) }}"
+                                   class="title">{{ hotMoiTruongHT.title|raw }}</a>
+                                <div class="content">
+                                    <p>{{ hotMoiTruongHT.excerpt|raw }}</p>
+                                </div>
+                            </article>
                         </div>
                     </div>
-                {% endfor %}
-            {% endif %}
-            {#
-            <div class="slide d-flex  justify-content-center" style="background-image: url({{ asset('frontend/images/slide_5.jpg') }});">
-                <div class="caption text-center">
-                    <p class="highlight">Hạnh phúc của sinh viên</p>
-                    <p class="line">Được học tập trong môi trường khang trang hiện đại, học phí ổn định...</p>
+                    <div class="col-lg-4">
+                        <h2 class="heading-2"><a href="#">Sự kiện nổi bật</a></h2>
+                        {% if events %}
+                            <ul class="list-unstyled">
+                                {% for event in events %}
+                                    <li class="media event">
+                                        <div class="d-flex align-items-center mr-3 thumb c-white">
+                                            <span class="inner text-center w-100">
+                                                {{ event.startDate|date('M') }}<br>
+                                                <b>{{ event.startDate|date('d') }}</b>
+                                            </span>
+                                        </div>
+                                        <div class="media-body">
+                                            <h5 class="title mt-0"><a href="#">{{ event.title|raw }}</a></h5>
+                                            <ul class="breadcrumb mb-0 bgm-white">
+                                                <li class="breadcrumb-item col-xs-auto time">
+                                                    <i class="fa fa-clock-o mr-2" aria-hidden="true"></i>{{ event.startDate|date('h:i') }}
+                                                </li>
+                                                <li class="breadcrumb-item col-xs-auto">{{ event.location }}</li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                    </div>
                 </div>
-            </div>
-            <div class="slide d-flex justify-content-center" style="background-image: url({{ asset('frontend/images/slide_6.jpg') }});">
-                <div class="caption text-center">
-                    <p class="highlight">Hạnh phúc của nhà trường</p>
-                    <p class="line">Đội ngũ giáo viên giàu kinh nghiệm và nhiệt huyết đào tạo ra các thế hệ sv ưu tú...</p>
-                </div>
-            </div>
-            <div class="slide d-flex  justify-content-center" style="background-image: url({{ asset('frontend/images/slide_4.jpg') }});">
-                <div class="caption text-center">
-                    <p class="highlight">Hạnh phúc của người thầy</p>
-                    <p class="line">Truyền cảm hứng cho SV</p>
-                </div>
-            </div>
-            <div class="slide d-flex justify-content-center" style="background-image: url({{ asset('frontend/images/slide_5.jpg') }});">
-                <div class="caption text-center">
-                    <p class="highlight">Hạnh phúc của xã hội và đất nước</p>
-                    <p class="line">Luôn đồng hành với xã hội và được thế giới công nhận</p>
-                </div>
-            </div>
-            #}
-        </div>
-    </div>
 
-        <div class="section d-md-flex border-top pt-4">
-            <div class="col-lg-8">
-                <div class="row">
-                    <article class="col-sm-6 post-home">
-                        <h2 class="heading-2"><a href="#">Hợp tác doanh nghiệp</a></h2>
-                        <a class="thumbnail large" href="#">
-                            <img src="{{ hotHopTacDN.thumbnail }}" alt="" width="100%">
-                        </a>
-                        <a href="{{ path('application_page_detail', {'slug':hotHopTacDN.slug}) }}" class="title">{{ hotHopTacDN.title|raw }}</a>
-                        <div class="content">
-                            <p>{{ hotHopTacDN.excerpt|raw }}</p>
-                        </div>
-                    </article>
-                    <article class="col-sm-6 post-home">
-                        <h2 class="heading-2"><a href="#">Môi trường học tập</a></h2>
-                        <a class="thumbnail large" href="#">
-                            <img src="{{ hotMoiTruongHT.thumbnail }}" alt="" width="100%">
-                        </a>
-                        <a href="{{ path('application_page_detail', {'slug':hotMoiTruongHT.slug}) }}" class="title">{{ hotMoiTruongHT.title|raw }}</a>
-                        <div class="content">
-                            <p>{{ hotMoiTruongHT.excerpt|raw }}</p>
-                        </div>
-                    </article>
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <h2 class="heading-2"><a href="#">Sự kiện nổi bật</a></h2>
-                <ul class="list-unstyled">
-                    <li class="media event">
-                        <div class="d-flex align-items-center mr-3 thumb c-white">
-						<span class="inner text-center w-100">
-							DEC<br>
-							<b>28</b>
-						</span>
-                        </div>
-                        <div class="media-body">
-                            <h5 class="title mt-0"><a href="#">Lễ phát động sinh viên góp một quyển sách ...</a></h5>
-                            <ul class="breadcrumb mb-0 bgm-white">
-                                <li class="breadcrumb-item col-xs-auto time">
-                                    <i class="fa fa-clock-o mr-2" aria-hidden="true"></i>9:30AM
-                                </li>
-                                <li class="breadcrumb-item col-xs-auto">Hội trường chính</li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li class="media event">
-                        <div class="d-flex align-items-center mr-3 thumb c-white">
-						<span class="inner text-center w-100">
-							DEC<br>
-							<b>28</b>
-						</span>
-                        </div>
-                        <div class="media-body">
-                            <h5 class="title mt-0"><a href="#">Lễ phát động sinh viên góp một quyển sách ...</a></h5>
-                            <ul class="breadcrumb mb-0 bgm-white">
-                                <li class="breadcrumb-item col-xs-auto time">
-                                    <i class="fa fa-clock-o mr-2" aria-hidden="true"></i>9:30AM
-                                </li>
-                                <li class="breadcrumb-item col-xs-auto">Hội trường chính</li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li class="media event">
-                        <div class="d-flex align-items-center mr-3 thumb c-white">
-						<span class="inner text-center w-100">
-							DEC<br>
-							<b>28</b>
-						</span>
-                        </div>
-                        <div class="media-body">
-                            <h5 class="title mt-0"><a href="#">Lễ phát động sinh viên góp một quyển sách ...</a></h5>
-                            <ul class="breadcrumb mb-0 bgm-white">
-                                <li class="breadcrumb-item col-xs-auto time">
-                                    <i class="fa fa-clock-o mr-2" aria-hidden="true"></i>9:30AM
-                                </li>
-                                <li class="breadcrumb-item col-xs-auto">Hội trường chính</li>
-                            </ul>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-
-    {#{{ include('@App/Default/Index/nuti-feature.html.twig') }}#}
-    {#{{ include('@App/Default/Index/hot-handbooks.html.twig') }}#}
-    {#{{ include('@App/Default/Index/nuti-gallery.html.twig') }}#}
-        <!-- /content --></section>
-        <!-- /container --></div>
+                {#{{ include('@App/Default/Index/nuti-feature.html.twig') }}#}
+                {#{{ include('@App/Default/Index/hot-handbooks.html.twig') }}#}
+                {#{{ include('@App/Default/Index/nuti-gallery.html.twig') }}#}
+                <!-- /content --></section>
+            <!-- /container --></div>
         <!-- /container --></div>
     <!-- /main --></div>
 
