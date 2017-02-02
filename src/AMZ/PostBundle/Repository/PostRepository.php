@@ -25,6 +25,13 @@ class PostRepository extends \Doctrine\ORM\EntityRepository
                 )
             );
         }
+        if (!empty($criteria['keyword'])) {
+            $qb->andWhere(
+                $qb->expr()->orX(
+                    $qb->expr()->like('t.title', $qb->expr()->literal("%{$criteria['keyword']}%"))
+                )
+            );
+        }
         if (!empty($criteria['search_frontend'])) {
             $qb->andWhere(
                 $qb->expr()->orX(

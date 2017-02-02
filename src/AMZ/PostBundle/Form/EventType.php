@@ -47,7 +47,7 @@ class EventType extends AbstractType
             )
         ))->add('startDate', TextType::class, array(
             'required' => false,
-            'attr' => array('class' => 'form-control datepicker'),
+            'attr' => array('class' => 'form-control datepicker', 'readonly'=>'true'),
             'constraints' => array(
                 new NotNull(array(
                     'message' => 'Bắt buộc nhập'

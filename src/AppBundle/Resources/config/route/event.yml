@@ -1,0 +1,3 @@
+application_event_detail:
+    path:     /{slug}
+    defaults: { _controller: AppBundle:Event:detail }

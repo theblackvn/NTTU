@@ -22,7 +22,7 @@
                     <button class="btn btn-success waves-effect waves-light m-r-10" type="submit">Lưu</button>
                     <button class="btn btn-inverse waves-effect waves-light" type="button" onclick="window.location.href = '{{ path('amz_event_homepage') }}'">Hủy</button>
                 </div>
-                {{ include('AMZPostBundle:Post:form.html.twig') }}
+                {{ include('AMZPostBundle:Event:form.html.twig') }}
                 <div class="col-sm-12 col-xs-12">
                     <button class="btn btn-success waves-effect waves-light m-r-10" type="submit">Lưu</button>
                     <button class="btn btn-inverse waves-effect waves-light" type="button" onclick="window.location.href = '{{ path('amz_event_homepage') }}'">Hủy</button>
@@ -32,17 +32,4 @@
         </form>
         <!-- row -->
     </div>
-{% endblock %}
-
-{% block theme_js_files %}
-    <script>
-        $(document).ready(function () {
-            {% if entity.thumbnail is not empty %}
-                $('.entity-thumbnail-img').attr('src', '{{ entity.thumbnail }}');
-            {% endif %}
-            {% if entity.seo.facebookThumbnail is not empty %}
-                $('.facebook-thumbnail-img').attr('src', '{{ entity.seo.facebookThumbnail }}');
-            {% endif %}
-        });
-    </script>
 {% endblock %}

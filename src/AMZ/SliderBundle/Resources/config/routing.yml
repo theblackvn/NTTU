@@ -1,15 +1,15 @@
-amz_slider_item_homepage:
+amz_sliders_homepage:
     path:     /slider
     defaults: { _controller: AMZSliderBundle:Item:index }
 
-amz_slider_item_create:
+amz_sliders_create:
     path:     /slider/create
     defaults: { _controller: AMZSliderBundle:Item:create }
 
-amz_slider_item_edit:
+amz_sliders_edit:
     path:     /slider/{id}/edit
     defaults: { _controller: AMZSliderBundle:Item:edit }
 
-amz_slider_item_delete:
+amz_sliders_delete:
     path:     /slider/{id}/delete
     defaults: { _controller: AMZSliderBundle:Item:delete }

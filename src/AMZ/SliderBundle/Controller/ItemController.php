@@ -33,7 +33,7 @@ class ItemController extends Controller
             } else {
                 $this->addFlash('error', $this->get('translator')->trans('Lưu dữ liệu thất bại! Vui lòng thử lại sau'));
             }
-            return $this->redirectToRoute('amz_slider_item_homepage');
+            return $this->redirectToRoute('amz_sliders_homepage');
         }
         return $this->render('AMZSliderBundle:Item:create.html.twig', array(
             'form' => $form->createView()
@@ -49,6 +49,8 @@ class ItemController extends Controller
         }
         $form = $this->createForm(ItemType::class, $entity);
         $form->handleRequest($request);
+        //var_dump("123");die();
+
         if ($form->isSubmitted() && $form->isValid()) {
             $result = $this->get('amz_db.service.query')->getRepository('AMZSliderBundle:Item')
                 ->update($entity);
@@ -57,8 +59,9 @@ class ItemController extends Controller
             } else {
                 $this->addFlash('error', $this->get('translator')->trans('Lưu dữ liệu thất bại! Vui lòng thử lại sau'));
             }
-            return $this->redirectToRoute('amz_slider_item_homepage');
+            return $this->redirectToRoute('amz_sliders_homepage');
         }
+        //var_dump("123");die();
 
         return $this->render('AMZSliderBundle:Item:edit.html.twig', array(
             'entity' => $entity,
@@ -80,6 +83,6 @@ class ItemController extends Controller
         } else {
             $this->addFlash('error', $this->get('translator')->trans('Xóa dữ liệu thất bại! Vui lòng thử lại sau'));
         }
-        return $this->redirectToRoute('amz_slider_item_homepage');
+        return $this->redirectToRoute('amz_sliders_homepage');
     }
 }

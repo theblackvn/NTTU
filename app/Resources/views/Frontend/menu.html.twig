@@ -29,7 +29,11 @@
                                 {% set child = menu.menuTuyenSinh.children() %}
                                 {% if child %}
                                     {% for item in child %}
-                                        <li><a href="{{ path('application_admission_page', {'slug':item.slug}) }}"><i class="fa fa-angle-double-right"></i>{{ item.title|raw }}</a></li>
+                                        {% if item.getIsFeatured() == 0 %}
+                                            <li><a href="{{ path('application_admission_page', {'slug':item.slug}) }}"><i class="fa fa-angle-double-right"></i>{{ item.title|raw }}</a></li>
+                                        {% else %}
+                                            <li><a href="{{ item.link }}"><i class="fa fa-angle-double-right"></i>{{ item.title|raw }}</a></li>
+                                        {% endif %}
                                     {% endfor %}
                                 {% endif %}
                             {% endif %}
@@ -41,7 +45,11 @@
                                 {% set child = menu.menuNghienCuu.children() %}
                                 {% if child %}
                                     {% for item in child %}
-                                        <li><a href="{{ path('application_research_page', {'slug':item.slug}) }}"><i class="fa fa-angle-double-right"></i>{{ item.title|raw }}</a></li>
+                                        {% if item.isFeatured == 0 %}
+                                            <li><a href="{{ path('application_research_page', {'slug':item.slug}) }}"><i class="fa fa-angle-double-right"></i>{{ item.title|raw }}</a></li>
+                                        {% else %}
+                                            <li><a href="{{ item.link }}"><i class="fa fa-angle-double-right"></i>{{ item.title|raw }}</a></li>
+                                        {% endif %}
                                     {% endfor %}
                                 {% endif %}
                             {% endif %}
@@ -55,7 +63,11 @@
                                 {% set child = menu.menuDaoTao.children() %}
                                 {% if child %}
                                     {% for item in child %}
-                                        <li><a href="{{ path('application_education_page', {'slug':item.slug}) }}"><i class="fa fa-angle-double-right"></i>{{ item.title|raw }}</a></li>
+                                        {% if item.isFeatured == 0 %}
+                                            <li><a href="{{ path('application_education_page', {'slug':item.slug}) }}"><i class="fa fa-angle-double-right"></i>{{ item.title|raw }}</a></li>
+                                        {% else %}
+                                            <li><a href="{{ item.link }}"><i class="fa fa-angle-double-right"></i>{{ item.title|raw }}</a></li>
+                                        {% endif %}
                                     {% endfor %}
                                 {% endif %}
                             {% endif %}

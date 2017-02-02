@@ -28,6 +28,10 @@ application_education:
     resource: "@AppBundle/Resources/config/route/education.yml"
     prefix:   /dao-tao
 
+application_event:
+    resource: "@AppBundle/Resources/config/route/event.yml"
+    prefix:   /su-kien
+
 application_admission:
     resource: "@AppBundle/Resources/config/route/admission.yml"
     prefix:   /tuyen-sinh
@@ -51,3 +55,7 @@ application_page_csdt:
 application_page_intro:
     path:     /gioi-thieu
     defaults: { _controller: AppBundle:Intro:index }
+
+application_search:
+    path:     /tim-kiem
+    defaults: { _controller: AppBundle:Search:index }

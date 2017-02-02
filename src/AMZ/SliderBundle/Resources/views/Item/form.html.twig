@@ -3,10 +3,10 @@
         <div class="row">
             <div class="col-sm-12 col-xs-12">
                 <div class="form-group">
-                    <label for="product_lang1_title1">Vị trí</label>
-                    {{ form_widget(form.position) }}
+                    <label for="product_lang1_slug">Title</label>
+                    {{ form_widget(form.title) }}
                     <div class="amz-error">
-                        {{ form_errors(form.position) }}
+                        {{ form_errors(form.title) }}
                     </div>
                 </div>
                 <div class="form-group">
@@ -38,6 +38,8 @@
                         {{ form_errors(form.sortOrder) }}
                     </div>
                 </div>
+                {#
+
                 <div class="form-group">
                     <label for="product_lang1_excerpt1">Hình nhỏ</label>
                     {{ form_widget(form.smallSizeThumbnail) }}
@@ -48,8 +50,9 @@
                              src="{{ asset('backend/assets/img/browser.png') }}"/>
                     </div>
                 </div>
+                #}
                 <div class="form-group">
-                    <label for="product_lang1_excerpt1">Hình lớn</label>
+                    <label for="product_lang1_excerpt1">Hình</label>
                     {{ form_widget(form.fullSizeThumbnail) }}
                     <div>
                         <img style="margin-top: 4px;" width="100%" title="Nhấn chọn hình khác"

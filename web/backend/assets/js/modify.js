@@ -1,10 +1,7 @@
 
 jQuery(document).ready(function () {
-    $('.mydatepicker, #datepicker').datepicker({
-        format: 'dd/mm/yyyy'
-    });
-    $(".datepicker").datepicker({
-        format: 'dd/mm/yyyy',
+    $(".datepicker").datetimepicker({
+        format: 'dd-mm-yyyy hh:ii'
     });
     // For select 2
     $(".select2").select2();

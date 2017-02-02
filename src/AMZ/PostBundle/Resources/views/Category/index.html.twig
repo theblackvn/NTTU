@@ -44,11 +44,11 @@
         <div class="row">
             <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
                 <div class="white-box">
-                    {% for flash_message in app.session.flashbag.get('notice') %}
-                        <div class="alert alert-success">
-                            {{ flash_message }}
-                        </div>
-                    {% endfor %}
+                    {#{% for flash_message in app.session.flashbag.get('notice') %}#}
+                        {#<div class="alert alert-success">#}
+                            {#{{ flash_message }}#}
+                        {#</div>#}
+                    {#{% endfor %}#}
                     {% for flash_message in app.session.flashbag.get('error') %}
                         <div class="alert alert-danger">
                             {{ flash_message }}
@@ -58,9 +58,8 @@
                         <table class="table product-overview">
                             <thead>
                             <tr>
-                                <th>Tiêu đề</th>
+                                <th width="60%">Tiêu đề</th>
                                 <th>Category cha</th>
-                                <th width="100">Status</th>
                                 <th width="70">Actions</th>
                             </tr>
                             </thead>
@@ -79,13 +78,7 @@
                                         {% endif %}
                                     </td>
 
-                                    <td>
-                                        {% if 1 == entity.isFeatured %}
-                                            <span class="label label-success font-weight-100">Nổi bật</span>
-                                        {% else %}
-                                            <span class="label label-default font-weight-100">Bình thường</span>
-                                        {% endif %}
-                                    </td>
+
                                     <td>
                                         <a href="{{ path('amz_post_category_edit', {'id': entity.id}) }}"
                                            class="text-inverse p-r-10"
@@ -101,7 +94,7 @@
                                     {% for child1 in childLevel1 %}
                                         <tr>
                                             <td>
-                                                <div style="padding-left:20px"><a href="{{ path('amz_post_list_by_cat', {'catID':child1.id}) }}">{{ child1.title|raw }}</a></div>
+                                                <div style="padding-left:20px"><a href="{{ path('amz_post_list_by_cat', {'catID':child1.id}) }}">-- {{ child1.title|raw }}</a></div>
                                             </td>
 
                                             <td>
@@ -109,14 +102,6 @@
                                                     <a href="{{ path('amz_post_category_edit', {'id': child1.parent.id}) }}">{{ child1.parent.title }}</a>
                                                 {% else %}
                                                     Root
-                                                {% endif %}
-                                            </td>
-
-                                            <td>
-                                                {% if 1 == child1.isFeatured %}
-                                                    <span class="label label-success font-weight-100">Nổi bật</span>
-                                                {% else %}
-                                                    <span class="label label-default font-weight-100">Bình thường</span>
                                                 {% endif %}
                                             </td>
                                             <td>
@@ -134,7 +119,7 @@
                                             {% for child2 in childLevel2 %}
                                                 <tr>
                                                     <td>
-                                                        <div style="padding-left:40px"><a href="{{ path('amz_post_list_by_cat', {'catID':child2.id}) }}">{{ child2.title|raw }}</a></div>
+                                                        <div style="padding-left:40px"><a href="{{ path('amz_post_list_by_cat', {'catID':child2.id}) }}">---- {{ child2.title|raw }}</a></div>
                                                     </td>
 
                                                     <td>
@@ -145,13 +130,7 @@
                                                         {% endif %}
                                                     </td>
 
-                                                    <td>
-                                                        {% if 1 == child2.isFeatured %}
-                                                            <span class="label label-success font-weight-100">Nổi bật</span>
-                                                        {% else %}
-                                                            <span class="label label-default font-weight-100">Bình thường</span>
-                                                        {% endif %}
-                                                    </td>
+
                                                     <td>
                                                         <a href="{{ path('amz_post_category_edit', {'id': child2.id}) }}"
                                                            class="text-inverse p-r-10"

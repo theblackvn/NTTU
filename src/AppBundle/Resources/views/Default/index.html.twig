@@ -9,30 +9,18 @@
             <section id="content">
                 <div id="slider-main" class="carousel slide" data-ride="carousel">
                     <div class="carousel-inner" role="listbox">
-                        <div class="carousel-item active"
-                             style="background-image: url({{ asset('frontend/images/slide_1.jpg') }});">
-                            <div class="carousel-caption d-block text-left">
-                                <h3>Phát động cuộc thi tìm hiểu về chiến lược của NTTU</h3>
-                                <p>Cuộc thi sẽ diễn ra từ ngày 21-11-2016 đến 13-12-2016. Lễ trao giải sẽ diễn ra lúc 9
-                                    giờ sáng thứ Bảy 17-12-2016 ...</p>
-                            </div>
-                        </div>
-                        <div class="carousel-item"
-                             style="background-image: url({{ asset('frontend/images/slide_2.jpg') }});">
-                            <div class="carousel-caption d-block text-left">
-                                <h3>Phát động cuộc thi tìm hiểu về chiến lược của NTTU</h3>
-                                <p>Cuộc thi sẽ diễn ra từ ngày 21-11-2016 đến 13-12-2016. Lễ trao giải sẽ diễn ra lúc 9
-                                    giờ sáng thứ Bảy 17-12-2016 ...</p>
-                            </div>
-                        </div>
-                        <div class="carousel-item"
-                             style="background-image: url({{ asset('frontend/images/slide_3.jpg') }});">
-                            <div class="carousel-caption d-block text-left">
-                                <h3>Phát động cuộc thi tìm hiểu về chiến lược của NTTU</h3>
-                                <p>Cuộc thi sẽ diễn ra từ ngày 21-11-2016 đến 13-12-2016. Lễ trao giải sẽ diễn ra lúc 9
-                                    giờ sáng thứ Bảy 17-12-2016 ...</p>
-                            </div>
-                        </div>
+                        {% if sliders %}
+                            {% for i,item in sliders %}
+                                <div class="carousel-item {% if i ==0 %}active{% endif %}"
+                                     style="background-image: url({{ item.fullSizeThumbnail }});">
+                                    <div class="carousel-caption d-block text-left">
+                                        <h3>{{ item.title|raw }}</h3>
+                                        <p>{{ item.content|raw }}</p>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+
                     </div>
                     <div class="carousel-controls">
                         <a class="carousel-control-prev justify-content-end" href="#slider-main" role="button"
@@ -133,7 +121,7 @@
                             </article>
                             <article class="col-sm-6 post-home">
                                 <h2 class="heading-2"><a href="#">Môi trường học tập</a></h2>
-                                <a class="thumbnail large" href="#">
+                                <a class="thumbnail large" href="{{ path('application_page_detail', {'slug':hotMoiTruongHT.slug}) }}">
                                     <img src="{{ hotMoiTruongHT.thumbnail }}" alt="" width="100%">
                                 </a>
                                 <a href="{{ path('application_page_detail', {'slug':hotMoiTruongHT.slug}) }}"
@@ -157,7 +145,7 @@
                                             </span>
                                         </div>
                                         <div class="media-body">
-                                            <h5 class="title mt-0"><a href="#">{{ event.title|raw }}</a></h5>
+                                            <h5 class="title mt-0"><a href="#>{{ event.title|raw }}</a></h5>
                                             <ul class="breadcrumb mb-0 bgm-white">
                                                 <li class="breadcrumb-item col-xs-auto time">
                                                     <i class="fa fa-clock-o mr-2" aria-hidden="true"></i>{{ event.startDate|date('h:i') }}

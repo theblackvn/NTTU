@@ -27,17 +27,6 @@ class ItemRepository extends \Doctrine\ORM\EntityRepository
                 $qb->expr()->eq('t.id', $criteria['id'])
             );
         }
-        if (!empty($criteria['position'])) {
-            $qb->andWhere(
-                $qb->expr()->eq('t.position', $criteria['position'])
-            );
-        }
-        if (!empty($criteria['position-slug'])) {
-            $qb->leftJoin('t.position', 'p');
-            $qb->andWhere(
-                $qb->expr()->like('p.slug', $qb->expr()->literal($criteria['position-slug']))
-            );
-        }
         return $qb;
     }
 

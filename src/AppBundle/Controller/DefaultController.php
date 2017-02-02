@@ -86,7 +86,10 @@ class DefaultController extends Controller
                 'category_slug' => '5-ly-do',
 
             ), array(), 5, 0);
-        //var_dump($fiveReason);die();
+        $sliders = $this->get('amz_db.service.query')
+            ->getRepository('AMZSliderBundle:Item')
+            ->get(array(),array('sort-order' => 'ASC'));
+        //echo count($sliders);die();
 
         return $this->render('AppBundle:Default:index.html.twig', array(
             'itNews' => $itNews,
@@ -95,7 +98,8 @@ class DefaultController extends Controller
             'hotMoiTruongHT' => $hotMoiTruongHT,
             'fiveReason' => $fiveReason,
             'menu' => $menu,
-            'events' => $events
+            'events' => $events,
+            'sliders' => $sliders
         ));
     }
 		

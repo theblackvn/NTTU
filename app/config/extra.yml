@@ -1,6 +1,6 @@
 parameters:
-    domain: http://azsupplychain.com/nttu
-    root_link: http://azsupplychain.com/nttu
+    domain: http://localhost/nttu
+    root_link: http://localhost/nttu
     profile_avatar_directory: '%kernel.root_dir%/../web/upload/avatar'
-    full_avatar_url: http://azsupplychain.com/nttu/web/upload/avatar/
+    full_avatar_url: http://localhost/nttu/web/upload/avatar/
     file_import_directory: '%kernel.root_dir%/../web/upload/import'

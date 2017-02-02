@@ -35,35 +35,21 @@ class EventController extends Controller
             'menu' => $menu
         ));
     }
-		
-    public function aboutAction(){
-        return $this->render('AppBundle:Default:about-us.html.twig');
-    }
 
-    public function pageAction($slug) {
-        $category = $this->get('amz_db.service.query')
-            ->getRepository('AMZPostBundle:Category')
+
+    public function detailAction($slug) {
+
+        $post = $this->get('amz_db.service.query')
+            ->getRepository('AMZPostBundle:Post')
             ->findOneBy(array(
                 'isFeature' => 1,
                 'slug' => $slug
             ));
-        $posts = array();
-        if (!empty($category)) {
-            $posts = $this->get('amz_db.service.query')
-                ->getRepository('AMZPostBundle:Research')
-                ->get(array(
-                    'status' => Post::STATUS_PUBLISH,
-                    'type' => Post::TYPE_POST,
-                    'is_featured' => 1,
-                    'category_slug' => $slug,
 
-                ), array(), 3, 0);
+        $menu = $this->get('application.service.menu')->getMenu();
 
-        }
-
-        return $this->render('AppBundle:Admission:page.html.twig', array(
-            'posts' => $posts,
-            'category' => $category,
+        return $this->render('AppBundle:Event:detail.html.twig', array(
+            'post' => $post,
             'menu' => $menu
         ));
     }

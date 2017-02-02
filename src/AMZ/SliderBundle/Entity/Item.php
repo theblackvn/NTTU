@@ -19,11 +19,6 @@ class Item
      */
     private $id;
 
-    /**
-     * @ORM\ManyToOne(targetEntity="Position", inversedBy="items")
-     * @ORM\JoinColumn(name="position_id", referencedColumnName="id", onDelete="CASCADE")
-     */
-    private $position;
 
     /**
      * @ORM\Column(type="string", nullable=true)
@@ -44,6 +39,11 @@ class Item
      * @ORM\Column(type="string", nullable=true)
      */
     private $link;
+
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $title;
 
     /**
      * @ORM\Column(type="text", name="content", nullable=true)
@@ -186,6 +186,30 @@ class Item
     }
 
     /**
+     * Set title
+     *
+     * @param string $title
+     *
+     * @return Item
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+
+        return $this;
+    }
+
+    /**
+     * Get title
+     *
+     * @return string
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+    /**
      * Set content
      *
      * @param string $content
@@ -257,27 +281,4 @@ class Item
         return $this->updatedAt;
     }
 
-    /**
-     * Set position
-     *
-     * @param \AMZ\SliderBundle\Entity\Position $position
-     *
-     * @return Item
-     */
-    public function setPosition(\AMZ\SliderBundle\Entity\Position $position = null)
-    {
-        $this->position = $position;
-
-        return $this;
-    }
-
-    /**
-     * Get position
-     *
-     * @return \AMZ\SliderBundle\Entity\Position
-     */
-    public function getPosition()
-    {
-        return $this->position;
-    }
 }

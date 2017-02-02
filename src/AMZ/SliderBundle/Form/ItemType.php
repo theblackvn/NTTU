@@ -13,6 +13,8 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\Range;
 use Symfony\Component\Validator\Constraints\Url;
+use Symfony\Component\Validator\Constraints\NotNull;
+
 
 class ItemType extends AbstractType
 {
@@ -36,6 +38,14 @@ class ItemType extends AbstractType
                     'message' => 'Link không hợp lệ'
                 ))
             )
+        ))->add('title', TextType::class, array(
+            'required' => false,
+            'attr' => array('class' => 'form-control'),
+            'constraints' => array(
+                new NotNull(array(
+                    'message' => 'Bắt buộc nhập'
+                ))
+            )
         ))->add('smallSizeThumbnail', HiddenType::class, array(
             'required' => false,
             'attr' => array('class' => 'small-size-thumbnail')
@@ -45,17 +55,6 @@ class ItemType extends AbstractType
         ))->add('content', TextareaType::class, array(
             'required' => false,
             'attr' => array('class' => 'form-control cke-editor', 'rows' => 5)
-        ))->add('position', EntityType::class, array(
-            'class' => 'AMZ\SliderBundle\Entity\Position',
-            'choice_label' => 'name',
-            'required' => false,
-            'placeholder' => 'Chọn vị trí',
-            'attr' => array('class' => 'form-control select2'),
-            'query_builder' => function (EntityRepository $er) {
-                $qb = $er->createQueryBuilder('t');
-                $qb->orderBy('t.name', 'ASC');
-                return $qb;
-            }
         ));
     }
 

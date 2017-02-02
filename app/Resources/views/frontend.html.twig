@@ -18,12 +18,15 @@
     <link rel="stylesheet" href="{{ asset_url }}"/>
     {% endstylesheets %}
     {% block css_script %}{% endblock %}
-    {#<link rel="stylesheet" href="../../../AppData/Roaming/Skype/My Skype Received Files/_header.scss">#}
-    {#<link rel="stylesheet" href="scss/custom_bootstrap/_header.scss">#}
+    <style rel="stylesheet">
+        #content h3.heading-3 {
+            color: #636363;
+        }
+    </style>
 </head>
 
 <body>
-<header class="top-header">
+<header class="top-header" style="">
     <div class="container">
         <div class="d-flex justify-content-sm-center justify-content-sm-end">
             <div class="h-wrapper">
@@ -58,9 +61,9 @@
 
             <div class="search-wrapper d-flex justify-content-between">
                 <div class="search">
-                    <form>
+                    <form action="{{ path('application_search') }}">
                         <div class="input-group">
-                            <input class="form-control btn-transparent border-0" placeholder="Tìm kiếm thông tin">
+                            <input class="form-control btn-transparent border-0" placeholder="Tìm kiếm thông tin" name="keyword">
                             <span class="input-group-btn">
 <button class="btn btn-transparent btn-secondary border-0"><i class="fa fa-search" aria-hidden="true"></i></button>
 </span>
@@ -82,7 +85,7 @@
         <!-- /container --></div>
     <!-- /top-header --></header>
 
-<div class="header">
+<div class="header" style="box-shadow: 0 1px 1px rgba(0,0,0,0.15);">
     <div class="container">
         <div class="d-flex align-items-center py-2">
             <h1 class="logo m-0"><a href="{{ path('application_homepage') }}"><img src="{{ asset('frontend/images/logo_ntt.png') }}" alt=""></a></h1>
@@ -132,7 +135,11 @@
                         {% set child = menu.menuDaoTao.children %}
                         <ul class="fsub">
                             {% for item in child %}
-                                <li><a href="{{ path('application_education_page', {'slug':item.slug}) }}">{{ item.title|raw }}</a></li>
+                                {% if item.isFeatured == 0 %}
+                                    <li><a href="{{ path('application_education_page', {'slug':item.slug}) }}">{{ item.title|raw }}</a></li>
+                                {% else %}
+                                    <li><a href="{{ item.link }}"><i class="fa fa-angle-double-right"></i>{{ item.title|raw }}</a></li>
+                                {% endif %}
                             {% endfor %}
                         </ul>
                     {% endif %}
@@ -186,11 +193,11 @@
                     </div>
                     <div class="col-md-3">
                         <p class="pb-0 font-weight-bold">Theo dõi chúng tôi trên</p>
-                        <ul class="social d-flex justify-content-between w-md-50 f-16 mt-0">
-                            <li><a href="#"><i class="fa fa-facebook-square c-blue-a5"></i></a></li>
-                            <li><a href="#"><i class="fa fa-google-plus c-red"></i></a></li>
-                            <li><a href="#"><i class="fa fa-twitter c-blue"></i></a></li>
-                            <li><a href="#"><i class="fa fa-youtube-square c-red"></i></a></li>
+                        <ul class="social d-flex w-md-50 f-16 mt-0">
+                            <li style="margin-right:10px"><a href="#"><i class="fa fa-facebook-square c-blue-a5"></i></a></li>
+                            <li style="margin-right:10px"><a href="#"><i class="fa fa-google-plus c-red"></i></a></li>
+                            <li style="margin-right:10px"><a href="#"><i class="fa fa-twitter c-blue"></i></a></li>
+                            <li style="margin-right:10px"><a href="#"><i class="fa fa-youtube-square c-red"></i></a></li>
                         </ul>
                     </div>
                 </div>

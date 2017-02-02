@@ -1,0 +1,73 @@
+{% set menu = menu %}
+{% extends '::frontend.html.twig' %}
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <aside id="sidebar" class="col-md-3 col-sm-4 mb-3">
+                <article class="p-4 feature-event">
+                    <h4 class="heading-2 mt-0">Feature EVENTS</h4>
+                    <ul class="list-unstyled">
+                        <li class="media event">
+                            <div class="d-flex align-items-start mr-3 thumb btn-transparent">
+			<span class="inner text-center w-100">
+				DEC<br>
+				<b class="link blue">28</b>
+			</span>
+                            </div>
+                            <div class="media-body">
+                                <a class="c-black text-underline" href="#">Lorem ipsum dolor sit amet, consectetuer adipiscing elit...</a>
+                                <p class="c-lime-a5 mt-2"><i class="fa fa-clock-o mr-2" aria-hidden="true"></i>9:30AM</p>
+                            </div>
+                        </li>
+                        <li class="media event">
+                            <div class="d-flex align-items-start mr-3 thumb btn-transparent">
+			<span class="inner text-center w-100">
+				DEC<br>
+				<b class="link blue">28</b>
+			</span>
+                            </div>
+                            <div class="media-body">
+                                <a class="c-black text-underline" href="#">Lorem ipsum dolor sit amet, consectetuer adipiscing elit...</a>
+                                <p class="c-lime-a5 mt-2"><i class="fa fa-clock-o mr-2" aria-hidden="true"></i>9:30AM</p>
+                            </div>
+                        </li>
+                        <li class="media event">
+                            <div class="d-flex align-items-start mr-3 thumb btn-transparent">
+			<span class="inner text-center w-100">
+				DEC<br>
+				<b class="link blue">28</b>
+			</span>
+                            </div>
+                            <div class="media-body">
+                                <a class="c-black text-underline" href="#">Lorem ipsum dolor sit amet, consectetuer adipiscing elit...</a>
+                                <p class="c-lime-a5 mt-2"><i class="fa fa-clock-o mr-2" aria-hidden="true"></i>9:30AM</p>
+                            </div>
+                        </li>
+                    </ul>
+                    <a class="c-black" href="#"><i class="fa fa-chevron-circle-right mr-2 c-red"></i>events at NTTU</a>
+                </article>
+                <!-- /sidebar --></aside>
+
+            <section id="content" class="col-md-9 col-sm-8">
+                <div class="cate-heading mb-3">
+                    <!-- /heading --></div>
+
+                <h3 class="heading-3">Kết quả tìm kiếm</h3>
+                {% for post in result %}
+                    <article class="media sub-cate">
+                        <figure class="thumb mb-0 mr-3"><img class="d-flex img-fluid" src="{{ post.thumbnail }}" alt="Generic placeholder image"></figure>
+                        <div class="media-body">
+                            <h5 class="title mt-0"><a href="{{ path('application_page_detail', {'slug':post.slug}) }}">{{ post.title|raw }}</a></h5>
+                            {#<b class="text-underline">Sub category descriptions :</b>#}
+                            {{ post.content|raw }}
+
+                        </div>
+                    </article>
+                {% endfor %}
+
+
+
+                <!-- /content --></section>
+        </div>
+        <!-- /container --></div>
+{% endblock %}

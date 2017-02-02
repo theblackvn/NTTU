@@ -37,7 +37,13 @@
                     <article class="media sub-cate">
                         <figure class="thumb mb-0 mr-3"><img class="d-flex img-fluid" src="{{ item.thumbnail }}" alt="Generic placeholder image"></figure>
                         <div class="media-body">
-                            <h5 class="title mt-0"><a href="{{ path('application_education_subPage', {'parentSlug':category.slug,'slug':item.slug}) }}">{{ item.title|raw }}</a></h5>
+                            <h5 class="title mt-0">
+                                {% if item.isFeatured == 0 %}
+                                    <a href="{{ path('application_education_subPage', {'parentSlug':category.slug,'slug':item.slug}) }}">{{ item.title|raw }}</a>
+                                {% else %}
+                                    <a href="{{ item.link }}">{{ item.title|raw }}</a>
+                                {% endif %}
+                            </h5>
                             {#<b class="c-black">NTTU</b>#}
                             {{ item.excerpt }}
                         </div>

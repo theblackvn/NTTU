@@ -57,9 +57,11 @@ class EventController extends Controller
             throw $this->createNotFoundException('Not found entity: ' . $id);
         }
         $form = $this->createForm(EventType::class, $entity);
+        //echo "134";die();
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            $result = $this->get('amz_db.service.query')->getRepository('AMZPostBundle:Post')
+            $entity->setStartDate(new \DateTime($entity->getStartDate()));
+            $result = $this->get('amz_db.service.query')->getRepository('AMZPostBundle:Event')
                 ->update($entity);
             if ($result) {
                 $this->addFlash('notice', $this->get('translator')->trans('Dữ liệu được lưu thành công!'));
@@ -67,6 +69,9 @@ class EventController extends Controller
                 $this->addFlash('error', $this->get('translator')->trans('Lưu dữ liệu thất bại! Vui lòng thử lại sau'));
             }
             return $this->redirectToRoute('amz_event_homepage');
+        } else {
+            $entity->setStartDate($entity->getStartDate()->format('d/m/Y H:i'));
+            $form = $this->createForm(EventType::class, $entity);
         }
 
         return $this->render('AMZPostBundle:Event:edit.html.twig', array(
