@@ -21,10 +21,17 @@ class SearchController extends Controller
                 'keyword' => $data['keyword'],
             ), array(), null, 0);
         //var_dump(count($result));die();
+        $events = $this->get('amz_db.service.query')
+            ->getRepository('AMZPostBundle:Event')
+            ->get(array(
+                'status' => Event::STATUS_PUBLISH,
+                'is_featured' => 1,
+            ), array('created','DESC'), 3, 0);
         $menu = $this->get('application.service.menu')->getMenu();
         return $this->render('AppBundle:Search:index.html.twig', array(
             'result' => $result,
-            'menu' => $menu
+            'menu' => $menu,
+            'events' => $events
         ));
     }
 

@@ -1,6 +1,0 @@
-amz_profile_bmi_result_homepage:
-    path:     /
-    defaults: { _controller: AMZProfileBundle:BMIResult:index }
-amz_profile_bmi_result_edit:
-    path:     /{id}
-    defaults: { _controller: AMZProfileBundle:BMIResult:edit }

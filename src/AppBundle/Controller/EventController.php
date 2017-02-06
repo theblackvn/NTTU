@@ -40,7 +40,7 @@ class EventController extends Controller
     public function detailAction($slug) {
 
         $post = $this->get('amz_db.service.query')
-            ->getRepository('AMZPostBundle:Post')
+            ->getRepository('AMZPostBundle:Event')
             ->findOneBy(array(
                 'isFeature' => 1,
                 'slug' => $slug

@@ -18,20 +18,7 @@ services:
     application.service.menu:
             class: AppBundle\Service\MenuService
             arguments: ["@amz_db.service.query", "@security.token_storage"]
-    application.service.profile:
-        class: AppBundle\Service\ProfileService
-        arguments:
-            - "@amz_db.service.query"
-            - "@security.token_storage"
-            - "@amz.validate"
-            - "%file_import_directory%"
-            - "@session"
-            - "@amz.service.bmi"
-    application.form.personal_user_profile:
-        class: AppBundle\Form\PersonalUserProfileType
-        arguments: ["%profile_avatar_directory%", "%full_avatar_url%"]
-        tags:
-            - { name: form.type }
+
 
     amz_application.twig_extension:
         class: AppBundle\Twig\AMZApplicationExtension

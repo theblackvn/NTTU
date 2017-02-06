@@ -3,43 +3,94 @@
 namespace AppBundle\Controller;
 
 use AMZ\PostBundle\Entity\Post;
+use AMZ\PostBundle\Entity\Event;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\Request;
 
 class NewsController extends Controller
 {
-    public function postAction($category_slug, $slug)
+    public function indexAction()
     {
-        $post = $this->get('amz_db.service.query')->getRepository("AMZPostBundle:Post")
+        $menu = $this->get('application.service.menu')->getMenu();
+        $category = $this->get('amz_db.service.query')
+            ->getRepository('AMZPostBundle:Category')
             ->findOneBy(array(
-               'slug' => $slug
+                'isFeature' => 1,
+                'slug' => 'tin-tuc'
             ));
+        $childCategory = $category->getChildren();
 
-        $relatives = $this->get('amz_db.service.query')->getRepository('AMZPostBundle:Post')
+
+        $posts = $this->get('amz_db.service.query')
+            ->getRepository('AMZPostBundle:Post')
             ->get(array(
-                'category_slug' => $category_slug,
-                'lt_id' => $post->getId()
+                'status' => Post::STATUS_PUBLISH,
+                'type' => Post::TYPE_POST,
+                'is_featured' => 1,
+                'category_slug' => 'tin-tuc',
 
-            ), null, 3, 0);
-        return $this->render('@App/News/post-detail.html.twig', compact('post','relatives','category_slug'));
-    }
-    public function postsAction(Request $request, $category_slug)
-    {
-        $parameters['category_slug']=$category_slug;
-        $parameters['is_featured']=0;
-
-        $pagination = $this->get('amz_db.service.query')->getRepository('AMZPostBundle:Post')
-            ->paging($parameters, $request->get('page', 1), 5);
-        $top = $pagination[0];
-
-        $features = $this->get('amz_db.service.query')->getRepository('AMZPostBundle:Post')
+            ), array(), 3, 0);
+        $events = $this->get('amz_db.service.query')
+            ->getRepository('AMZPostBundle:Event')
             ->get(array(
-                'category_slug' => $category_slug,
-                'is_featured' => 1
-            ),array(), 3,0);
-
-        return $this->render('@App/News/posts.html.twig', compact('top','pagination','features','category_slug'));
+                'status' => Event::STATUS_PUBLISH,
+                'is_featured' => 1,
+            ), array('created','DESC'), 3, 0);
+        return $this->render('AppBundle:News:index.html.twig', array(
+            'childCategory' => $childCategory,
+            'category' => $category,
+            'posts' => $posts,
+            'menu' => $menu,
+            'events' => $events
+        ));
     }
+
+    public function pageAction($slug) {
+        $category = $this->get('amz_db.service.query')
+            ->getRepository('AMZPostBundle:Category')
+            ->findOneBy(array(
+                'isFeature' => 1,
+                'slug' => $slug
+            ));
+        $posts = array();
+        if (!empty($category)) {
+            $posts = $this->get('amz_db.service.query')
+                ->getRepository('AMZPostBundle:Research')
+                ->get(array(
+                    'status' => Post::STATUS_PUBLISH,
+                    'type' => Post::TYPE_POST,
+                    'is_featured' => 1,
+                    'category_slug' => $slug,
+
+                ), array(), 3, 0);
+
+        }
+        $menuDaoTao = $this->get('amz_db.service.query')
+            ->getRepository('AMZPostBundle:Category')
+            ->findOneBy(array(
+                'isFeature' => 1,
+                'slug' => 'dao-tao'
+            ));
+        $menuTuyenSinh = $this->get('amz_db.service.query')
+            ->getRepository('AMZPostBundle:Category')
+            ->findOneBy(array(
+                'isFeature' => 1,
+                'slug' => 'tuyen-sinh'
+            ));
+        $menuNghienCuu = $this->get('amz_db.service.query')
+            ->getRepository('AMZPostBundle:Category')
+            ->findOneBy(array(
+                'isFeature' => 1,
+                'slug' => 'nghien-cuu'
+            ));
+        return $this->render('AppBundle:Admission:page.html.twig', array(
+            'posts' => $posts,
+            'category' => $category,
+            'menuDaoTao' => $menuDaoTao,
+            'menuTuyenSinh' => $menuTuyenSinh,
+            'menuNghienCuu' => $menuNghienCuu
+        ));
+    }
+
 
 
 }

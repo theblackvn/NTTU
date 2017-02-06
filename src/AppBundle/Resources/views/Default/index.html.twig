@@ -35,7 +35,7 @@
                 </div>
                 <div class="d-md-flex section mt-4">
                     <div class="col-md-9">
-                        <h2 class="heading-2">Tin tức</h2>
+                        <h2 class="heading-2"><a href="{{ path('application_news_index') }}">Tin tức</a></h2>
                         <div class="row">
                             {% for it in itNews %}
                                 <article class="col-md-4 col-sm-6 post-home">
@@ -53,11 +53,12 @@
                     </div>
                     <div class="col-md-3">
                         <h2 class="heading-2">Media</h2>
-                        <article class="post-video border">
-                            <video src="#" controls="controls"></video>
-                            <div class="description">
-                                <p>NTTU - Nhằm tạo điều kiện cho các học viên cao học theo ngành ...</p>
-                            </div>
+                        <article class="post-video border" style="width: inherit">
+                            {#<video src="#" controls="controls"></video>#}
+                            {#<div class="description">#}
+                                {#<p>NTTU - Nhằm tạo điều kiện cho các học viên cao học theo ngành ...</p>#}
+                            {#</div>#}
+                            <iframe style="width: inherit;" src="https://www.youtube.com/embed/dSK-3HPn8tE" frameborder="0" allowfullscreen></iframe>
                         </article>
                     </div>
                 </div>
@@ -109,7 +110,7 @@
                     <div class="col-lg-8">
                         <div class="row">
                             <article class="col-sm-6 post-home">
-                                <h2 class="heading-2"><a href="#">Hợp tác doanh nghiệp</a></h2>
+                                <h2 class="heading-2"><a href="{{ path('application_business_index') }}">Hợp tác doanh nghiệp</a></h2>
                                 <a class="thumbnail large" href="#">
                                     <img src="{{ hotHopTacDN.thumbnail }}" alt="" width="100%">
                                 </a>
@@ -145,7 +146,7 @@
                                             </span>
                                         </div>
                                         <div class="media-body">
-                                            <h5 class="title mt-0"><a href="#>{{ event.title|raw }}</a></h5>
+                                            <h5 class="title mt-0"><a href="{{ path('application_event_detail', {'slug':event.slug}) }}">{{ event.title|raw }}</a></h5>
                                             <ul class="breadcrumb mb-0 bgm-white">
                                                 <li class="breadcrumb-item col-xs-auto time">
                                                     <i class="fa fa-clock-o mr-2" aria-hidden="true"></i>{{ event.startDate|date('h:i') }}

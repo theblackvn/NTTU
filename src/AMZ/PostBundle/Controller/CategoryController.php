@@ -80,6 +80,12 @@ class CategoryController extends Controller
         $form = $this->createForm(CategoryType::class, $entity, array('current_id' => $id));
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
+            if (!empty($request->get('amz_post_category')['parent'])) {
+                $parent = $this->get('amz_db.service.query')->getRepository('AMZPostBundle:Category')->find($request->get('amz_post_category')['parent']);
+                $entity->setParent($parent);
+                $entity->setLevel($parent->getLevel()+1);
+            }
+            //var_dump($parent->getTitle());die();
             $result = $this->get('amz_db.service.query')->getRepository('AMZPostBundle:Category')
                 ->update($entity);
             if ($result) {

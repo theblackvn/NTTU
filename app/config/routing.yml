@@ -1,7 +1,3 @@
-amz_profile:
-    resource: "@AMZProfileBundle/Resources/config/routing.yml"
-    prefix:   /admin
-
 amz_user:
     resource: "@AMZUserBundle/Resources/config/routing.yml"
     prefix:   /admin

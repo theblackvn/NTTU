@@ -1,0 +1,7 @@
+application_news_index:
+    path:     /
+    defaults: { _controller: AppBundle:News:index }
+
+application_news_page:
+    path:     /{slug}
+    defaults: { _controller: AppBundle:News:page }

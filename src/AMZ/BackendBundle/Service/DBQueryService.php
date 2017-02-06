@@ -51,7 +51,7 @@ class DBQueryService
         try {
             $this->em->persist($entity);
             $this->em->flush();
-            $this->addLog($entity, 'Create');
+            //$this->addLog($entity, 'Create');
             return $entity;
         } catch (\Exception $e) {
             var_dump($e->getMessage());die();
@@ -62,7 +62,7 @@ class DBQueryService
     public function update($entity)
     {
         try {
-            $this->addLog($entity, 'Update');
+            //$this->addLog($entity, 'Update');
             $this->em->flush();
             return true;
         } catch (\Exception $e) {
@@ -74,7 +74,7 @@ class DBQueryService
     {
         try {
             $this->em->remove($entity);
-            $this->addLog($entity, 'Remove');
+            //$this->addLog($entity, 'Remove');
             $this->em->flush();
             return $entity;
         } catch (\Exception $e) {

@@ -44,7 +44,7 @@ class DefaultController extends Controller
                 'status' => Post::STATUS_PUBLISH,
                 'type' => Post::TYPE_POST,
                 'is_featured' => 1,
-                'category_slug' => 'khoa-cong-nghe-thong-tin',
+                'category_slug' => 'tin-tuc',
             ), array('created','DESC'), 3, 0);
 
         $tuyenSinhNews = $this->get('amz_db.service.query')
@@ -53,7 +53,7 @@ class DefaultController extends Controller
                 'status' => Post::STATUS_PUBLISH,
                 'type' => Post::TYPE_POST,
                 'is_featured' => 1,
-                'category_slug' => 'tuyen-sinh',
+                'category_slug' => 'tin-tuc',
 
             ), array('created', 'DESC'), 3, 0);
 

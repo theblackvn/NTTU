@@ -40,6 +40,8 @@ twig:
         rootLink: "%root_link%"
         header: "%header%"
         footer: "%footer%"
+        hot_line: "%hot_line%"
+        common: "%common%"
 
 # Doctrine Configuration
 doctrine:

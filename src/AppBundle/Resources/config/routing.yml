@@ -44,9 +44,9 @@ application_business:
     resource: "@AppBundle/Resources/config/route/business.yml"
     prefix:   /hop-tac-doanh-nghiep
 
-#application_news:
-#    resource: "@AppBundle/Resources/config/route/news.yml"
-#    prefix:   /tin-tuc
+application_news:
+    resource: "@AppBundle/Resources/config/route/news.yml"
+    prefix:   /tin-tuc
 
 application_page_csdt:
     path:     /co-so-dao-tao

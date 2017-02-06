@@ -26,7 +26,6 @@ class AppKernel extends Kernel
             new AMZ\UserBundle\AMZUserBundle(),
             new AMZ\PostBundle\AMZPostBundle(),
             new AMZ\SliderBundle\AMZSliderBundle(),
-            new AMZ\ProfileBundle\AMZProfileBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'), true)) {

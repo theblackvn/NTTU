@@ -37,12 +37,15 @@
                         <div class="hotline mb-0 text-md-left" id="phoneList">
                             <div class="h-title">Hotline: </div>
                             <ul class="list-unstyled">
-                                <li>
-                                    <a href="tel:0902298300">0902.298.300</a>&nbsp;-&nbsp;<a href="tel:0906298300">0906.298.300</a>
-                                </li>
-                                <li>
-                                    <a href="tel:0912298300">0912.298.300</a>&nbsp;-&nbsp;<a href="tel:0914298300">0914.298.300</a>
-                                </li>
+                                {% if hot_line %}
+                                    {% for i, value in hot_line if i%2 == 0 %}
+                                        <li>
+                                            <a href="tel:{{ hot_line[i] }}">{{ hot_line[i] }}</a>
+                                            {% if hot_line[i+1] is defined %}&nbsp;-&nbsp;<a href="tel:{{ hot_line[i+1] }}">{{ hot_line[i+1] }}</a>
+                                            {% endif %}
+                                        </li>
+                                    {% endfor %}
+                                {% endif %}
                             </ul>
                         </div>
                     </div>
@@ -76,7 +79,9 @@
                         <button class="btn btn-transparent btn-sm" type="button" data-toggle="dropdown"><span><img src="{{ asset('frontend/images/ico-flagvn.jpg') }}" alt=""></span><i class="fa fa-angle-down ml-1 mt-1"></i></button>
                         <div class="dropdown-menu dropdown-menu-right">
                             <a class="dropdown-item text-center" href="#"><img src="{{ asset('frontend/images/ico-flagvn.jpg') }}" alt=""></a>
-                            <a class="dropdown-item text-center" href="#"><img src="{{ asset('frontend/images/ico-flgen.jpg') }}" alt=""></a>
+                            {% if common.language_en is defined %}
+                                <a class="dropdown-item text-center" href="{{ common.language_en }}"><img src="{{ asset('frontend/images/ico-flagen.jpg') }}" alt=""></a>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
@@ -155,32 +160,53 @@
                     </ul>
                     {% endif %}
                 </div>
+                {% if footer.trung_tam_vien|length > 2 %}
+                    {% set count = footer.trung_tam_vien|length %}
+                    {% set i = 0 %}
+                    <div class="col-lg-3 col-sm-6">
+                        <p><a href="#">Trung tâm - Viện</a></p>
+                        {% if footer.trung_tam_vien %}
+                            <ul class="fsub">
+                                {% for text, link in footer.trung_tam_vien %}
+                                    {% if i <= count/2%}
+                                        <li><a href="{{ link }}">{{ text }}</a></li>
+                                    {% endif %}
+                                    {% set i=i+1 %}
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                    </div>
 
-                <div class="col-lg-3 col-sm-6">
-                    <p><a href="#">Trung tâm - Viện</a></p>
-                    {% if footer.trung_tam_vien %}
-                        <ul class="fsub">
-                            {% for text, link in footer.trung_tam_vien %}
-                                <li><a href="{{ link }}">{{ text }}</a></li>
-                            {% endfor %}
-                        </ul>
-                    {% endif %}
-                </div>
+                    <div class="col-lg-3 col-sm-6">
+                        <p>&nbsp;</p>
+                        {% if footer.trung_tam_vien %}
+                            {% set i = 0 %}
+                            <ul class="fsub">
+                                {% for text, link in footer.trung_tam_vien %}
+                                    {% if i > count/2%}
+                                        <li><a href="{{ link }}">{{ text }}</a></li>
+                                    {% endif %}
+                                    {% set i=i+1 %}
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                    </div>
+                {% else %}
+                    <div class="col-lg-3 col-sm-6">
+                        <p><a href="#">Trung tâm - Viện</a></p>
+                        {% if footer.trung_tam_vien %}
+                            <ul class="fsub">
+                                {% for text, link in footer.trung_tam_vien %}
+                                    <li><a href="{{ link }}">{{ text }}</a></li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                    </div>
 
-                <div class="col-lg-3 col-sm-6">
-                    {#<p>Thông tin liên hệ</p>#}
-                    {#<ul class="fsub">#}
-                        {#<li>300A Nguyễn Tất Thành, P.13, Quận 4, Tp.HCM, Vietnam.</li>#}
-                        {#<li><div class="d-flex">#}
-                                {#<span class="w-25">Tổng đài:</span>#}
-                                {#<a href="tel:0839411310" class="c-lime-a5">(08) 39 411 310</a>#}
-                            {#</div></li>#}
-                        {#<li><div class="d-flex">#}
-                                {#<span class="w-25">Fax:</span>#}
-                                {#<span class="c-lime-a5">(08) 39 404 759</span>#}
-                            {#</div></li>#}
-                    {#</ul>#}
-                </div>
+                    <div class="col-lg-3 col-sm-6">
+
+                    </div>
+                {% endif %}
 
                 <!-- /row --></div>
             <!-- /container --></div>
@@ -188,16 +214,24 @@
             <div class="container">
                 <div class="row pb-2">
                     <div class="col-md-9">
-                        <p class="pb-0">&copy;2016. Bản quyền thuộc về trường <b>Đại học Nguyễn Tất Thành</b></p>
+                        <p class="pb-0">&copy;2017. Bản quyền thuộc về trường <b>Đại học Nguyễn Tất Thành</b></p>
                         <p class="f-11 pt-0 pb-0">300A Nguyễn Tất Thành, P.13, Quận 4, Tp.HCM, Việt Nam. - Tổng đài: <b>(08) 39411310</b> - Fax: <b>(08) 39404759</b></p>
                     </div>
                     <div class="col-md-3">
                         <p class="pb-0 font-weight-bold">Theo dõi chúng tôi trên</p>
                         <ul class="social d-flex w-md-50 f-16 mt-0">
-                            <li style="margin-right:10px"><a href="#"><i class="fa fa-facebook-square c-blue-a5"></i></a></li>
-                            <li style="margin-right:10px"><a href="#"><i class="fa fa-google-plus c-red"></i></a></li>
-                            <li style="margin-right:10px"><a href="#"><i class="fa fa-twitter c-blue"></i></a></li>
-                            <li style="margin-right:10px"><a href="#"><i class="fa fa-youtube-square c-red"></i></a></li>
+                            {% if common.facebook is defined %}
+                                <li style="margin-right:10px"><a href="{{ common.facebook }}"><i class="fa fa-facebook-square c-blue-a5"></i></a></li>
+                            {% endif %}
+                            {% if common.googleplus is defined %}
+                                <li style="margin-right:10px"><a href="{{ common.googleplus }}"><i class="fa fa-google-plus c-red"></i></a></li>
+                            {% endif %}
+                            {% if common.twitter is defined %}
+                                <li style="margin-right:10px"><a href="{{ common.twitter }}"><i class="fa fa-twitter c-blue"></i></a></li>
+                            {% endif %}
+                            {% if common.youtube is defined %}
+                                <li style="margin-right:10px"><a href="{{ common.youtube }}"><i class="fa fa-youtube-square c-red"></i></a></li>
+                            {% endif %}
                         </ul>
                     </div>
                 </div>
@@ -210,6 +244,7 @@
 'frontend/js/jquery.min.js'
 'frontend/js/tether.min.js'
 'frontend/js/bootstrap.min.js'
+'frontend/js/breakingNews.js'
 'frontend/js/jquery.bxslider.min.js'
 'frontend/js/jquery.validate.min.js'
 'frontend/js/functions.js'
