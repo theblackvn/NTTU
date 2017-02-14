@@ -91,6 +91,10 @@ class DefaultController extends Controller
             ->get(array(),array('sort-order' => 'ASC'));
         //echo count($sliders);die();
 
+        $media = $this->get('amz_db.service.query')
+            ->getRepository('AMZSliderBundle:Media')
+            ->findOneBy(array(),array('sort-order' => 'ASC'));
+
         return $this->render('AppBundle:Default:index.html.twig', array(
             'itNews' => $itNews,
             'tuyenSinhNews' => $tuyenSinhNews,
@@ -99,7 +103,8 @@ class DefaultController extends Controller
             'fiveReason' => $fiveReason,
             'menu' => $menu,
             'events' => $events,
-            'sliders' => $sliders
+            'sliders' => $sliders,
+            'media' => $media
         ));
     }
 		

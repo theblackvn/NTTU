@@ -28,7 +28,7 @@ class NewsController extends Controller
                 'is_featured' => 1,
                 'category_slug' => 'tin-tuc',
 
-            ), array(), 3, 0);
+            ), array(), Post::ADMIN_NUMBER_ITEM_PER_PAGE, 0);
         $events = $this->get('amz_db.service.query')
             ->getRepository('AMZPostBundle:Event')
             ->get(array(

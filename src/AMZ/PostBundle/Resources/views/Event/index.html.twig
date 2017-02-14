@@ -33,7 +33,7 @@
                             <div class="col-md-2 col-lg-2 col-sm-6 col-xs-12">
                                 <button type="submit" class="btn btn-success waves-effect waves-light m-r-10">Filter
                                 </button>
-                                <button onclick="window.location.href='{{ path('amz_post_homepage') }}'" type="button" class="btn btn-inverse waves-effect waves-light m-r-10">Reset
+                                <button onclick="window.location.href='{{ path('amz_event_homepage') }}'" type="button" class="btn btn-inverse waves-effect waves-light m-r-10">Reset
                                 </button>
                             </div>
                         </div>
@@ -59,12 +59,8 @@
                             {% for entity in pagination %}
                                 <tr>
                                     <td>{{ entity.title|raw }}</td>
-                                    <td>
-                                        {{ entity.startDate|date('d/m/y H:i') }}
-                                    </td>
-                                    <td>
-                                        {{ entity.location }}
-                                    </td>
+                                    <td>{{ entity.startDate|date('d/m/y H:i') }}</td>
+                                    <td>{{ entity.location }}</td>
                                     <td>
                                         {% if 1 == entity.status %}
                                             <span class="label label-warning font-weight-100">Draft</span>
@@ -81,7 +77,8 @@
                                                 href="{{ path('amz_event_delete', {'id': entity.id}) }}"
                                                 class="text-inverse p-r-10" title="Delete"
                                                 onclick="return confirm('Are you sure ?');"
-                                                data-toggle="tooltip"><i class="ti-trash"></i></a> </td>
+                                                data-toggle="tooltip"><i class="ti-trash"></i></a>
+                                    </td>
 
                                 </tr>
                             {% endfor %}

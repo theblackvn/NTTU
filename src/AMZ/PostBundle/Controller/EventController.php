@@ -15,6 +15,7 @@ class EventController extends Controller
         $parameters['type'] = Event::TYPE_POST;
         $pagination = $this->get('amz_db.service.query')->getRepository('AMZPostBundle:Event')
             ->paging($parameters, $request->get('page', 1), Event::ADMIN_NUMBER_ITEM_PER_PAGE);
+        //echo "<pre>";
         //var_dump($pagination);die();
         return $this->render('AMZPostBundle:Event:index.html.twig', array(
             'pagination' => $pagination,
@@ -30,6 +31,7 @@ class EventController extends Controller
         $form = $this->createForm(EventType::class, $entity);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
+            //var_dump("123");die();
             $entity->setStartDate(new \DateTime($entity->getStartDate()));
             //var_dump($entity->getStartDate());die();
             $result = $this->get('amz_db.service.query')->getRepository('AMZPostBundle:Event')

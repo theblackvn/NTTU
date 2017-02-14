@@ -115,7 +115,7 @@ class Post
     {
         $now = new \DateTime('now');
         $this->setUpdatedAt($now);
-        $this->setCreatedAt($now);
+        //$this->setCreatedAt($now);
     }
 
     /**

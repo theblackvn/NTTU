@@ -3,6 +3,7 @@
 namespace AppBundle\Controller;
 
 use AMZ\PostBundle\Entity\Post;
+use AMZ\PostBundle\Entity\Event;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class PageController extends Controller
@@ -68,10 +69,17 @@ class PageController extends Controller
                 'category_slug' => 'co-so-dao-tao',
 
             ), array(), 3, 0);
+        $events = $this->get('amz_db.service.query')
+            ->getRepository('AMZPostBundle:Event')
+            ->get(array(
+                'status' => Event::STATUS_PUBLISH,
+                'is_featured' => 1,
+            ), array('created','DESC'), 3, 0);
         return $this->render('AppBundle:Page:location.html.twig', array(
             'category' => $category,
             'posts' => $posts,
-            'menu' => $menu
+            'menu' => $menu,
+            'events' => $events
         ));
     }
 

@@ -11,13 +11,15 @@
                     <div class="carousel-inner" role="listbox">
                         {% if sliders %}
                             {% for i,item in sliders %}
-                                <div class="carousel-item {% if i ==0 %}active{% endif %}"
-                                     style="background-image: url({{ item.fullSizeThumbnail }});">
-                                    <div class="carousel-caption d-block text-left">
-                                        <h3>{{ item.title|raw }}</h3>
-                                        <p>{{ item.content|raw }}</p>
+                                <a href="{{ item.link }}">
+                                    <div class="carousel-item {% if i ==0 %}active{% endif %}"
+                                         style="background-image: url({{ item.fullSizeThumbnail }});">
+                                        <div class="carousel-caption d-block text-left">
+                                            <h3>{{ item.title|raw }}</h3>
+                                            <p>{{ item.content|raw }}</p>
+                                        </div>
                                     </div>
-                                </div>
+                                </a>
                             {% endfor %}
                         {% endif %}
 
@@ -54,11 +56,14 @@
                     <div class="col-md-3">
                         <h2 class="heading-2">Media</h2>
                         <article class="post-video border" style="width: inherit">
-                            {#<video src="#" controls="controls"></video>#}
-                            {#<div class="description">#}
-                                {#<p>NTTU - Nhằm tạo điều kiện cho các học viên cao học theo ngành ...</p>#}
-                            {#</div>#}
-                            <iframe style="width: inherit;" src="https://www.youtube.com/embed/dSK-3HPn8tE" frameborder="0" allowfullscreen></iframe>
+                            {% if media %}
+                                <iframe style="width: inherit;" src="{{ media.link }}" frameborder="0" allowfullscreen></iframe>
+                                <div class="description">
+                                    <p>NTTU - Nhằm tạo điều kiện cho các học viên cao học theo ngành ...</p>
+                                </div>
+                            {% else %}
+                                <video src="#" controls="controls"></video>
+                            {% endif %}
                         </article>
                     </div>
                 </div>

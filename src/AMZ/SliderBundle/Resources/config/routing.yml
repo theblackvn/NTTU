@@ -13,3 +13,19 @@ amz_sliders_edit:
 amz_sliders_delete:
     path:     /slider/{id}/delete
     defaults: { _controller: AMZSliderBundle:Item:delete }
+
+amz_media_homepage:
+    path:     /media
+    defaults: { _controller: AMZSliderBundle:Media:index }
+
+amz_media_create:
+    path:     /media/create
+    defaults: { _controller: AMZSliderBundle:Media:create }
+
+amz_media_edit:
+    path:     /media/{id}/edit
+    defaults: { _controller: AMZSliderBundle:Media:edit }
+
+amz_media_delete:
+    path:     /media/{id}/delete
+    defaults: { _controller: AMZSliderBundle:Media:delete }

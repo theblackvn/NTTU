@@ -59,9 +59,15 @@ class PostType extends AbstractType
         ))->add('content', TextareaType::class, array(
             'required' => false,
             'attr' => array('class' => 'form-control cke-editor', 'rows' => 5)
-        ))/*->add('seo', SeoType::class, array(
-            
-        ))*/->add('categories', EntityType::class, array(
+        ))->add('createdAt', TextType::class, array(
+            'required' => false,
+            'attr' => array('class' => 'form-control datepicker', 'readonly'=>'true'),
+            'constraints' => array(
+                new NotNull(array(
+                    'message' => 'Bắt buộc nhập'
+                ))
+            )
+        ))->add('categories', EntityType::class, array(
             'required' => false,
             'class' => 'AMZ\PostBundle\Entity\Category',
             'choice_label' => 'title',

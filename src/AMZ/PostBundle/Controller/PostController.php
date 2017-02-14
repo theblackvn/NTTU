@@ -33,6 +33,7 @@ class PostController extends Controller
         $form = $this->createForm(PostType::class, $entity);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
+            $entity->setCreatedAt(new \DateTime($entity->getCreatedAt()));
             $result = $this->get('amz_db.service.query')->getRepository('AMZPostBundle:Post')
                 ->insert($entity);
             if ($result) {
@@ -60,6 +61,8 @@ class PostController extends Controller
         $form = $this->createForm(PostType::class, $entity);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
+            $entity->setCreatedAt(new \DateTime($entity->getCreatedAt()));
+
             $result = $this->get('amz_db.service.query')->getRepository('AMZPostBundle:Post')
                 ->update($entity);
             if ($result) {
@@ -68,6 +71,9 @@ class PostController extends Controller
                 $this->addFlash('error', $this->get('translator')->trans('Lưu dữ liệu thất bại! Vui lòng thử lại sau'));
             }
             return $this->redirectToRoute('amz_post_homepage');
+        } else {
+            $entity->setCreatedAt($entity->getCreatedAt()->format('d/m/Y H:i'));
+            $form = $this->createForm(PostType::class, $entity);
         }
 
         return $this->render('AMZPostBundle:Post:edit.html.twig', array(
