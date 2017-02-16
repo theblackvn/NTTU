@@ -2,7 +2,7 @@ $(document).ready(function(){
 	toggledMenu();
 	slideMulti();
     breakingPhone();
-    $('#contactForm').validate({
+        $('#contactForm').validate({
         rules: {
             name: 'required',
             phone: {
@@ -72,6 +72,7 @@ $('body').on('click', '#hnav-trigger, #menu-trigger', function (e) {
 })
 };
 function slideMulti(){
+    //console.log($('.multi-slide .slide').width());
     $('.multi-slide').bxSlider({
         slideWidth: $('.multi-slide .slide').width(),
         minSlides: 1,
@@ -81,6 +82,16 @@ function slideMulti(){
         pager: false,
         nextText: '<i class="fa fa-angle-right" aria-hidden="true"></i>',
         prevText: '<i class="fa fa-angle-left" aria-hidden="true"></i>'
+    });
+    $('.multi-slide-2').bxSlider({
+        slideWidth: $('.multi-slide-2 .slide').width(),
+        minSlides: 1,
+        maxSlides: 4,
+        moveSlides: 1,
+        slideMargin: 10,
+        pager: false,
+        prevText: '<i class="fa fa-angle-left" aria-hidden="true"></i>',
+        nextText: '<i class="fa fa-angle-right" aria-hidden="true"></i>'        
     });
 }
 function breakingPhone() {
